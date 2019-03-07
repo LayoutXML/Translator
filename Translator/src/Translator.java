@@ -76,6 +76,12 @@ public class Translator {
         writeFile();
     }
 
+    public void printDictionaty() {
+        for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue());
+        }
+    }
+
     public void removeFromDictionaryByValue(String translation) {
         //TODO: iterate through hashmap (dictionary) and remove element once value matches translation
     }

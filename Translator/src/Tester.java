@@ -114,6 +114,9 @@ public class Tester {
                         System.out.println("Invalid input. Please try again");
                     }
                     break;
+                case 6:
+                    translator.printDictionaty();
+                    break;
                 case 0:
                     System.out.println("\nGoodbye...");
                     break;
@@ -134,6 +137,7 @@ public class Tester {
         System.out.println("3. Remove a word or phrase (English input)");
         System.out.println("4. Remove a word or phrase (other language input)");
         System.out.println("5. Translate a file");
+        System.out.println("6. Print dictionary");
         //TODO: add automated tests
         System.out.println("0. Exit");
     }
