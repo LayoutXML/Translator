@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -17,10 +18,13 @@ public class Translator {
         String input = scanner.nextLine();
         String[] words = input.split(" ");
         System.out.println("");
+        long startTime = Calendar.getInstance().getTimeInMillis();
         for (String word : words) {
             System.out.print(translator.translate(word)+" ");
         }
-
+        long endTime = Calendar.getInstance().getTimeInMillis();
+        double wordsPerSecond = words.length*(1d/(endTime-startTime)*1000);
+        System.out.println("Speed: "+wordsPerSecond+" words per second.");
     }
 
     public void initialise() {
@@ -49,6 +53,7 @@ public class Translator {
 
     public void readFile() {
         isReading = true;
+        fileRead = false;
         Thread thread = new Thread() {
             @Override
             public void run() {
