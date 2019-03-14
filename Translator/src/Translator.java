@@ -117,6 +117,7 @@ public class Translator {
                 try {
                     fileReader = new FileReader(fileName+".txt");
                     bufferedReader = new BufferedReader(fileReader);
+                    //TODO: ensure correct encoding/locale
 
                     String line;
 
