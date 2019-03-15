@@ -47,8 +47,9 @@ public class Tester {
                             System.out.print(translator.translate(word)+" ");
                         }
                         long endTime = Calendar.getInstance().getTimeInMillis();
-                        double wordsPerSecond = words.length*(1d/(endTime-startTime)*1000); //TODO: fix/improve speed calculation #1
-                        System.out.println("\nSpeed: "+wordsPerSecond+" words per second.");
+                        double wordsPerSecond = words.length*1d/((endTime-startTime)/1000d);
+                        System.out.println("\nSpeed: "+wordsPerSecond+" words per second. (It took "
+                                +(endTime-startTime)+"ms ("+(endTime-startTime)/1000d+" seconds) to translate "+words.length+" words)");
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;
