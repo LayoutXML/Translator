@@ -41,14 +41,15 @@ public class Tester {
                     try {
                         System.out.println("Enter text in English: ");
                         input = scanner.nextLine();
-                        String[] words = input.split(" ");
+                        String[] words = input.split("\\W+");
                         long startTime = Calendar.getInstance().getTimeInMillis();
                         for (String word : words) {
                             System.out.print(translator.translate(word)+" ");
                         }
                         long endTime = Calendar.getInstance().getTimeInMillis();
-                        double wordsPerSecond = words.length*(1d/(endTime-startTime)*1000); //TODO: fix/improve speed calculation
-                        System.out.println("\nSpeed: "+wordsPerSecond+" words per second.");
+                        double wordsPerSecond = words.length*1d/((endTime-startTime)/1000d);
+                        System.out.println("\nSpeed: "+wordsPerSecond+" words per second. (It took "
+                                +(endTime-startTime)+"ms ("+(endTime-startTime)/1000d+" seconds) to translate "+words.length+" words)");
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;
@@ -138,7 +139,7 @@ public class Tester {
         System.out.println("4. Remove a word or phrase (other language input)");
         System.out.println("5. Translate a file");
         System.out.println("6. Print dictionary");
-        //TODO: add automated tests
+        //TODO: add automated tests #2
         System.out.println("0. Exit");
     }
 

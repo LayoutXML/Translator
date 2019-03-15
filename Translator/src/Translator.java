@@ -9,7 +9,7 @@ public class Translator {
     private HashMap<String, String> dictionary;
     private boolean fileRead;
     private boolean isReading;
-    private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option
+    private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option #3
 
     public void initialise() {
         dictionary = new HashMap<>();
@@ -43,7 +43,7 @@ public class Translator {
 
             bufferedReader.close();
 
-            String[] words = text.toString().split(" "); //TODO: better splitting algorithm (phrases + punctuation)
+            String[] words = text.toString().split("\\W+"); //TODO: preserve characters, not split "don't" into 2 words #4
             long startTime = Calendar.getInstance().getTimeInMillis();
             for (String word : words) {
                 System.out.print(translate(word)+" ");
@@ -83,7 +83,7 @@ public class Translator {
     }
 
     public void removeFromDictionaryByValue(String translation) {
-        //TODO: iterate through hashmap (dictionary) and remove element once value matches translation
+        //TODO: iterate through hashmap (dictionary) and remove element once value matches translation #5
     }
 
     /**
@@ -117,14 +117,14 @@ public class Translator {
                 try {
                     fileReader = new FileReader(fileName+".txt");
                     bufferedReader = new BufferedReader(fileReader);
-                    //TODO: ensure correct encoding/locale
+                    //TODO: ensure correct encoding/locale #6
 
                     String line;
 
                     while((line = bufferedReader.readLine()) != null) {
                         String[] words = line.split("\t",2);
                         dictionary.put(words[1].toLowerCase(),words[0].toLowerCase());
-                        //TODO: ensure 1:1 relationship, possibly implement this in addToDictionary and use it here
+                        //TODO: ensure 1:1 relationship, possibly implement this in addToDictionary and use it here #7
                     }
 
                     bufferedReader.close();
@@ -165,7 +165,7 @@ public class Translator {
             };
             thread.run();
         }
-        //TODO: if isReading then write file asap when it turns false
+        //TODO: if isReading then write file asap when it turns false #8
         //one way to implement this would be to create a variable isWaitingToWrite
         //and a wrapper method for setIsReading which then checks if isWaitingToWrite when called
         //and calls this method
