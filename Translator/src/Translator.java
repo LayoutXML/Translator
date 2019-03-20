@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -85,14 +86,22 @@ public class Translator {
         }
     }
 
+    public void removeFromDictionaryByValue(String translation) {
+        ArrayList<String> keysToRemove = new ArrayList<>();
+        for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+            if (entry.getValue().equals(translation.toLowerCase())) {
+                keysToRemove.add(entry.getKey());
+            }
+        }
+        for (String key: keysToRemove) {
+            dictionary.remove(key);
+        }
+    }
+
     public void printDictionaty() {
         for (Map.Entry<String, String> entry : dictionary.entrySet()) {
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
-    }
-
-    public void removeFromDictionaryByValue(String translation) {
-        //TODO: iterate through hashmap (dictionary) and remove element once value matches translation #5
     }
 
     /**
