@@ -13,6 +13,9 @@ public class Translator {
     private boolean pendingRead;
     private boolean pendingWrite;
     private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option #3
+    private boolean turboMode; //when false ensures 1:1 relationship between languages
+    //TODO: support multiple languages (multiple dictionaries) #8
+    //TODO: flip dictionary keys and values #9
 
     public void initialise() {
         dictionary = new HashMap<>();
@@ -21,6 +24,7 @@ public class Translator {
         isWriting = false;
         pendingRead = false;
         pendingWrite = false;
+        turboMode = true;
         readFile();
     }
 
@@ -69,7 +73,7 @@ public class Translator {
         } else {
             System.out.println("\""+original+"\"-\""+translation+"\" added.");
         }
-        writeFile();
+        //TODO: ensure 1:1 relationship when not in turbo mode #7
     }
 
     public void removeFromDictionary(String original) {
@@ -79,7 +83,6 @@ public class Translator {
         } else {
             System.out.println("\""+original+"\" was not in the dictionary, so nothing was removed.");
         }
-        writeFile();
     }
 
     public void printDictionaty() {
@@ -110,7 +113,7 @@ public class Translator {
         isAddNewWordsToDictOptionEnabled = addNewWordsToDictOptionEnabled;
     }
 
-    private void readFile() {
+    public void readFile() {
         if (!isWriting) {
             isReading = true;
             fileRead = false;
@@ -131,8 +134,7 @@ public class Translator {
 
                         while ((line = bufferedReader.readLine()) != null) {
                             String[] words = line.split("\t", 2);
-                            dictionary.put(words[1].toLowerCase(), words[0].toLowerCase());
-                            //TODO: ensure 1:1 relationship, possibly implement this in addToDictionary and use it here #7
+                            addToDictionary(words[1].toLowerCase(), words[0].toLowerCase());
                         }
 
                         bufferedReader.close();
@@ -152,7 +154,7 @@ public class Translator {
         }
     }
 
-    private void writeFile() {
+    public void writeFile() {
         if (!isReading) {
             isWriting = true;
             pendingWrite = false;

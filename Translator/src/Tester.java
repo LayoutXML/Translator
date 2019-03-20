@@ -66,6 +66,7 @@ public class Tester {
                         System.out.println("Enter text in other language: ");
                         input2 = scanner.nextLine();
                         translator.addToDictionary(input1,input2);
+                        translator.writeFile();
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;
