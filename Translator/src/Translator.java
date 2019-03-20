@@ -9,12 +9,18 @@ public class Translator {
     private HashMap<String, String> dictionary;
     private boolean fileRead;
     private boolean isReading;
+    private boolean isWriting;
+    private boolean pendingRead;
+    private boolean pendingWrite;
     private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option #3
 
     public void initialise() {
         dictionary = new HashMap<>();
         fileRead = false;
         isReading = false;
+        isWriting = false;
+        pendingRead = false;
+        pendingWrite = false;
         readFile();
     }
 
@@ -105,43 +111,51 @@ public class Translator {
     }
 
     private void readFile() {
-        isReading = true;
-        fileRead = false;
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                FileReader fileReader;
-                BufferedReader bufferedReader;
-                String fileName = "dictionary";
+        if (!isWriting) {
+            isReading = true;
+            fileRead = false;
+            pendingRead = false;
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    FileReader fileReader;
+                    BufferedReader bufferedReader;
+                    String fileName = "dictionary";
 
-                try {
-                    fileReader = new FileReader(fileName+".txt");
-                    bufferedReader = new BufferedReader(fileReader);
-                    //TODO: ensure correct encoding/locale #6
+                    try {
+                        fileReader = new FileReader(fileName + ".txt");
+                        bufferedReader = new BufferedReader(fileReader);
+                        //TODO: ensure correct encoding/locale #6
 
-                    String line;
+                        String line;
 
-                    while((line = bufferedReader.readLine()) != null) {
-                        String[] words = line.split("\t",2);
-                        dictionary.put(words[1].toLowerCase(),words[0].toLowerCase());
-                        //TODO: ensure 1:1 relationship, possibly implement this in addToDictionary and use it here #7
+                        while ((line = bufferedReader.readLine()) != null) {
+                            String[] words = line.split("\t", 2);
+                            dictionary.put(words[1].toLowerCase(), words[0].toLowerCase());
+                            //TODO: ensure 1:1 relationship, possibly implement this in addToDictionary and use it here #7
+                        }
+
+                        bufferedReader.close();
+                    } catch (IOException e) {
+                        System.out.println("Error reading file");
+                    } finally {
+                        fileRead = true;
+                        isReading = false;
+                        System.out.println("File read. Size: " + dictionary.size());
+                        performPending();
                     }
-
-                    bufferedReader.close();
-                } catch (IOException e) {
-                    System.out.println("Error reading file");
-                } finally {
-                    fileRead = true;
-                    isReading = false;
-                    System.out.println("File read. Size: "+dictionary.size());
                 }
-            }
-        };
-        thread.run();
+            };
+            thread.run();
+        } else {
+            pendingRead = true;
+        }
     }
 
     private void writeFile() {
         if (!isReading) {
+            isWriting = true;
+            pendingWrite = false;
             Thread thread = new Thread() {
                 @Override
                 public void run() {
@@ -160,14 +174,25 @@ public class Translator {
                         printWriter.close();
                     } catch (IOException e) {
                         System.out.println("Error writing file");
+                    } finally {
+                        isWriting = false;
+                        System.out.println("File written");
+                        performPending();
                     }
                 }
             };
             thread.run();
+        } else {
+            pendingWrite = true;
         }
-        //TODO: if isReading then write file asap when it turns false #8
-        //one way to implement this would be to create a variable isWaitingToWrite
-        //and a wrapper method for setIsReading which then checks if isWaitingToWrite when called
-        //and calls this method
+    }
+
+    private void performPending() {
+        if (pendingWrite) {
+            writeFile();
+        }
+        if (pendingRead) {
+            readFile();
+        }
     }
 }
