@@ -1,23 +1,44 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("Duplicates")
+/**
+ * Translator class that contains methods to work with dictionary and dictionary itself
+ */
 public class Translator {
 
-    private HashMap<String, String> dictionary;
-    private boolean fileRead;
-    private boolean isReading;
-    private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option
+    private HashMap<String, String> dictionary; //TODO: support multiple languages (multiple dictionaries) #8
+    private boolean fileRead; //has the translation been read from the file at least once
+    private boolean isReading; //is file open and being read
+    private boolean isWriting; //is file open and being written in
+    private boolean pendingRead; //is program waiting to reading file
+    private boolean pendingWrite; //is program waiting to write file
+    private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option #3
+    private boolean turboMode; //when false ensures 1:1 relationship between languages
+    //TODO: flip dictionary keys and values #9
 
+    /**
+     * Method that sets default values for variables and reads the file
+     */
     public void initialise() {
         dictionary = new HashMap<>();
         fileRead = false;
         isReading = false;
+        isWriting = false;
+        pendingRead = false;
+        pendingWrite = false;
+        turboMode = true;
         readFile();
     }
 
+    /**
+     * Method that returns translation for a given word
+     * @param original word in an original language (key)
+     * @return translation (value)
+     */
     public String translate(String original) {
         String translation = dictionary.get(original.toLowerCase());
         if (translation==null) {
@@ -27,6 +48,10 @@ public class Translator {
         }
     }
 
+    /**
+     * Method that reads and translates a file (to a console)
+     * @param fileName file name
+     */
     public void translateFile(String fileName) {
         FileReader fileReader;
         BufferedReader bufferedReader;
@@ -43,7 +68,7 @@ public class Translator {
 
             bufferedReader.close();
 
-            String[] words = text.toString().split(" "); //TODO: better splitting algorithm (phrases + punctuation)
+            String[] words = text.toString().split("\\W+"); //TODO: preserve characters, not split "don't" into 2 words #4
             long startTime = Calendar.getInstance().getTimeInMillis();
             for (String word : words) {
                 System.out.print(translate(word)+" ");
@@ -56,6 +81,11 @@ public class Translator {
         }
     }
 
+    /**
+     * Method that adds word or phrase pair to a dictionary
+     * @param original original word or phrase (key)
+     * @param translation translation (value)
+     */
     public void addToDictionary(String original, String translation) {
         String oldValue = dictionary.put(original.toLowerCase(), translation.toLowerCase());
         if (oldValue!=null) {
@@ -63,9 +93,13 @@ public class Translator {
         } else {
             System.out.println("\""+original+"\"-\""+translation+"\" added.");
         }
-        writeFile();
+        //TODO: ensure 1:1 relationship when not in turbo mode #7
     }
 
+    /**
+     * Method that removes a word or phrase from a dictionary by key
+     * @param original word or phrase in an original language (key)
+     */
     public void removeFromDictionary(String original) {
         String oldValue = dictionary.remove(original.toLowerCase());
         if (oldValue!=null) {
@@ -73,17 +107,31 @@ public class Translator {
         } else {
             System.out.println("\""+original+"\" was not in the dictionary, so nothing was removed.");
         }
-        writeFile();
     }
 
+    /**
+     * Method that removes a word or phrase from a dictionary by value
+     * @param translation translation (value)
+     */
+    public void removeFromDictionaryByValue(String translation) {
+        ArrayList<String> keysToRemove = new ArrayList<>();
+        for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+            if (entry.getValue().equals(translation.toLowerCase())) {
+                keysToRemove.add(entry.getKey());
+            }
+        }
+        for (String key: keysToRemove) {
+            dictionary.remove(key);
+        }
+    }
+
+    /**
+     * Method that prints the dictionary to a console
+     */
     public void printDictionaty() {
         for (Map.Entry<String, String> entry : dictionary.entrySet()) {
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
-    }
-
-    public void removeFromDictionaryByValue(String translation) {
-        //TODO: iterate through hashmap (dictionary) and remove element once value matches translation
     }
 
     /**
@@ -104,44 +152,57 @@ public class Translator {
         isAddNewWordsToDictOptionEnabled = addNewWordsToDictOptionEnabled;
     }
 
-    private void readFile() {
-        isReading = true;
-        fileRead = false;
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                FileReader fileReader;
-                BufferedReader bufferedReader;
-                String fileName = "dictionary";
+    /**
+     * Method that reads dictionary file to a dictionary
+     */
+    public void readFile() {
+        if (!isWriting) {
+            isReading = true;
+            fileRead = false;
+            pendingRead = false;
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    FileReader fileReader;
+                    BufferedReader bufferedReader;
+                    String fileName = "dictionary";
 
-                try {
-                    fileReader = new FileReader(fileName+".txt");
-                    bufferedReader = new BufferedReader(fileReader);
-                    //TODO: ensure correct encoding/locale
+                    try {
+                        fileReader = new FileReader(fileName + ".txt");
+                        bufferedReader = new BufferedReader(fileReader);
+                        //TODO: ensure correct encoding/locale #6
 
-                    String line;
+                        String line;
 
-                    while((line = bufferedReader.readLine()) != null) {
-                        String[] words = line.split("\t",2);
-                        dictionary.put(words[1].toLowerCase(),words[0].toLowerCase());
-                        //TODO: ensure 1:1 relationship, possibly implement this in addToDictionary and use it here
+                        while ((line = bufferedReader.readLine()) != null) {
+                            String[] words = line.split("\t", 2);
+                            addToDictionary(words[1].toLowerCase(), words[0].toLowerCase());
+                        }
+
+                        bufferedReader.close();
+                    } catch (IOException e) {
+                        System.out.println("Error reading file");
+                    } finally {
+                        fileRead = true;
+                        isReading = false;
+                        System.out.println("File read. Size: " + dictionary.size());
+                        performPending();
                     }
-
-                    bufferedReader.close();
-                } catch (IOException e) {
-                    System.out.println("Error reading file");
-                } finally {
-                    fileRead = true;
-                    isReading = false;
-                    System.out.println("File read. Size: "+dictionary.size());
                 }
-            }
-        };
-        thread.run();
+            };
+            thread.run();
+        } else {
+            pendingRead = true;
+        }
     }
 
-    private void writeFile() {
+    /**
+     * Method that writes a dictionary to a file
+     */
+    public void writeFile() {
         if (!isReading) {
+            isWriting = true;
+            pendingWrite = false;
             Thread thread = new Thread() {
                 @Override
                 public void run() {
@@ -160,14 +221,28 @@ public class Translator {
                         printWriter.close();
                     } catch (IOException e) {
                         System.out.println("Error writing file");
+                    } finally {
+                        isWriting = false;
+                        System.out.println("File written");
+                        performPending();
                     }
                 }
             };
             thread.run();
+        } else {
+            pendingWrite = true;
         }
-        //TODO: if isReading then write file asap when it turns false
-        //one way to implement this would be to create a variable isWaitingToWrite
-        //and a wrapper method for setIsReading which then checks if isWaitingToWrite when called
-        //and calls this method
+    }
+
+    /**
+     * Method that performs pending tasks, for example reading/writing files
+     */
+    private void performPending() {
+        if (pendingWrite) {
+            writeFile();
+        }
+        if (pendingRead) {
+            readFile();
+        }
     }
 }
