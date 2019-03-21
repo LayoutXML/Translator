@@ -123,6 +123,9 @@ public class Translator {
         for (String key: keysToRemove) {
             dictionary.remove(key);
         }
+        if (keysToRemove.size()==0) {
+            System.out.println("\""+translation+"\" was not in the dictionary, so nothing was removed.");
+        }
     }
 
     /**
