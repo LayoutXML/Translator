@@ -248,4 +248,12 @@ public class Translator {
             readFile();
         }
     }
+
+    public void flipDictionary() {
+        HashMap<String, String> dictionaryNew = new HashMap<>();
+        for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+            dictionaryNew.put(entry.getValue(),entry.getKey());
+        }
+        dictionary = dictionaryNew;
+    }
 }
