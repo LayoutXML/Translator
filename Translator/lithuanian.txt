@@ -71,7 +71,6 @@ eating	valgymas
 blood	kraujas
 neighbor	kaimynas
 straight	tiesiai
-the	-
 sale	parduoti
 police	policija
 throw	mesti
@@ -248,6 +247,7 @@ condition	sąlyga
 ceremony	ceremonija
 improve	pagerinti
 obligation	įsipareigojimas
+were	buvo
 violation	pažeidimas
 bombing	bombardavimas
 try	bandyti
@@ -345,6 +345,7 @@ reporter	reporteris
 team	komanda
 withdrawal	pasitraukimas
 shove	stumti
+haughty	išdykęs
 marketing	rinkodara
 prayer	malda
 speech	kalba
@@ -1429,6 +1430,7 @@ election	rinkimai
 green	žalias
 race	lenktynės
 effectively	veiksmingai
+was	buvo
 greet	pasveikint
 war	karas
 sculpture	skulptūra
@@ -1457,6 +1459,7 @@ fan	ventiliatorius
 crush	sutraiškyti
 far	toli
 fat	storas
+proudest	garbingiausia
 catch	sugauti
 plan	planuoti
 promising	perspektyvus
@@ -1609,12 +1612,12 @@ excited	susijaudinęs
 shrink	susitraukti
 ancestor	protėviai
 league	lygoje
+am	esu
 former	buvęs
 panic	panika
 extend	pratęsti
 fold	lankstyti
 as	kaip
-at	-
 interpretation	interpretacija
 peace	taika
 folk	liaudies
@@ -1747,7 +1750,6 @@ bathroom	vonia
 encouraging	skatinti
 likely	tikėtina
 issue	klausimas
-in	-
 literally	pažodžiui
 lower	mažesnis
 metal	metalo
@@ -1848,7 +1850,6 @@ investigator	tyrėjas
 considerable	didelis
 oil	aliejus
 productivity	produktyvumas
-of	-
 heal	išgyti
 reserve	užrezervuoti
 somehow	kažkaip
@@ -2055,7 +2056,6 @@ distribution	paskirstymas
 our	mūsų
 capacity	pajėgumus
 cope	susidoroti
-out	-
 confess	prisipažinti
 ghost	vaiduoklis
 noon	vidurdienį
@@ -2839,7 +2839,7 @@ together	kartu
 illness	liga
 socially	socialiai
 within	viduje
-could	-
+could	galėjo
 strike	streikas
 health	sveikata
 positive	teigiamas
@@ -3470,6 +3470,7 @@ worth	verta
 automobile	automobilių
 diversity	įvairovė
 notion	sąvoka
+are	yra
 grace	malonė
 patience	kantrybė
 where	kur

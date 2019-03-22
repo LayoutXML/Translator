@@ -1,9 +1,6 @@
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @SuppressWarnings("Duplicates")
 /**
@@ -11,7 +8,8 @@ import java.util.Map;
  */
 public class Translator {
 
-    private HashMap<String, String> dictionary; //TODO: support multiple languages (multiple dictionaries) #8
+    private HashMap<String, String> dictionary; //TODO: support multiple languages (multiple dictionaries), make array of #8
+    private List<String> exceptions;
     private boolean fileRead; //has the translation been read from the file at least once
     private boolean isReading; //is file open and being read
     private boolean isWriting; //is file open and being written in
@@ -19,6 +17,7 @@ public class Translator {
     private boolean pendingWrite; //is program waiting to write file
     private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option #3
     private boolean turboMode; //when false ensures 1:1 relationship between languages
+    private String[] languageFileNames = {"lithuanian","swedish","albanian"};
 
     /**
      * Method that sets default values for variables and reads the file
@@ -31,6 +30,7 @@ public class Translator {
         pendingRead = false;
         pendingWrite = false;
         turboMode = true;
+        exceptions = new ArrayList<>();
         readFile("lithuanian");
     }
 
@@ -40,12 +40,15 @@ public class Translator {
      * @return translation (value)
      */
     public String translate(String original) {
-        String translation = dictionary.get(original.toLowerCase());
-        if (translation==null) {
-            return original.toLowerCase();
-        } else {
-            return translation;
+        if (!exceptions.contains(original)) {
+            String translation = dictionary.get(original.toLowerCase());
+            if (translation == null) {
+                return original.toLowerCase();
+            } else {
+                return translation;
+            }
         }
+        return "";
     }
 
     /**
@@ -60,22 +63,26 @@ public class Translator {
             fileReader = new FileReader(fileName+".txt");
             bufferedReader = new BufferedReader(fileReader);
 
-            String line;
+            String line, translation;
 
             while((line = bufferedReader.readLine()) != null) {
-                text.append(line);
+                text.append("\n").append(line);
             }
 
             bufferedReader.close();
 
-            String[] words = text.toString().split("\\W+"); //TODO: preserve characters, not split "don't" into 2 words #4
+            String[] words = text.substring(1).split("\\W+"); //TODO: preserve characters, not split "don't" into 2 words #4
             long startTime = Calendar.getInstance().getTimeInMillis();
             for (String word : words) {
-                System.out.print(translate(word)+" ");
+                translation = translate(word);
+                if (translation!=null && !translation.equals("")) {
+                    System.out.print(translation+" ");
+                }
             }
             long endTime = Calendar.getInstance().getTimeInMillis();
             double wordsPerSecond = words.length*(1d/(endTime-startTime)*1000);
-            System.out.println("\nSpeed: "+wordsPerSecond+" words per second.");
+            System.out.println("\nSpeed: "+wordsPerSecond+" words per second. (It took "
+                    +(endTime-startTime)+"ms ("+(endTime-startTime)/1000d+" seconds) to translate "+words.length+" words)");
         } catch (IOException e) {
             System.out.println("Error reading file");
         }
@@ -188,9 +195,9 @@ public class Translator {
                     BufferedReader bufferedReader;
 
                     try {
+                        //Main dic
                         fileReader = new FileReader(fileName + ".txt");
                         bufferedReader = new BufferedReader(fileReader);
-                        //TODO: ensure correct encoding/locale #6
 
                         String line;
 
@@ -200,6 +207,20 @@ public class Translator {
                         }
 
                         bufferedReader.close();
+
+                        //Exceptions (if exist)
+                        //TODO: make sure array elements are initialised and empty if not or exception #10
+                        fileReader = new FileReader(fileName + "-exceptions.txt");
+                        bufferedReader = new BufferedReader(fileReader);
+
+                        line = "";
+
+                        while ((line = bufferedReader.readLine()) != null) {
+                            exceptions.add(line);
+                        }
+
+                        bufferedReader.close();
+
                     } catch (IOException e) {
                         System.out.println("Error reading file");
                     } finally {

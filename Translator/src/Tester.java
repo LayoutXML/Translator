@@ -37,14 +37,17 @@ public class Tester {
             switch (userChoice) {
                 case 1:
                     scanner = new Scanner(System.in); //recreating scanner for nextLine
-                    String input;
+                    String input, translation;
                     try {
                         System.out.println("Enter text in English: ");
                         input = scanner.nextLine();
                         String[] words = input.split("\\W+");
                         long startTime = Calendar.getInstance().getTimeInMillis();
                         for (String word : words) {
-                            System.out.print(translator.translate(word)+" ");
+                            translation = translator.translate(word);
+                            if (translation!=null && !translation.equals("")) {
+                                System.out.print(translation+" ");
+                            }
                         }
                         long endTime = Calendar.getInstance().getTimeInMillis();
                         double wordsPerSecond = words.length*1d/((endTime-startTime)/1000d);
@@ -66,7 +69,7 @@ public class Tester {
                         System.out.println("Enter text in other language: ");
                         input2 = scanner.nextLine();
                         translator.addToDictionary(input1,input2);
-                        translator.writeFile("lith2-generated");
+                        translator.writeFile("lithuanian");
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;
