@@ -87,11 +87,23 @@ public class Translator {
      * @param translation translation (value)
      */
     public void addToDictionary(String original, String translation) {
-        String oldValue = dictionary.put(original.toLowerCase(), translation.toLowerCase());
-        if (oldValue!=null) {
-            System.out.println("\""+original+"\"-\""+translation+"\" overrode previous pair \""+original+"\"-\""+oldValue+"\".");
+        boolean found = false;
+        if (!turboMode) {
+            for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+                if (entry.getValue().equals(translation)) {
+                    found = true;
+                }
+            }
+        }
+        if (!found) {
+            String oldValue = dictionary.put(original.toLowerCase(), translation.toLowerCase());
+            if (oldValue != null) {
+                System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + original + "\"-\"" + oldValue + "\".");
+            } else {
+                System.out.println("\"" + original + "\"-\"" + translation + "\" added.");
+            }
         } else {
-            System.out.println("\""+original+"\"-\""+translation+"\" added.");
+
         }
         //TODO: ensure 1:1 relationship when not in turbo mode #7
     }
