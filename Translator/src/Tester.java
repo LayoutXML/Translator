@@ -37,18 +37,40 @@ public class Tester {
             switch (userChoice) {
                 case 1:
                     scanner = new Scanner(System.in); //recreating scanner for nextLine
-                    String input, translation;
+                    String input, translation, characters = "";
+                    int indexOf;
+                    boolean error = false, isFirst = true;
                     try {
                         System.out.println("Enter text in English: ");
                         input = scanner.nextLine();
                         String[] words = input.split("\\W+");
                         long startTime = Calendar.getInstance().getTimeInMillis();
                         for (String word : words) {
+                            if (!error) {
+                                indexOf = input.indexOf(word);
+                                if (indexOf==-1) {
+                                    error = true;
+                                } else {
+                                    characters = input.substring(0,indexOf);
+                                    input = input.substring(indexOf+word.length());
+                                }
+                            }
                             translation = translator.translate(word);
+                            if (isFirst) {
+                                translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
+                                isFirst = false;
+                            }
                             if (translation!=null && !translation.equals("")) {
-                                System.out.print(translation+" ");
+                                if (!error) {
+                                    System.out.print(characters);
+                                    if (characters.contains(".") || characters.contains("?") || characters.contains("!")) {
+                                        translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
+                                    }
+                                }
+                                System.out.print(translation);
                             }
                         }
+                        System.out.print(input);
                         long endTime = Calendar.getInstance().getTimeInMillis();
                         double wordsPerSecond = words.length*1d/((endTime-startTime)/1000d);
                         System.out.println("\nSpeed: "+wordsPerSecond+" words per second. (It took "
