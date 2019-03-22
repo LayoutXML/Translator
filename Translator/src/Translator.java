@@ -75,7 +75,7 @@ public class Translator {
 
             String input = text.toString();
 
-            String[] words = text.substring(1).split("\\W+"); //TODO: preserve characters, not split "don't" into 2 words #4
+            String[] words = text.substring(1).split("\\W+");
             long startTime = Calendar.getInstance().getTimeInMillis();
             for (String word : words) {
                 if (!error) {
@@ -143,7 +143,6 @@ public class Translator {
                 System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + key + "\"-\"" + oldValue + "\".");
             }
         }
-        //TODO: ensure 1:1 relationship when not in turbo mode #7
     }
 
     /**
