@@ -60,11 +60,13 @@ public class Tester {
                                 translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
                                 isFirst = false;
                             }
-                            if (translation!=null && !translation.equals("")) {
+                            if (translation!=null) {
                                 if (!error) {
                                     System.out.print(characters);
                                     if (characters.contains(".") || characters.contains("?") || characters.contains("!")) {
-                                        translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
+                                        if (translation.length()>0) {
+                                            translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
+                                        }
                                     }
                                 }
                                 System.out.print(translation);

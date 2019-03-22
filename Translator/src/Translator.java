@@ -40,7 +40,7 @@ public class Translator {
      * @return translation (value)
      */
     public String translate(String original) {
-        if (!exceptions.contains(original)) {
+        if (!exceptions.contains(original.toLowerCase())) {
             String translation = dictionary.get(original.toLowerCase());
             if (translation == null) {
                 return original.toLowerCase();
@@ -63,7 +63,9 @@ public class Translator {
             fileReader = new FileReader(fileName+".txt");
             bufferedReader = new BufferedReader(fileReader);
 
-            String line, translation;
+            String line, translation, characters = "";
+            int indexOf;
+            boolean error = false, isFirst = true;
 
             while((line = bufferedReader.readLine()) != null) {
                 text.append("\n").append(line);
@@ -71,12 +73,35 @@ public class Translator {
 
             bufferedReader.close();
 
+            String input = text.toString();
+
             String[] words = text.substring(1).split("\\W+"); //TODO: preserve characters, not split "don't" into 2 words #4
             long startTime = Calendar.getInstance().getTimeInMillis();
             for (String word : words) {
+                if (!error) {
+                    indexOf = input.indexOf(word);
+                    if (indexOf==-1) {
+                        error = true;
+                    } else {
+                        characters = input.substring(0, indexOf);
+                        input = input.substring(indexOf+word.length());
+                    }
+                }
                 translation = translate(word);
-                if (translation!=null && !translation.equals("")) {
-                    System.out.print(translation+" ");
+                if (isFirst) {
+                    translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
+                    isFirst = false;
+                }
+                if (translation!=null) {
+                    if (!error) {
+                        System.out.print(characters);
+                        if (characters.contains(".") || characters.contains("?") || characters.contains("!")) {
+                            if (translation.length()>0) {
+                                translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
+                            }
+                        }
+                    }
+                    System.out.print(translation);
                 }
             }
             long endTime = Calendar.getInstance().getTimeInMillis();
