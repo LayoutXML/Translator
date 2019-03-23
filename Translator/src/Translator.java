@@ -18,6 +18,7 @@ public class Translator {
     private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option #3
     private boolean turboMode; //when false ensures 1:1 relationship between languages
     private String[] languageFileNames = {"lithuanian","swedish","albanian"};
+    private String[] phrasalVerbs = {"up","down","off","out","in"};
 
     /**
      * Method that sets default values for variables and reads the file
@@ -227,6 +228,15 @@ public class Translator {
      */
     public void setAddNewWordsToDictOptionEnabled(boolean addNewWordsToDictOptionEnabled) {
         isAddNewWordsToDictOptionEnabled = addNewWordsToDictOptionEnabled;
+    }
+
+    /**
+     * Method to retrieve phrasalVerbs
+     *
+     * @return value of phrasalVerbs
+     */
+    public String[] getPhrasalVerbs() {
+        return phrasalVerbs;
     }
 
     /**
