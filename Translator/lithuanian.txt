@@ -53,6 +53,7 @@ result	rezultatas
 opposition	opozicija
 golf	golfas
 same	tas pats
+zombie	zombis
 commission	komisija
 after	po to
 quiet	tyliai
@@ -1341,6 +1342,7 @@ eye	akis
 envelope	voką
 himself	pats
 mystery	paslaptis
+dictionary	žodynas
 slow	lėtai
 deposit	užstatas
 flash	blykstė
