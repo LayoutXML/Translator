@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class Translator {
 
-    private List<HashMap<String, String>> dictionaries;
-    private List<String> exceptions;
+    private List<HashMap<String, String>> dictionaries; //an arraylist of dictionary hashmaps
+    private List<String> exceptions; //lithuanian language exceptions
     private boolean fileRead; //has the translation been read from the file at least once
     private boolean isReading; //is file open and being read
     private boolean isWriting; //is file open and being written in
@@ -235,18 +235,19 @@ public class Translator {
 
                         bufferedReader.close();
 
-                        //Exceptions (if exist)
-                        //TODO: make sure array elements are initialised and empty if not or exception #10
-                        fileReader = new FileReader(languageFileNames[languageIndex] + "-exceptions.txt");
-                        bufferedReader = new BufferedReader(fileReader);
+                        //Exceptions
+                        if (languageIndex==0) {
+                            fileReader = new FileReader(languageFileNames[languageIndex] + "-exceptions.txt");
+                            bufferedReader = new BufferedReader(fileReader);
 
-                        line = "";
+                            line = "";
 
-                        while ((line = bufferedReader.readLine()) != null) {
-                            exceptions.add(line);
+                            while ((line = bufferedReader.readLine()) != null) {
+                                exceptions.add(line);
+                            }
+
+                            bufferedReader.close();
                         }
-
-                        bufferedReader.close();
 
                     } catch (IOException e) {
                         System.out.println("Error reading file");
