@@ -55,7 +55,7 @@ public class Tester {
                                     input = input.substring(indexOf+word.length());
                                 }
                             }
-                            translation = translator.translate(word);
+                            translation = translator.translate(word, 0);
                             if (isFirst) {
                                 translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
                                 isFirst = false;
@@ -92,8 +92,8 @@ public class Tester {
                         input1 = scanner.nextLine();
                         System.out.println("Enter text in other language: ");
                         input2 = scanner.nextLine();
-                        translator.addToDictionary(input1,input2);
-                        translator.writeFile("lithuanian");
+                        translator.addToDictionary(input1,input2, 0);
+                        translator.writeFile(0);
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;
@@ -107,13 +107,14 @@ public class Tester {
                     try {
                         System.out.println("Enter text in English: ");
                         input3 = scanner.nextLine();
-                        translator.removeFromDictionary(input3);
+                        translator.removeFromDictionary(input3, 0);
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;
                         scanner = new Scanner(System.in); //recreating scanner because otherwise nextInt would not work
                         System.out.println("Invalid input. Please try again");
                     }
+                    translator.writeFile(0);
                     break;
                 case 4:
                     scanner = new Scanner(System.in); //recreating scanner for nextLine
@@ -121,13 +122,14 @@ public class Tester {
                     try {
                         System.out.println("Enter text in other language: ");
                         input4 = scanner.nextLine();
-                        translator.removeFromDictionaryByValue(input4);
+                        translator.removeFromDictionaryByValue(input4, 0);
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;
                         scanner = new Scanner(System.in); //recreating scanner because otherwise nextInt would not work
                         System.out.println("Invalid input. Please try again");
                     }
+                    translator.writeFile(0);
                     break;
                 case 5:
                     scanner = new Scanner(System.in); //recreating scanner for nextLine
@@ -135,7 +137,7 @@ public class Tester {
                     try {
                         System.out.println("Enter file name without txt extension: ");
                         input5 = scanner.nextLine();
-                        translator.translateFile(input5);
+                        translator.translateFile(input5, 0);
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;
@@ -144,7 +146,7 @@ public class Tester {
                     }
                     break;
                 case 6:
-                    translator.printDictionaty();
+                    translator.printDictionaty(0);
                     break;
                 case 0:
                     System.out.println("\nGoodbye...");

@@ -4,11 +4,11 @@ import java.util.*;
 
 @SuppressWarnings("Duplicates")
 /**
- * Translator class that contains methods to work with dictionary and dictionary itself
+ * Translator class that contains methods to work with dictionaries and dictionaries itself
  */
 public class Translator {
 
-    private HashMap<String, String> dictionary; //TODO: support multiple languages (multiple dictionaries), make array of #8
+    private List<HashMap<String, String>> dictionaries;
     private List<String> exceptions;
     private boolean fileRead; //has the translation been read from the file at least once
     private boolean isReading; //is file open and being read
@@ -23,7 +23,10 @@ public class Translator {
      * Method that sets default values for variables and reads the file
      */
     public void initialise() {
-        dictionary = new HashMap<>();
+        dictionaries = new ArrayList<HashMap<String, String>>();
+        for (String language: languageFileNames) {
+            dictionaries.add(new HashMap<>());
+        }
         fileRead = false;
         isReading = false;
         isWriting = false;
@@ -31,7 +34,7 @@ public class Translator {
         pendingWrite = false;
         turboMode = true;
         exceptions = new ArrayList<>();
-        readFile("lithuanian");
+        readFile(0);
     }
 
     /**
@@ -39,9 +42,9 @@ public class Translator {
      * @param original word in an original language (key)
      * @return translation (value)
      */
-    public String translate(String original) {
+    public String translate(String original, int languageIndex) {
         if (!exceptions.contains(original.toLowerCase())) {
-            String translation = dictionary.get(original.toLowerCase());
+            String translation = dictionaries.get(languageIndex).get(original.toLowerCase());
             if (translation == null) {
                 return original.toLowerCase();
             } else {
@@ -55,7 +58,7 @@ public class Translator {
      * Method that reads and translates a file (to a console)
      * @param fileName file name
      */
-    public void translateFile(String fileName) {
+    public void translateFile(String fileName, int languageIndex) {
         FileReader fileReader;
         BufferedReader bufferedReader;
         StringBuilder text = new StringBuilder(); //StringBuilder for better performance (appending text in loop)
@@ -87,7 +90,7 @@ public class Translator {
                         input = input.substring(indexOf+word.length());
                     }
                 }
-                translation = translate(word);
+                translation = translate(word, languageIndex);
                 if (isFirst) {
                     translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
                     isFirst = false;
@@ -118,11 +121,11 @@ public class Translator {
      * @param original original word or phrase (key)
      * @param translation translation (value)
      */
-    public void addToDictionary(String original, String translation) {
+    public void addToDictionary(String original, String translation, int languageIndex) {
         boolean found = false;
         String key = "";
         if (!turboMode) {
-            for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+            for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
                 if (entry.getValue().equals(translation)) {
                     found = true;
                     key = entry.getKey();
@@ -130,15 +133,15 @@ public class Translator {
             }
         }
         if (!found) {
-            String oldValue = dictionary.put(original.toLowerCase(), translation.toLowerCase());
+            String oldValue = dictionaries.get(languageIndex).put(original.toLowerCase(), translation.toLowerCase());
             if (oldValue != null) {
                 System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + original + "\"-\"" + oldValue + "\".");
             } else {
 //                System.out.println("\"" + original + "\"-\"" + translation + "\" added.");
             }
         } else {
-            String oldValue = dictionary.remove(key);
-            dictionary.put(key.toLowerCase(), translation.toLowerCase());
+            String oldValue = dictionaries.get(languageIndex).remove(key);
+            dictionaries.get(languageIndex).put(key.toLowerCase(), translation.toLowerCase());
             if (oldValue != null) {
                 System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + key + "\"-\"" + oldValue + "\".");
             }
@@ -149,39 +152,39 @@ public class Translator {
      * Method that removes a word or phrase from a dictionary by key
      * @param original word or phrase in an original language (key)
      */
-    public void removeFromDictionary(String original) {
-        String oldValue = dictionary.remove(original.toLowerCase());
+    public void removeFromDictionary(String original, int languageIndex) {
+        String oldValue = dictionaries.get(languageIndex).remove(original.toLowerCase());
         if (oldValue!=null) {
             System.out.println("\""+original+"\"-\""+oldValue+"\" removed.");
         } else {
-            System.out.println("\""+original+"\" was not in the dictionary, so nothing was removed.");
+            System.out.println("\""+original+"\" was not in the dictionaries, so nothing was removed.");
         }
     }
 
     /**
-     * Method that removes a word or phrase from a dictionary by value
+     * Method that removes a word or phrase from dictionaries by value
      * @param translation translation (value)
      */
-    public void removeFromDictionaryByValue(String translation) {
+    public void removeFromDictionaryByValue(String translation, int languageIndex) {
         ArrayList<String> keysToRemove = new ArrayList<>();
-        for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+        for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
             if (entry.getValue().equals(translation.toLowerCase())) {
                 keysToRemove.add(entry.getKey());
             }
         }
         for (String key: keysToRemove) {
-            dictionary.remove(key);
+            dictionaries.get(languageIndex).remove(key);
         }
         if (keysToRemove.size()==0) {
-            System.out.println("\""+translation+"\" was not in the dictionary, so nothing was removed.");
+            System.out.println("\""+translation+"\" was not in the dictionaries, so nothing was removed.");
         }
     }
 
     /**
-     * Method that prints the dictionary to a console
+     * Method that prints the dictionaries to a console
      */
-    public void printDictionaty() {
-        for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+    public void printDictionaty(int languageIndex) {
+        for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
     }
@@ -205,9 +208,9 @@ public class Translator {
     }
 
     /**
-     * Method that reads dictionary file to a dictionary
+     * Method that reads dictionaries file to a dictionaries
      */
-    public void readFile(String fileName) {
+    public void readFile(int languageIndex) {
         if (!isWriting) {
             isReading = true;
             fileRead = false;
@@ -220,21 +223,21 @@ public class Translator {
 
                     try {
                         //Main dic
-                        fileReader = new FileReader(fileName + ".txt");
+                        fileReader = new FileReader(languageFileNames[languageIndex] + ".txt");
                         bufferedReader = new BufferedReader(fileReader);
 
                         String line;
 
                         while ((line = bufferedReader.readLine()) != null) {
                             String[] words = line.split("\t", 2);
-                            addToDictionary(words[0].toLowerCase(), words[1].toLowerCase());
+                            addToDictionary(words[0].toLowerCase(), words[1].toLowerCase(), languageIndex);
                         }
 
                         bufferedReader.close();
 
                         //Exceptions (if exist)
                         //TODO: make sure array elements are initialised and empty if not or exception #10
-                        fileReader = new FileReader(fileName + "-exceptions.txt");
+                        fileReader = new FileReader(languageFileNames[languageIndex] + "-exceptions.txt");
                         bufferedReader = new BufferedReader(fileReader);
 
                         line = "";
@@ -250,8 +253,8 @@ public class Translator {
                     } finally {
                         fileRead = true;
                         isReading = false;
-                        System.out.println("File read. Size: " + dictionary.size());
-                        performPending(null, fileName);
+                        System.out.println("File read. Size: " + dictionaries.get(languageIndex).size());
+                        performPending(-1, languageIndex);
                     }
                 }
             };
@@ -262,9 +265,9 @@ public class Translator {
     }
 
     /**
-     * Method that writes a dictionary to a file
+     * Method that writes a dictionaries to a file
      */
-    public void writeFile(String fileName) {
+    public void writeFile(int languageIndex) {
         if (!isReading) {
             isWriting = true;
             pendingWrite = false;
@@ -273,9 +276,9 @@ public class Translator {
                 public void run() {
 
                     try {
-                        Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName+".txt"), StandardCharsets.UTF_8));
+                        Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(languageFileNames[languageIndex]+".txt"), StandardCharsets.UTF_8));
 
-                        for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+                        for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
                             out.write(entry.getKey() + "\t" + entry.getValue()+"\n");
                         }
 
@@ -285,7 +288,7 @@ public class Translator {
                     } finally {
                         isWriting = false;
                         System.out.println("File written");
-                        performPending(fileName, null);
+                        performPending(languageIndex, -1);
                     }
                 }
             };
@@ -298,20 +301,20 @@ public class Translator {
     /**
      * Method that performs pending tasks, for example reading/writing files
      */
-    private void performPending(String filename1, String filename2) {
-        if (pendingWrite && filename1!=null) {
-            writeFile(filename1);
+    private void performPending(int languageIndex, int languageIndex2) {
+        if (pendingWrite && languageIndex!=-1) {
+            writeFile(languageIndex);
         }
-        if (pendingRead && filename2!=null) {
-            readFile(filename2);
+        if (pendingRead && languageIndex2!=-1) {
+            readFile(languageIndex2);
         }
     }
 
-    public void flipDictionary() {
+    public void flipDictionary(int languageIndex) {
         HashMap<String, String> dictionaryNew = new HashMap<>();
-        for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+        for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
             dictionaryNew.put(entry.getValue(),entry.getKey());
         }
-        dictionary = dictionaryNew;
+        dictionaries.set(languageIndex, dictionaryNew);
     }
 }
