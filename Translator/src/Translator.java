@@ -59,61 +59,67 @@ public class Translator {
      * @param fileName file name
      */
     public void translateFile(String fileName, int languageIndex) {
-        FileReader fileReader;
-        BufferedReader bufferedReader;
-        StringBuilder text = new StringBuilder(); //StringBuilder for better performance (appending text in loop)
-        try {
-            fileReader = new FileReader(fileName+".txt");
-            bufferedReader = new BufferedReader(fileReader);
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                FileReader fileReader;
+                BufferedReader bufferedReader;
+                StringBuilder text = new StringBuilder(); //StringBuilder for better performance (appending text in loop)
+                try {
+                    fileReader = new FileReader(fileName + ".txt");
+                    bufferedReader = new BufferedReader(fileReader);
 
-            String line, translation, characters = "";
-            int indexOf;
-            boolean error = false, isFirst = true;
+                    String line, translation, characters = "";
+                    int indexOf;
+                    boolean error = false, isFirst = true;
 
-            while((line = bufferedReader.readLine()) != null) {
-                text.append("\n").append(line);
-            }
-
-            bufferedReader.close();
-
-            String input = text.toString();
-
-            String[] words = text.substring(1).split("\\W+");
-            long startTime = Calendar.getInstance().getTimeInMillis();
-            for (String word : words) {
-                if (!error) {
-                    indexOf = input.indexOf(word);
-                    if (indexOf==-1) {
-                        error = true;
-                    } else {
-                        characters = input.substring(0, indexOf);
-                        input = input.substring(indexOf+word.length());
+                    while ((line = bufferedReader.readLine()) != null) {
+                        text.append("\n").append(line);
                     }
-                }
-                translation = translate(word, languageIndex);
-                if (isFirst) {
-                    translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
-                    isFirst = false;
-                }
-                if (translation!=null) {
-                    if (!error) {
-                        System.out.print(characters);
-                        if (characters.contains(".") || characters.contains("?") || characters.contains("!")) {
-                            if (translation.length()>0) {
-                                translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
+
+                    bufferedReader.close();
+
+                    String input = text.toString();
+
+                    String[] words = text.substring(1).split("\\W+");
+                    long startTime = Calendar.getInstance().getTimeInMillis();
+                    for (String word : words) {
+                        if (!error) {
+                            indexOf = input.indexOf(word);
+                            if (indexOf == -1) {
+                                error = true;
+                            } else {
+                                characters = input.substring(0, indexOf);
+                                input = input.substring(indexOf + word.length());
                             }
                         }
+                        translation = translate(word, languageIndex);
+                        if (isFirst) {
+                            translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
+                            isFirst = false;
+                        }
+                        if (translation != null) {
+                            if (!error) {
+                                System.out.print(characters);
+                                if (characters.contains(".") || characters.contains("?") || characters.contains("!")) {
+                                    if (translation.length() > 0) {
+                                        translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
+                                    }
+                                }
+                            }
+                            System.out.print(translation);
+                        }
                     }
-                    System.out.print(translation);
+                    long endTime = Calendar.getInstance().getTimeInMillis();
+                    double wordsPerSecond = words.length * (1d / (endTime - startTime) * 1000);
+                    System.out.println("\nSpeed: " + wordsPerSecond + " words per second. (It took "
+                            + (endTime - startTime) + "ms (" + (endTime - startTime) / 1000d + " seconds) to translate " + words.length + " words)");
+                } catch (IOException e) {
+                    System.out.println("Error reading file");
                 }
             }
-            long endTime = Calendar.getInstance().getTimeInMillis();
-            double wordsPerSecond = words.length*(1d/(endTime-startTime)*1000);
-            System.out.println("\nSpeed: "+wordsPerSecond+" words per second. (It took "
-                    +(endTime-startTime)+"ms ("+(endTime-startTime)/1000d+" seconds) to translate "+words.length+" words)");
-        } catch (IOException e) {
-            System.out.println("Error reading file");
-        }
+        };
+        thread.run();
     }
 
     /**
@@ -122,30 +128,34 @@ public class Translator {
      * @param translation translation (value)
      */
     public void addToDictionary(String original, String translation, int languageIndex) {
-        boolean found = false;
-        String key = "";
-        if (!turboMode) {
-            for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
-                if (entry.getValue().equals(translation)) {
-                    found = true;
-                    key = entry.getKey();
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                boolean found = false;
+                String key = "";
+                if (!turboMode) {
+                    for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
+                        if (entry.getValue().equals(translation)) {
+                            found = true;
+                            key = entry.getKey();
+                        }
+                    }
+                }
+                if (!found) {
+                    String oldValue = dictionaries.get(languageIndex).put(original.toLowerCase(), translation.toLowerCase());
+                    if (oldValue != null) {
+                        System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + original + "\"-\"" + oldValue + "\".");
+                    }
+                } else {
+                    String oldValue = dictionaries.get(languageIndex).remove(key);
+                    dictionaries.get(languageIndex).put(key.toLowerCase(), translation.toLowerCase());
+                    if (oldValue != null) {
+                        System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + key + "\"-\"" + oldValue + "\".");
+                    }
                 }
             }
-        }
-        if (!found) {
-            String oldValue = dictionaries.get(languageIndex).put(original.toLowerCase(), translation.toLowerCase());
-            if (oldValue != null) {
-                System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + original + "\"-\"" + oldValue + "\".");
-            } else {
-//                System.out.println("\"" + original + "\"-\"" + translation + "\" added.");
-            }
-        } else {
-            String oldValue = dictionaries.get(languageIndex).remove(key);
-            dictionaries.get(languageIndex).put(key.toLowerCase(), translation.toLowerCase());
-            if (oldValue != null) {
-                System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + key + "\"-\"" + oldValue + "\".");
-            }
-        }
+        };
+        thread.run();
     }
 
     /**
@@ -166,27 +176,39 @@ public class Translator {
      * @param translation translation (value)
      */
     public void removeFromDictionaryByValue(String translation, int languageIndex) {
-        ArrayList<String> keysToRemove = new ArrayList<>();
-        for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
-            if (entry.getValue().equals(translation.toLowerCase())) {
-                keysToRemove.add(entry.getKey());
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                ArrayList<String> keysToRemove = new ArrayList<>();
+                for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
+                    if (entry.getValue().equals(translation.toLowerCase())) {
+                        keysToRemove.add(entry.getKey());
+                    }
+                }
+                for (String key : keysToRemove) {
+                    dictionaries.get(languageIndex).remove(key);
+                }
+                if (keysToRemove.size() == 0) {
+                    System.out.println("\"" + translation + "\" was not in the dictionaries, so nothing was removed.");
+                }
             }
-        }
-        for (String key: keysToRemove) {
-            dictionaries.get(languageIndex).remove(key);
-        }
-        if (keysToRemove.size()==0) {
-            System.out.println("\""+translation+"\" was not in the dictionaries, so nothing was removed.");
-        }
+        };
+        thread.run();
     }
 
     /**
      * Method that prints the dictionaries to a console
      */
     public void printDictionaty(int languageIndex) {
-        for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
-            System.out.println(entry.getKey() + " - " + entry.getValue());
-        }
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
+                    System.out.println(entry.getKey() + " - " + entry.getValue());
+                }
+            }
+        };
+        thread.run();
     }
 
     /**
@@ -312,10 +334,16 @@ public class Translator {
     }
 
     public void flipDictionary(int languageIndex) {
-        HashMap<String, String> dictionaryNew = new HashMap<>();
-        for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
-            dictionaryNew.put(entry.getValue(),entry.getKey());
-        }
-        dictionaries.set(languageIndex, dictionaryNew);
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                HashMap<String, String> dictionaryNew = new HashMap<>();
+                for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
+                    dictionaryNew.put(entry.getValue(), entry.getKey());
+                }
+                dictionaries.set(languageIndex, dictionaryNew);
+            }
+        };
+        thread.run();
     }
 }
