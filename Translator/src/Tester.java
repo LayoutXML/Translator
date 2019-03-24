@@ -88,7 +88,7 @@ public class Tester {
                             }
                             lastOriginalWord = word;
                         }
-                        System.out.print(lastTranslation);
+                        System.out.print(lastTranslation + input);
                         long endTime = Calendar.getInstance().getTimeInMillis();
                         double wordsPerSecond = words.length*1d/((endTime-startTime)/1000d);
                         System.out.println("\nSpeed: "+wordsPerSecond+" words per second. (It took "
