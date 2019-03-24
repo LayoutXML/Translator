@@ -69,12 +69,20 @@ public class MainFrame {
 		frame.getContentPane().add(btnTranslate);
 		
 		textField = new JTextField();
+		textField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent inputText) {
+			}
+		});
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textField.setBounds(164, 107, 228, 83);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
+		textField_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent outputText) {
+			}
+		});
 		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textField_1.setColumns(10);
 		textField_1.setBounds(519, 107, 228, 83);
@@ -82,7 +90,7 @@ public class MainFrame {
 		
 		JButton btnAdd = new JButton("Add a word");
 		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent addWordToDictionary) {
 			}
 		});
 		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -90,18 +98,26 @@ public class MainFrame {
 		frame.getContentPane().add(btnAdd);
 		
 		btnRemove = new JButton("Remove a word");
+		btnRemove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent removeWordFromDictionary) {
+			}
+		});
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnRemove.setBounds(130, 429, 185, 75);
 		frame.getContentPane().add(btnRemove);
 		
 		btnPrintDict = new JButton("Print Dictionary");
+		btnPrintDict.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent printDictionary) {
+			}
+		});
 		btnPrintDict.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnPrintDict.setBounds(564, 318, 200, 75);
 		frame.getContentPane().add(btnPrintDict);
 		
 		btnTranslateText = new JButton("Translate a text file");
 		btnTranslateText.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent translateFile) {
 			}
 		});
 		btnTranslateText.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -120,21 +136,37 @@ public class MainFrame {
 		menuBar.add(mnLanguage);
 		
 		mntmAlbanian = new JMenuItem("Albanian");
+		mntmAlbanian.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent changeLanguageToAlbanian) {
+			}
+		});
 		mntmAlbanian.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		mntmAlbanian.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Albania.png"));
 		mnLanguage.add(mntmAlbanian);
 		
 		mntmLithuanian = new JMenuItem("Lithuanian");
+		mntmLithuanian.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent changeLanguageToLithuanian) {
+			}
+		});
 		mntmLithuanian.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Lithuania.png"));
 		mntmLithuanian.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		mnLanguage.add(mntmLithuanian);
 		
 		mntmSpanish = new JMenuItem("Spanish");
+		mntmSpanish.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent changeLanguageToSpanish) {
+			}
+		});
 		mntmSpanish.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Spain.png"));
 		mntmSpanish.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		mnLanguage.add(mntmSpanish);
 		
 		mntmSwedish = new JMenuItem("Swedish");
+		mntmSwedish.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent changeLanguageToSwedish) {
+			}
+		});
 		mntmSwedish.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Sweden.png"));
 		mntmSwedish.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		mnLanguage.add(mntmSwedish);
