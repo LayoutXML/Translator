@@ -70,7 +70,7 @@ public class Translator {
                     fileReader = new FileReader(fileName + ".txt");
                     bufferedReader = new BufferedReader(fileReader);
 
-                    String line, translation, characters = "", lastTranslation="";
+                    String line, translation, characters = "", lastTranslation="", lastOriginalWord="";
                     int indexOf;
                     boolean error = false, isFirst = true, lastEmpty=false;
 
@@ -94,10 +94,20 @@ public class Translator {
                                 input = input.substring(indexOf + word.length());
                             }
                         }
-                        System.out.print(lastTranslation);
+                        boolean phrasalVerb = false;
+                        for (String phrase : phrasalVerbs) {
+                            if (word.toLowerCase().equals(phrase)) {
+                                phrasalVerb = true;
+                            }
+                        }
                         boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
+                        if (phrasalVerb && languageIndex==0) {
+                            translation = translate(lastOriginalWord + " " + word, languageIndex);
+                        } else {
+                            System.out.print(lastTranslation);
+                            translation = translate(word, languageIndex);
+                        }
                         lastTranslation="";
-                        translation = translate(word, languageIndex);
                         if (isFirst || characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
                             if (translation.length() > 0) {
                                 translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
@@ -115,6 +125,7 @@ public class Translator {
                         } else {
                             lastEmpty = true;
                         }
+                        lastOriginalWord = word;
                     }
                     System.out.print(lastTranslation);
                     long endTime = Calendar.getInstance().getTimeInMillis();
@@ -263,27 +274,31 @@ public class Translator {
                         //Main dic
                         fileReader = new FileReader(languageFileNames[languageIndex] + ".txt");
                         bufferedReader = new BufferedReader(fileReader);
-
                         String line;
-
                         while ((line = bufferedReader.readLine()) != null) {
                             String[] words = line.split("\t", 2);
                             addToDictionary(words[0].toLowerCase(), words[1].toLowerCase(), languageIndex);
                         }
-
                         bufferedReader.close();
 
-                        //Exceptions
                         if (languageIndex==0) {
+                            //exceptions
                             fileReader = new FileReader(languageFileNames[languageIndex] + "-exceptions.txt");
                             bufferedReader = new BufferedReader(fileReader);
-
                             line = "";
-
                             while ((line = bufferedReader.readLine()) != null) {
                                 exceptions.add(line);
                             }
+                            bufferedReader.close();
 
+                            //phrasal verbs
+                            fileReader = new FileReader("phrasalVerbs.txt");
+                            bufferedReader = new BufferedReader(fileReader);
+                            line="";
+                            while ((line = bufferedReader.readLine()) != null) {
+                                String[] words = line.split("\t", 2);
+                                addToDictionary(words[0].toLowerCase(), words[1].toLowerCase(), languageIndex);
+                            }
                             bufferedReader.close();
                         }
 

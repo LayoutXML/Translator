@@ -37,7 +37,7 @@ public class Tester {
             switch (userChoice) {
                 case 1:
                     scanner = new Scanner(System.in); //recreating scanner for nextLine
-                    String input, translation, characters = "", lastTranslation="";
+                    String input, translation, characters = "", lastTranslation="", lastOriginalWord="";
                     int indexOf;
                     boolean error = false, isFirst = true, lastEmpty=false;
                     try {
@@ -48,17 +48,27 @@ public class Tester {
                         for (String word : words) {
                             if (!error) {
                                 indexOf = input.indexOf(word);
-                                if (indexOf==-1) {
+                                if (indexOf == -1) {
                                     error = true;
                                 } else {
-                                    characters = input.substring(0,indexOf);
-                                    input = input.substring(indexOf+word.length());
+                                    characters = input.substring(0, indexOf);
+                                    input = input.substring(indexOf + word.length());
                                 }
                             }
-                            System.out.print(lastTranslation);
+                            boolean phrasalVerb = false;
+                            for (String phrase : translator.getPhrasalVerbs()) {
+                                if (word.toLowerCase().equals(phrase)) {
+                                    phrasalVerb = true;
+                                }
+                            }
                             boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
+                            if (phrasalVerb) {
+                                translation = translator.translate(lastOriginalWord + " " + word, 0);
+                            } else {
+                                System.out.print(lastTranslation);
+                                translation = translator.translate(word, 0);
+                            }
                             lastTranslation="";
-                            translation = translator.translate(word, 0);
                             if (isFirst || characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
                                 if (translation.length() > 0) {
                                     translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
@@ -76,6 +86,7 @@ public class Tester {
                             } else {
                                 lastEmpty = true;
                             }
+                            lastOriginalWord = word;
                         }
                         System.out.print(lastTranslation);
                         long endTime = Calendar.getInstance().getTimeInMillis();
