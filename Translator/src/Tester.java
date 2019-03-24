@@ -59,17 +59,16 @@ public class Tester {
                             boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
                             lastTranslation="";
                             translation = translator.translate(word, 0);
-                            if (isFirst) {
-                                translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
-                                isFirst = false;
-                            }
-                            if (!error && !lastEmpty || (characters.contains("\n"))) {
-                                lastTranslation+=characters;
-                            }
-                            if (characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
+                            if (isFirst || characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
                                 if (translation.length() > 0) {
                                     translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
+                                    if (isFirst) {
+                                        isFirst = false;
+                                    }
                                 }
+                            }
+                            if ((!error && !lastEmpty) || (characters.contains("\n"))) {
+                                lastTranslation+=characters;
                             }
                             if (!translation.equals("")) {
                                 lastTranslation+=translation;
