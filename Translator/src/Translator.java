@@ -97,7 +97,7 @@ public class Translator {
                         System.out.print(lastTranslation);
                         boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
                         lastTranslation="";
-                        translation = translate(word, 0);
+                        translation = translate(word, languageIndex);
                         if (isFirst || characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
                             if (translation.length() > 0) {
                                 translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
