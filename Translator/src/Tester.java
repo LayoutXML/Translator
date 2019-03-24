@@ -37,9 +37,9 @@ public class Tester {
             switch (userChoice) {
                 case 1:
                     scanner = new Scanner(System.in); //recreating scanner for nextLine
-                    String input, translation, characters = "";
+                    String input, translation, characters = "", lastTranslation="";
                     int indexOf;
-                    boolean error = false, isFirst = true;
+                    boolean error = false, isFirst = true, lastEmpty=false;
                     try {
                         System.out.println("Enter text in English: ");
                         input = scanner.nextLine();
@@ -55,24 +55,30 @@ public class Tester {
                                     input = input.substring(indexOf+word.length());
                                 }
                             }
+                            System.out.print(lastTranslation);
+                            boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
+                            lastTranslation="";
                             translation = translator.translate(word, 0);
                             if (isFirst) {
                                 translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
                                 isFirst = false;
                             }
-                            if (translation!=null) {
-                                if (!error) {
-                                    System.out.print(characters);
-                                    if (characters.contains(".") || characters.contains("?") || characters.contains("!")) {
-                                        if (translation.length()>0) {
-                                            translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
-                                        }
-                                    }
+                            if (!error && !lastEmpty || (characters.contains("\n"))) {
+                                lastTranslation+=characters;
+                            }
+                            if (characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
+                                if (translation.length() > 0) {
+                                    translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
                                 }
-                                System.out.print(translation);
+                            }
+                            if (!translation.equals("")) {
+                                lastTranslation+=translation;
+                                lastEmpty = false;
+                            } else {
+                                lastEmpty = true;
                             }
                         }
-                        System.out.print(input);
+                        System.out.print(lastTranslation);
                         long endTime = Calendar.getInstance().getTimeInMillis();
                         double wordsPerSecond = words.length*1d/((endTime-startTime)/1000d);
                         System.out.println("\nSpeed: "+wordsPerSecond+" words per second. (It took "
