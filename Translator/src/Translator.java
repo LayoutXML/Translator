@@ -130,8 +130,8 @@ public class Translator {
                     System.out.print(lastTranslation + input);
                     long endTime = Calendar.getInstance().getTimeInMillis();
                     double wordsPerSecond = words.length * (1d / (endTime - startTime) * 1000);
-                    System.out.println("\nSpeed: " + wordsPerSecond + " words per second. (It took "
-                            + (endTime - startTime) + "ms (" + (endTime - startTime) / 1000d + " seconds) to translate " + words.length + " words)");
+                    System.out.format("\n\nSpeed: %.2f words per second. (It took "
+                            + (endTime - startTime) + "ms (" + (endTime - startTime) / 1000d + " seconds) to translate " + words.length + " words)\n",wordsPerSecond);
                 } catch (IOException e) {
                     System.out.println("Error reading file");
                 }
