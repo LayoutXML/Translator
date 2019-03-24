@@ -41,6 +41,11 @@ public class MainFrame {
 				}
 			}
 		});
+		
+		Tester tester = new Tester();
+        tester.initialise();
+        tester.process();
+        
 	}
 
 	/**
