@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.ImageIcon;
 
 public class MainFrame {
 
@@ -17,7 +20,12 @@ public class MainFrame {
 	private JButton btnRemove;
 	private JButton btnPrintDict;
 	private JButton btnTranslateText;
-	private JMenuItem mntmLanguage;
+	private JMenuBar menuBar;
+	private JMenu mnLanguage;
+	private JMenuItem mntmLithuanian;
+	private JMenuItem mntmSwedish;
+	private JMenuItem mntmSpanish;
+	private JMenuItem mntmAlbanian;
 
 	/**
 	 * Launch the application.
@@ -52,6 +60,10 @@ public class MainFrame {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnTranslate = new JButton("Translate");
+		btnTranslate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent translate) {
+			}
+		});
 		btnTranslate.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnTranslate.setBounds(374, 210, 168, 57);
 		frame.getContentPane().add(btnTranslate);
@@ -96,10 +108,35 @@ public class MainFrame {
 		btnTranslateText.setBounds(564, 429, 200, 75);
 		frame.getContentPane().add(btnTranslateText);
 		
-		JMenuBar menuBar = new JMenuBar();
+		JLabel lblJavaTranslator = new JLabel("Java Translator");
+		lblJavaTranslator.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		lblJavaTranslator.setBounds(375, 23, 152, 59);
+		frame.getContentPane().add(lblJavaTranslator);
+		
+		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		
-		mntmLanguage = new JMenuItem("Language");
-		menuBar.add(mntmLanguage);
+		mnLanguage = new JMenu("Language");
+		menuBar.add(mnLanguage);
+		
+		mntmAlbanian = new JMenuItem("Albanian");
+		mntmAlbanian.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		mntmAlbanian.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Albania.png"));
+		mnLanguage.add(mntmAlbanian);
+		
+		mntmLithuanian = new JMenuItem("Lithuanian");
+		mntmLithuanian.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Lithuania.png"));
+		mntmLithuanian.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		mnLanguage.add(mntmLithuanian);
+		
+		mntmSpanish = new JMenuItem("Spanish");
+		mntmSpanish.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Spain.png"));
+		mntmSpanish.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		mnLanguage.add(mntmSpanish);
+		
+		mntmSwedish = new JMenuItem("Swedish");
+		mntmSwedish.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Sweden.png"));
+		mntmSwedish.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		mnLanguage.add(mntmSwedish);
 	}
 }
