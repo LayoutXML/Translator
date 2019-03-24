@@ -37,9 +37,9 @@ public class Tester {
             switch (userChoice) {
                 case 1:
                     scanner = new Scanner(System.in); //recreating scanner for nextLine
-                    String input, translation, characters = "";
+                    String input, translation, characters = "", lastTranslation="", lastOriginalWord="";
                     int indexOf;
-                    boolean error = false, isFirst = true;
+                    boolean error = false, isFirst = true, lastEmpty=false;
                     try {
                         System.out.println("Enter text in English: ");
                         input = scanner.nextLine();
@@ -48,31 +48,47 @@ public class Tester {
                         for (String word : words) {
                             if (!error) {
                                 indexOf = input.indexOf(word);
-                                if (indexOf==-1) {
+                                if (indexOf == -1) {
                                     error = true;
                                 } else {
-                                    characters = input.substring(0,indexOf);
-                                    input = input.substring(indexOf+word.length());
+                                    characters = input.substring(0, indexOf);
+                                    input = input.substring(indexOf + word.length());
                                 }
                             }
-                            translation = translator.translate(word, 0);
-                            if (isFirst) {
-                                translation = translation.substring(0,1).toUpperCase()+translation.substring(1);
-                                isFirst = false;
+                            boolean phrasalVerb = false;
+                            for (String phrase : translator.getPhrasalVerbs()) {
+                                if (word.toLowerCase().equals(phrase)) {
+                                    phrasalVerb = true;
+                                }
                             }
-                            if (translation!=null) {
-                                if (!error) {
-                                    System.out.print(characters);
-                                    if (characters.contains(".") || characters.contains("?") || characters.contains("!")) {
-                                        if (translation.length()>0) {
-                                            translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
-                                        }
+                            boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
+                            if (phrasalVerb) {
+                                translation = translator.translate(lastOriginalWord + " " + word, 0);
+                            } else {
+                                System.out.print(lastTranslation);
+                                translation = translator.translate(word, 0);
+                            }
+                            lastTranslation="";
+                            if (isFirst || characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
+                                if (translation.length() > 0) {
+                                    translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
+                                    if (isFirst) {
+                                        isFirst = false;
                                     }
                                 }
-                                System.out.print(translation);
                             }
+                            if ((!error && !lastEmpty) || (characters.contains("\n"))) {
+                                lastTranslation+=characters;
+                            }
+                            if (!translation.equals("")) {
+                                lastTranslation+=translation;
+                                lastEmpty = false;
+                            } else {
+                                lastEmpty = true;
+                            }
+                            lastOriginalWord = word;
                         }
-                        System.out.print(input);
+                        System.out.print(lastTranslation);
                         long endTime = Calendar.getInstance().getTimeInMillis();
                         double wordsPerSecond = words.length*1d/((endTime-startTime)/1000d);
                         System.out.println("\nSpeed: "+wordsPerSecond+" words per second. (It took "
