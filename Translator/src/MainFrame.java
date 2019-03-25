@@ -15,6 +15,7 @@ public class MainFrame implements ActionListener{
 	private JFrame frame;
 	private JTextArea textOriginal;
 	private JTextArea textTranslation;
+	private JButton btnAdd;
 	private JButton btnRemove;
 	private JButton btnPrintDict;
 	private JButton btnTranslateText;
@@ -97,7 +98,7 @@ public class MainFrame implements ActionListener{
 		textTranslation.setBounds(519, 107, 228, 83);
 		frame.getContentPane().add(textTranslation);
 		
-		JButton btnAdd = new JButton("Add a word");
+		btnAdd = new JButton("Add a word");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent addWordToDictionary) {
 				AddFrame add = new AddFrame("", translator, languageIndex);
@@ -111,9 +112,8 @@ public class MainFrame implements ActionListener{
 		btnRemove = new JButton("Remove a word");
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent removeWordFromDictionary) {
-				RemoveFrame remove = new RemoveFrame();
+				RemoveFrame remove = new RemoveFrame(translator, languageIndex);
 				remove.setVisible(true);
-				//TODO Make this fully functional
 			}
 		});
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 18));
