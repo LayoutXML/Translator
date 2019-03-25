@@ -19,11 +19,6 @@ public class MainFrame implements ActionListener{
 	private JButton btnPrintDict;
 	private JButton btnTranslateText;
 	private JMenuBar menuBar;
-	private JMenu mnLanguage;
-	private JMenuItem mntmLithuanian;
-	private JMenuItem mntmSwedish;
-	private JMenuItem mntmSpanish;
-	private JMenuItem mntmAlbanian;
 	private Translator translator;
 	private int languageIndex = 0;
 
@@ -77,6 +72,16 @@ public class MainFrame implements ActionListener{
 		btnTranslate.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnTranslate.setBounds(374, 210, 168, 57);
 		frame.getContentPane().add(btnTranslate);
+
+		JButton btnFlip = new JButton("<>");
+		btnFlip.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent translate) {
+				translator.flipDictionary(languageIndex);
+			}
+		});
+		btnFlip.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFlip.setBounds(426, 118, 60, 60);
+		frame.getContentPane().add(btnFlip);
 		
 		textOriginal = new JTextArea();
 		textOriginal.setLineWrap(true);
