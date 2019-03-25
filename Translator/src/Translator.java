@@ -35,7 +35,6 @@ public class Translator {
         pendingWrite = false;
         turboMode = true;
         exceptions = new ArrayList<>();
-        readFile(0);
     }
 
     /**
@@ -321,7 +320,7 @@ public class Translator {
                     } finally {
                         fileRead = true;
                         isReading = false;
-                        System.out.println("File read. Size: " + dictionaries.get(languageIndex).size());
+                        System.out.println(languageIndex+" - File read. Size: " + dictionaries.get(languageIndex).size());
                         performPending(-1, languageIndex);
                     }
                 }

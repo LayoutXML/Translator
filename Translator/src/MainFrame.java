@@ -1,23 +1,20 @@
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.ImageIcon;
+import java.io.IOException;
+import java.util.Calendar;
 
-public class MainFrame {
+@SuppressWarnings("Duplicates")
+public class MainFrame implements ActionListener{
 
 	private JFrame frame;
-	private JTextField txtEnglish;
-	private JTextField txtOutput;
+	private JTextArea textOriginal;
+	private JTextArea textTranslation;
 	private JButton btnRemove;
 	private JButton btnPrintDict;
 	private JButton btnTranslateText;
@@ -27,6 +24,8 @@ public class MainFrame {
 	private JMenuItem mntmSwedish;
 	private JMenuItem mntmSpanish;
 	private JMenuItem mntmAlbanian;
+	private Translator translator;
+	private int languageIndex = 0;
 
 	/**
 	 * Launch the application.
@@ -46,9 +45,7 @@ public class MainFrame {
 		Tester tester = new Tester();
         tester.initialise();
         tester.process();
-        
 	}
-
 	/**
 	 * Create the application.
 	 */
@@ -64,39 +61,36 @@ public class MainFrame {
 		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
+		frame.setTitle("Translator");
+
+		translator = new Translator();
+		translator.initialise();
+		translator.readFile(languageIndex);
 		
 		JButton btnTranslate = new JButton("Translate");
 		btnTranslate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translate) {
-				System.out.println("TRANSLATING...");	//default message to console (can remove)
-				//TODO Make this button read input from left text box and print the translation to the right text box
+				translate();
 			}
 		});
 		btnTranslate.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnTranslate.setBounds(374, 210, 168, 57);
 		frame.getContentPane().add(btnTranslate);
 		
-		txtEnglish = new JTextField();
-		txtEnglish.setText("English");
-		txtEnglish.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent inputText) {
-			}
-		});
-		txtEnglish.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		txtEnglish.setBounds(164, 107, 228, 83);
-		frame.getContentPane().add(txtEnglish);
-		txtEnglish.setColumns(10);
+		textOriginal = new JTextArea();
+		textOriginal.setLineWrap(true);
+		textOriginal.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textOriginal.setBounds(164, 107, 228, 83);
+		textOriginal.setColumns(10);
+		frame.getContentPane().add(textOriginal);
 		
-		txtOutput = new JTextField();
-		txtOutput.setText("Output");
-		txtOutput.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent outputText) {
-			}
-		});
-		txtOutput.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		txtOutput.setColumns(10);
-		txtOutput.setBounds(519, 107, 228, 83);
-		frame.getContentPane().add(txtOutput);
+		textTranslation = new JTextArea();
+		textTranslation.setLineWrap(true);
+		textTranslation.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textTranslation.setColumns(10);
+		textTranslation.setBounds(519, 107, 228, 83);
+		frame.getContentPane().add(textTranslation);
 		
 		JButton btnAdd = new JButton("Add a word");
 		btnAdd.addActionListener(new ActionListener() {
@@ -157,41 +151,105 @@ public class MainFrame {
 		lblJavaTranslator.setFont(new Font("Cambria Math", Font.PLAIN, 22));
 		lblJavaTranslator.setBounds(375, 23, 152, 59);
 		frame.getContentPane().add(lblJavaTranslator);
-		
+
 		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
-		
-		mnLanguage = new JMenu("Language");
-		menuBar.add(mnLanguage);
-		
-		mntmAlbanian = new JMenuItem("Albanian");
-		mntmAlbanian.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent changeLanguageToAlbanian) {
-				//TODO Change dictionary used to Albanian
-			}
-		});
-		mntmAlbanian.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		mntmAlbanian.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Albania.png"));
-		mnLanguage.add(mntmAlbanian);
-		
-		mntmLithuanian = new JMenuItem("Lithuanian");
-		mntmLithuanian.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent changeLanguageToLithuanian) {
-				//TODO Change dictionary used to Lithuanian
-			}
-		});
-		mntmLithuanian.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Lithuania.png"));
-		mntmLithuanian.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		mnLanguage.add(mntmLithuanian);
-		
-		mntmSwedish = new JMenuItem("Swedish");
-		mntmSwedish.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent changeLanguageToSwedish) {
-				//TODO Change dictionary used to Swedish
-			}
-		});
-		mntmSwedish.setIcon(new ImageIcon("C:\\Users\\Calum\\Documents\\GitHub\\Translator\\Translator\\icons\\Sweden.png"));
-		mntmSwedish.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		mnLanguage.add(mntmSwedish);
+		JMenu menu = new JMenu("Language");
+		JMenuItem item = new JMenuItem("Lithuanian");
+		item.setIcon(new ImageIcon("lithuania.png"));
+		item.addActionListener(this);
+		menu.add(item);
+		menu.addSeparator();
+		item = new JMenuItem("Swedish");
+		item.setIcon(new ImageIcon("sweden.png"));
+		item.addActionListener(this);
+		menu.add(item);
+		menu.addSeparator();
+		item = new JMenuItem("Albanian");
+		item.setIcon(new ImageIcon("albania.png"));
+		item.addActionListener(this);
+		menu.add(item);
+		menuBar.add(menu);
 	}
+
+	private void translate() {
+		textTranslation.setText("");
+		String input, translation, characters = "", lastTranslation="", lastOriginalWord="";
+		int indexOf;
+		boolean error = false, isFirst = true, lastEmpty=false;
+		input = textOriginal.getText();
+		String[] words = input.split("\\W+");
+		long startTime = Calendar.getInstance().getTimeInMillis();
+		for (String word : words) {
+			if (!error) {
+				indexOf = input.indexOf(word);
+				if (indexOf == -1) {
+					error = true;
+				} else {
+					characters = input.substring(0, indexOf);
+					input = input.substring(indexOf + word.length());
+				}
+			}
+			boolean phrasalVerb = false;
+			for (String phrase : translator.getPhrasalVerbs()) {
+				if (word.toLowerCase().equals(phrase)) {
+					phrasalVerb = true;
+				}
+			}
+			boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
+			if (phrasalVerb) {
+				translation = translator.translate(lastOriginalWord + " " + word, languageIndex);
+			} else {
+				textTranslation.setText(textTranslation.getText()+lastTranslation);
+				translation = translator.translate(word, languageIndex);
+			}
+			lastTranslation="";
+			if (isFirst || characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
+				if (translation.length() > 0) {
+					translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
+					if (isFirst) {
+						isFirst = false;
+					}
+				}
+			}
+			if ((!error && !lastEmpty) || (characters.contains("\n"))) {
+				lastTranslation+=characters;
+			}
+			if (!translation.equals("")) {
+				lastTranslation+=translation;
+				lastEmpty = false;
+			} else {
+				lastEmpty = true;
+			}
+			lastOriginalWord = word;
+		}
+		textTranslation.setText(textTranslation.getText()+lastTranslation + input);
+		long endTime = Calendar.getInstance().getTimeInMillis();
+		double wordsPerSecond = words.length*1d/((endTime-startTime)/1000d);
+		System.out.format("\n\nSpeed: %.2f words per second. (It took "
+				+ (endTime - startTime) + "ms (" + (endTime - startTime) / 1000d + " seconds) to translate " + words.length + " words)\n",wordsPerSecond);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JMenuItem source = (JMenuItem) (e.getSource());
+		String text = source.getText();
+		switch (text) {
+			case "Lithuanian":
+				languageIndex = 0;
+				break;
+			case "Swedish":
+				languageIndex = 1;
+				break;
+			case "Albanian":
+				languageIndex = 2;
+				break;
+			default:
+				languageIndex = 0;
+				break;
+		}
+		translator.readFile(languageIndex);
+	}
+
 }
