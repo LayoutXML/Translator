@@ -128,7 +128,6 @@ public class MainFrame implements ActionListener{
 			public void actionPerformed(ActionEvent printDictionary) {
 				PrintFrame print = new PrintFrame(translator,languageIndex);
 				print.setVisible(true);
-				//TODO Print entire dictionary to new frame
 			}
 		});
 		btnPrintDict.setFont(new Font("Tahoma", Font.PLAIN, 18));
