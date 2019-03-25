@@ -138,16 +138,8 @@ public class MainFrame implements ActionListener{
 		btnTranslateText = new JButton("Translate a text file");
 		btnTranslateText.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translateFile) {
-				FileFrame fframe = new FileFrame();
-				OpenFile file = new OpenFile();
-				fframe.setVisible(true);
-				try {
-					file.pick();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				fframe.fileOutput.setText(file.sb.toString());
-				//TODO Change text output to an output field on fframe & ensure each word is printed
+				FileFrame frame = new FileFrame(translator, languageIndex);
+				frame.setVisible(true);
 			}
 		});
 		btnTranslateText.setFont(new Font("Tahoma", Font.PLAIN, 18));

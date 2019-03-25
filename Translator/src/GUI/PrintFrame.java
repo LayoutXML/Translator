@@ -35,7 +35,6 @@ public class PrintFrame extends JFrame {
 		lblAddingANew.setBounds(5, 5, 424, 14);
 		contentPane.add(lblAddingANew);
 
-
 		DefaultListModel<String> listModel = new DefaultListModel<>();
 		JList<String> list = new JList<>(listModel);
 		list.setBounds(33, 30, 357, 221);
