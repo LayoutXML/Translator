@@ -1341,6 +1341,7 @@ eye	akis
 envelope	voką
 himself	pats
 mystery	paslaptis
+dictionary	žodynas
 slow	lėtai
 deposit	užstatas
 flash	blykstė
