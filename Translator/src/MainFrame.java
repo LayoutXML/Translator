@@ -138,14 +138,14 @@ public class MainFrame {
 		btnTranslateText.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translateFile) {
 				FileFrame fframe = new FileFrame();
-				FileFrame.setVisible(true);
 				OpenFile file = new OpenFile();
+				fframe.setVisible(true);
 				try {
 					file.pick();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				txtOutput.setText(file.sb.toString());
+				fframe.fileOutput.setText(file.sb.toString());
 				//TODO Change text output to an output field on fframe & ensure each word is printed
 			}
 		});
