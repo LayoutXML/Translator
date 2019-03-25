@@ -47,7 +47,21 @@ public class Translator {
         if (!exceptions.contains(original.toLowerCase())) {
             String translation = dictionaries.get(languageIndex).get(original.toLowerCase());
             if (translation == null) {
-                return original.toLowerCase();
+                if (languageIndex==0) {
+                    String[] words = original.substring(1).split("\\W+");
+                    StringBuilder processed = new StringBuilder();
+                    for (String word : words) {
+                        int indexOf = original.indexOf(word);
+                        String characters = original.substring(0, indexOf);
+                        original = original.substring(indexOf + word.length());
+                        if (!exceptions.contains(word.toLowerCase())) {
+                            processed.append(characters).append(word);
+                        }
+                    }
+                    return processed.toString().toLowerCase();
+                } else {
+                    return original.toLowerCase();
+                }
             } else {
                 return translation;
             }
