@@ -11,12 +11,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JScrollBar;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FileFrame extends JFrame {
 
 	private JPanel contentPane;
 	public JTextPane fileOutput;
-	private JScrollBar scrollBar;
+	private JButton btnNewButton;
+	private JButton btnTranslate;
 
 
 	public static void main(String[] args) {
@@ -47,11 +51,24 @@ public class FileFrame extends JFrame {
 		
 		fileOutput = new JTextPane();
 		fileOutput.setText("Text");
-		fileOutput.setBounds(15, 29, 408, 499);
+		fileOutput.setBounds(252, 70, 212, 456);
 		contentPane.add(fileOutput);
 		
-		scrollBar = new JScrollBar();
-		scrollBar.setBounds(427, 28, 26, 502);
-		contentPane.add(scrollBar);
+		btnNewButton = new JButton("choose file");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(132, 23, 89, 23);
+		contentPane.add(btnNewButton);
+		
+		btnTranslate = new JButton("translate");
+		btnTranslate.setBounds(286, 23, 89, 23);
+		contentPane.add(btnTranslate);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setText("Text");
+		textPane.setBounds(9, 70, 212, 456);
+		contentPane.add(textPane);
 	}
 }

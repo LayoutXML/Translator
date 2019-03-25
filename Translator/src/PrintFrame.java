@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
 public class PrintFrame extends JFrame {
 
@@ -34,11 +35,16 @@ public class PrintFrame extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JLabel lblAddingANew = new JLabel("Printing entire contents to dictionary");
-		contentPane.add(lblAddingANew, BorderLayout.NORTH);
+		lblAddingANew.setBounds(5, 5, 424, 14);
+		contentPane.add(lblAddingANew);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(33, 30, 357, 221);
+		contentPane.add(textArea);
 	}
 
 }
