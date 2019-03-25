@@ -17,45 +17,38 @@ import java.awt.event.ActionEvent;
 public class AddFrame extends JFrame {
 
 	private JPanel contentPane;
-
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddFrame frame = new AddFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private Translator translator;
+	private int languageIndex;
 	
-	public AddFrame() {
+	public AddFrame(String word, Translator translatorReference, int languageIndexReference) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		translator = translatorReference;
+		languageIndex = languageIndexReference;
 		
 		JLabel lblAddingANew = new JLabel("Adding a new word to the Dictionary");
 		lblAddingANew.setBounds(5, 5, 424, 14);
 		contentPane.add(lblAddingANew);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(69, 65, 121, 93);
-		contentPane.add(textArea);
+		JTextArea originalWordInput = new JTextArea();
+		originalWordInput.setBounds(69, 65, 121, 93);
+		contentPane.add(originalWordInput);
+		originalWordInput.setText(word);
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setBounds(251, 65, 128, 93);
-		contentPane.add(textArea_1);
+		JTextArea translationInput = new JTextArea();
+		translationInput.setBounds(251, 65, 128, 93);
+		contentPane.add(translationInput);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Add");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				translator.addToDictionary(originalWordInput.getText(),translationInput.getText(),languageIndex);
+				translator.writeFile(languageIndex);
 			}
 		});
 		btnNewButton.setBounds(159, 200, 89, 23);

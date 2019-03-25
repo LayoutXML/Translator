@@ -100,9 +100,8 @@ public class MainFrame implements ActionListener{
 		JButton btnAdd = new JButton("Add a word");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent addWordToDictionary) {
-				AddFrame add = new AddFrame();
+				AddFrame add = new AddFrame("", translator, languageIndex);
 				add.setVisible(true);
-				//TODO Make this fully functional
 			}
 		});
 		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 18));
