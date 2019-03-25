@@ -164,6 +164,9 @@ public class Tester {
                 case 6:
                     translator.printDictionaty(0);
                     break;
+                case 7:
+                	translator.flipDictionary(0);
+                	break;
                 case 0:
                     System.out.println("\nGoodbye...");
                     break;
@@ -185,6 +188,7 @@ public class Tester {
         System.out.println("4. Remove a word or phrase (other language input)");
         System.out.println("5. Translate a file");
         System.out.println("6. Print dictionary");
+        System.out.println("7. Flip dictionary");
         //TODO: add automated tests #2
         System.out.println("0. Exit");
     }

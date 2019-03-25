@@ -48,7 +48,7 @@ public class Translator {
             String translation = dictionaries.get(languageIndex).get(original.toLowerCase());
             if (translation == null) {
                 if (languageIndex==0) {
-                    String[] words = original.substring(1).split("\\W+");
+                    String[] words = original.split("\\W+");
                     StringBuilder processed = new StringBuilder();
                     for (String word : words) {
                         int indexOf = original.indexOf(word);
@@ -387,6 +387,7 @@ public class Translator {
                     dictionaryNew.put(entry.getValue(), entry.getKey());
                 }
                 dictionaries.set(languageIndex, dictionaryNew);
+                System.out.println("Flipped successfully.");
             }
         };
         thread.run();
