@@ -1,12 +1,15 @@
+package GUI;
+
+import main.Tester;
+import main.Translator;
+
 import java.awt.EventQueue;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.util.Calendar;
 
 @SuppressWarnings("Duplicates")

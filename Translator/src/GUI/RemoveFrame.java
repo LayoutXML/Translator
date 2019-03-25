@@ -1,3 +1,7 @@
+package GUI;
+
+import main.Translator;
+
 import java.awt.EventQueue;
 
 import javax.swing.*;
