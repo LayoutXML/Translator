@@ -123,7 +123,7 @@ public class MainFrame implements ActionListener{
 		btnPrintDict = new JButton("Print Dictionary");
 		btnPrintDict.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent printDictionary) {
-				PrintFrame print = new PrintFrame();
+				PrintFrame print = new PrintFrame(translator,languageIndex);
 				print.setVisible(true);
 				//TODO Print entire dictionary to new frame
 			}

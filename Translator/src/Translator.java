@@ -242,6 +242,10 @@ public class Translator {
         thread.run();
     }
 
+    public HashMap<String, String> getDictionary(int languageIndex) {
+        return dictionaries.get(languageIndex);
+    }
+
     /**
      * Method to retrieve isAddNewWordsToDictOptionEnabled
      *
