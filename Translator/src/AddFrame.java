@@ -9,6 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AddFrame extends JFrame {
 
@@ -34,11 +38,27 @@ public class AddFrame extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JLabel lblAddingANew = new JLabel("Adding a new word to the Dictionary");
-		contentPane.add(lblAddingANew, BorderLayout.NORTH);
+		lblAddingANew.setBounds(5, 5, 424, 14);
+		contentPane.add(lblAddingANew);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(69, 65, 121, 93);
+		contentPane.add(textArea);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setBounds(251, 65, 128, 93);
+		contentPane.add(textArea_1);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(159, 200, 89, 23);
+		contentPane.add(btnNewButton);
 	}
-
 }
