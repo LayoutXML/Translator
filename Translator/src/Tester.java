@@ -7,11 +7,11 @@ public class Tester {
 
     private Translator translator;
 
-    public static void main(String[] args) {
+    /**public static void main(String[] args) {
         Tester tester = new Tester();
         tester.initialise();
         tester.process();
-    }
+    }*/
 
     public void initialise() {
         translator = new Translator();

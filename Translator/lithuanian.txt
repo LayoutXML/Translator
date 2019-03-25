@@ -53,7 +53,6 @@ result	rezultatas
 opposition	opozicija
 golf	golfas
 same	tas pats
-zombie	zombis
 commission	komisija
 after	po to
 quiet	tyliai
