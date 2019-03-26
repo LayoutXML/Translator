@@ -64,5 +64,12 @@ public class AddFrame extends JFrame {
 		lblEnglish.setForeground(Color.WHITE);
 		lblEnglish.setBounds(143, 159, 72, 28);
 		contentPane.add(lblEnglish);
+		
+		JLabel lblText = new JLabel("Text");
+		lblText.setFont(new Font("Cambria Math", Font.PLAIN, 16));
+		lblText.setForeground(Color.WHITE);
+		lblText.setBackground(new Color(240, 240, 240));
+		lblText.setBounds(395, 162, 69, 20);
+		contentPane.add(lblText);
 	}
 }

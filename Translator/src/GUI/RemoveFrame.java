@@ -75,6 +75,12 @@ public class RemoveFrame extends JFrame implements ActionListener{
 		});
 		btnNewButton.setBounds(222, 309, 148, 45);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblText = new JLabel("Text");
+		lblText.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblText.setForeground(Color.WHITE);
+		lblText.setBounds(259, 107, 222, 37);
+		contentPane.add(lblText);
 	}
 
 	@Override
