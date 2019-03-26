@@ -24,11 +24,16 @@ public class MainFrame implements ActionListener{
 	private JButton btnRemove;
 	private JButton btnPrintDict;
 	private JButton btnTranslateText;
+	private JLabel lblLangFrom;
+	private JLabel lblLangTo;
 	private JMenuBar menuBar;
 	private Translator translator;
 	private int languageIndex = 0;
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
+	private String languageFrom = "English";
+	private String languageTo = "Lithuanian";
+	private boolean englishIsOnLeft = true;
 	private boolean[] dictionaryLoaded;
 
 	/**
@@ -66,7 +71,6 @@ public class MainFrame implements ActionListener{
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 		frame.setBounds(100, 100, 1280, 797);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 		frame.setTitle("Translator");
 
@@ -80,23 +84,25 @@ public class MainFrame implements ActionListener{
 		translator.readFile(languageIndex);
 		
 		JButton btnTranslate = new JButton("Translate");
+		btnTranslate.setBounds(550, 344, 168, 57);
 		btnTranslate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translate) {
 				translate();
 			}
 		});
+		frame.getContentPane().setLayout(null);
 		btnTranslate.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnTranslate.setBounds(550, 344, 168, 57);
 		frame.getContentPane().add(btnTranslate);
 
 		JButton btnFlip = new JButton("<>");
+		btnFlip.setBounds(598, 220, 60, 60);
 		btnFlip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translate) {
 				translator.flipDictionary(languageIndex);
+				changeLabels();
 			}
 		});
 		btnFlip.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnFlip.setBounds(598, 220, 60, 60);
 		frame.getContentPane().add(btnFlip);
 		
 		scrollPane = new JScrollPane();
@@ -120,6 +126,7 @@ public class MainFrame implements ActionListener{
 		textTranslation.setColumns(10);
 		
 		btnAdd = new JButton("Add a word");
+		btnAdd.setBounds(75, 600, 185, 75);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent addWordToDictionary) {
 				AddFrame add = new AddFrame("", translator, languageIndex);
@@ -127,10 +134,10 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnAdd.setBounds(75, 600, 185, 75);
 		frame.getContentPane().add(btnAdd);
 		
 		btnRemove = new JButton("Remove a word");
+		btnRemove.setBounds(374, 600, 185, 75);
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent removeWordFromDictionary) {
 				RemoveFrame remove = new RemoveFrame(translator, languageIndex);
@@ -138,10 +145,10 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnRemove.setBounds(374, 600, 185, 75);
 		frame.getContentPane().add(btnRemove);
 		
 		btnPrintDict = new JButton("Print Dictionary");
+		btnPrintDict.setBounds(698, 600, 200, 75);
 		btnPrintDict.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent printDictionary) {
 				PrintFrame print = new PrintFrame(translator,languageIndex);
@@ -149,10 +156,10 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnPrintDict.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnPrintDict.setBounds(698, 600, 200, 75);
 		frame.getContentPane().add(btnPrintDict);
 		
 		btnTranslateText = new JButton("Translate a text file");
+		btnTranslateText.setBounds(988, 600, 200, 75);
 		btnTranslateText.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translateFile) {
 				FileFrame frame = new FileFrame(translator, languageIndex);
@@ -160,14 +167,24 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnTranslateText.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnTranslateText.setBounds(988, 600, 200, 75);
 		frame.getContentPane().add(btnTranslateText);
 		
 		JLabel lblJavaTranslator = new JLabel("Java Translator");
+		lblJavaTranslator.setBounds(551, 51, 152, 59);
 		lblJavaTranslator.setForeground(Color.WHITE);
 		lblJavaTranslator.setFont(new Font("Cambria Math", Font.PLAIN, 22));
-		lblJavaTranslator.setBounds(551, 51, 152, 59);
 		frame.getContentPane().add(lblJavaTranslator);
+		
+		lblLangFrom = new JLabel(languageFrom);
+		lblLangFrom.setBounds(230, 107, 111, 20);
+		lblLangFrom.setForeground(Color.WHITE);
+		frame.getContentPane().add(lblLangFrom);
+		
+		lblLangTo = new JLabel(languageTo);
+		lblLangTo.setBounds(946, 107, 90, 20);
+		lblLangTo.setForeground(Color.WHITE);
+		frame.getContentPane().add(lblLangTo);
+		
 
 		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -266,9 +283,85 @@ public class MainFrame implements ActionListener{
 				languageIndex = 0;
 				break;
 		}
-		if (!dictionaryLoaded[languageIndex]) {
+    if (!dictionaryLoaded[languageIndex]) {
 			translator.readFile(languageIndex);
 		}
+		changeLang();
 	}
-
+	
+	public void changeLabels()
+	{
+		if(englishIsOnLeft)
+		{
+			languageTo = "English";
+			if(languageIndex == 0)
+			{
+				languageFrom = "Lithuanian";
+			}
+			else if(languageIndex == 1)
+			{
+				languageFrom = "Swedish";
+			}
+			else if(languageIndex == 2)
+			{
+				languageFrom = "Albanian";
+			}
+			englishIsOnLeft = false;
+		}
+		else
+		{
+			languageFrom = "English";
+			if(languageIndex == 0)
+			{
+				languageTo = "Lithuanian";
+			}
+			else if(languageIndex == 1)
+			{
+				languageTo = "Swedish";
+			}
+			else if(languageIndex == 2)
+			{
+				languageTo = "Albanian";
+			}
+			englishIsOnLeft = true;
+		}
+		lblLangFrom.setText(languageFrom);
+		lblLangTo.setText(languageTo);
+	}
+	
+	public void changeLang()
+	{
+		if(englishIsOnLeft)
+		{
+			if(languageIndex == 0)
+			{
+				languageTo = "Lithuanian";
+			}
+			else if(languageIndex == 1)
+			{
+				languageTo = "Swedish";
+			}
+			else if(languageIndex == 2)
+			{
+				languageTo = "Albanian";
+			}
+		}
+		else
+		{
+			if(languageIndex == 0)
+			{
+				languageFrom = "Lithuanian";
+			}
+			else if(languageIndex == 1)
+			{
+				languageFrom = "Swedish";
+			}
+			else if(languageIndex == 2)
+			{
+				languageFrom = "Albanian";
+			}
+		}
+		lblLangFrom.setText(languageFrom);
+		lblLangTo.setText(languageTo);
+	}
 }
