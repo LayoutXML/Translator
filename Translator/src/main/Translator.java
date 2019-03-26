@@ -170,7 +170,11 @@ public class Translator {
                     System.out.format("\n\nSpeed: %.2f words per second. (It took "
                             + (endTime - startTime) + "ms (" + (endTime - startTime) / 1000d + " seconds) to translate " + words.length + " words)\n",wordsPerSecond);
                 } catch (IOException e) {
-                    System.out.println("Error reading file");
+                    if (area1!=null || area2!=null) {
+                        JOptionPane.showMessageDialog(null, "Error reading file");
+                    } else {
+                        System.out.println("Error reading file");
+                    }
                 }
             }
         };
@@ -383,12 +387,15 @@ public class Translator {
             Thread thread = new Thread() {
                 @Override
                 public void run() {
-
                     try {
                         Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(languageFileNames[languageIndex]+".txt"), StandardCharsets.UTF_8));
 
                         for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
-                            out.write(entry.getKey() + "\t" + entry.getValue()+"\n");
+                            if (flipped[languageIndex]) {
+                                out.write(entry.getValue() + "\t" + entry.getKey() + "\n");
+                            } else {
+                                out.write(entry.getKey() + "\t" + entry.getValue() + "\n");
+                            }
                         }
 
                         out.close();
