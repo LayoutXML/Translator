@@ -34,6 +34,7 @@ public class MainFrame implements ActionListener{
 	private String languageFrom = "English";
 	private String languageTo = "Lithuanian";
 	private boolean englishIsOnLeft = true;
+	private boolean[] dictionaryLoaded;
 
 	/**
 	 * Launch the application.
@@ -72,6 +73,11 @@ public class MainFrame implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setTitle("Translator");
+
+		dictionaryLoaded = new boolean[3];
+		dictionaryLoaded[0] = true;
+		dictionaryLoaded[1] = false;
+		dictionaryLoaded[2] = false;
 
 		translator = new Translator();
 		translator.initialise();
@@ -277,7 +283,9 @@ public class MainFrame implements ActionListener{
 				languageIndex = 0;
 				break;
 		}
-		translator.readFile(languageIndex);
+    if (!dictionaryLoaded[languageIndex]) {
+			translator.readFile(languageIndex);
+		}
 		changeLang();
 	}
 	

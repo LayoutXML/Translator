@@ -57,12 +57,17 @@ public class Translator {
                         String characters = original.substring(0, indexOf);
                         original = original.substring(indexOf + word.length());
                         if (!exceptions.contains(word.toLowerCase())) {
-                            processed.append(characters).append(word);
+                            String wordTranslated = dictionaries.get(languageIndex).get(word.toLowerCase());
+                            if (wordTranslated==null) {
+                                processed.append(characters).append(word);
+                            } else {
+                                processed.append(characters).append(wordTranslated);
+                            }
                         }
                     }
-                    return processed.toString().toLowerCase();
+                    return processed.toString();
                 } else {
-                    return original.toLowerCase();
+                    return original;
                 }
             } else {
                 return translation;
