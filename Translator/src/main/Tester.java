@@ -111,7 +111,7 @@ public class Tester {
                         input1 = scanner.nextLine();
                         System.out.println("Enter text in other language: ");
                         input2 = scanner.nextLine();
-                        translator.addToDictionary(input1,input2, 0);
+                        translator.addToDictionary(input1,input2, 0, false);
                         translator.writeFile(0);
                     }
                     catch (InputMismatchException e) {
@@ -126,7 +126,7 @@ public class Tester {
                     try {
                         System.out.println("Enter text in English: ");
                         input3 = scanner.nextLine();
-                        translator.removeFromDictionary(input3, 0);
+                        translator.removeFromDictionary(input3, 0, false);
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;
@@ -141,7 +141,7 @@ public class Tester {
                     try {
                         System.out.println("Enter text in other language: ");
                         input4 = scanner.nextLine();
-                        translator.removeFromDictionaryByValue(input4, 0);
+                        translator.removeFromDictionaryByValue(input4, 0, false);
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;

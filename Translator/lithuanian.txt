@@ -3258,6 +3258,7 @@ subsequent	vėliau
 wheat	kviečiai
 indicate	nurodyti
 dear	brangus
+contain	sudaryti
 founder	įkūrėjas
 sex	seksas
 column	stulpelis

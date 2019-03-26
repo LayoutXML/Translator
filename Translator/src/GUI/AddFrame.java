@@ -52,7 +52,7 @@ public class AddFrame extends JFrame {
 		btnNewButton.setFont(new Font("Cambria Math", Font.PLAIN, 16));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				translator.addToDictionary(originalWordInput.getText(),translationInput.getText(),languageIndex);
+				translator.addToDictionary(originalWordInput.getText(),translationInput.getText(),languageIndex, true);
 				translator.writeFile(languageIndex);
 			}
 		});

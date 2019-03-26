@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -35,6 +36,7 @@ public class MainFrame implements ActionListener{
 	private String languageTo = "Lithuanian";
 	private boolean englishIsOnLeft = true;
 	private boolean[] dictionaryLoaded;
+	private boolean isAddNewWordsToDictOptionEnabled = false;
 
 	/**
 	 * Launch the application.
@@ -186,7 +188,6 @@ public class MainFrame implements ActionListener{
 		lblLangTo.setBounds(885, 91, 249, 41);
 		lblLangTo.setForeground(Color.WHITE);
 		frame.getContentPane().add(lblLangTo);
-		
 
 		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -216,6 +217,7 @@ public class MainFrame implements ActionListener{
 		input = textOriginal.getText();
 		String[] words = input.split("\\W+");
 		long startTime = Calendar.getInstance().getTimeInMillis();
+		ArrayList<String> notTranslated = new ArrayList<>();
 		for (String word : words) {
 			if (!error) {
 				indexOf = input.indexOf(word);
@@ -258,8 +260,17 @@ public class MainFrame implements ActionListener{
 				lastEmpty = true;
 			}
 			lastOriginalWord = word;
+			if (isAddNewWordsToDictOptionEnabled) {
+				if (translation.toLowerCase().equals(word.toLowerCase())) {
+					notTranslated.add(word.toLowerCase());
+				}
+			}
 		}
 		textTranslation.setText(textTranslation.getText()+lastTranslation + input);
+		for (String notTranslatedWord : notTranslated) {
+			AddFrame add = new AddFrame(notTranslatedWord, translator, languageIndex);
+			add.setVisible(true);
+		}
 		long endTime = Calendar.getInstance().getTimeInMillis();
 		double wordsPerSecond = words.length*1d/((endTime-startTime)/1000d);
 		System.out.format("\n\nSpeed: %.2f words per second. (It took "

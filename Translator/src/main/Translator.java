@@ -18,7 +18,6 @@ public class Translator {
     private boolean isWriting; //is file open and being written in
     private boolean pendingRead; //is program waiting to reading file
     private boolean pendingWrite; //is program waiting to write file
-    private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option #3
     private boolean turboMode; //when false ensures 1:1 relationship between languages
     private String[] languageFileNames = {"lithuanian","swedish","albanian"};
     private String[] phrasalVerbs = {"up","down","off","out","in"};
@@ -183,11 +182,11 @@ public class Translator {
      * @param original original word or phrase (key)
      * @param translation translation (value)
      */
-    public void addToDictionary(String original, String translation, int languageIndex) {
+    public void addToDictionary(String original, String translation, int languageIndex, boolean showMessage) {
         Thread thread = new Thread() {
             @Override
             public void run() {
-                boolean found = false;
+                boolean found = false, showedMsg = false;
                 String key = "";
                 if (!turboMode) {
                     for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
@@ -200,14 +199,28 @@ public class Translator {
                 if (!found) {
                     String oldValue = dictionaries.get(languageIndex).put(original.toLowerCase(), translation.toLowerCase());
                     if (oldValue != null) {
-                        System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + original + "\"-\"" + oldValue + "\".");
+                        if (showMessage) {
+                            JOptionPane.showMessageDialog(null, "\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + original + "\"-\"" + oldValue + "\".");
+                            showedMsg = true;
+                        } else {
+                            System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + original + "\"-\"" + oldValue + "\".");
+                        }
                     }
                 } else {
                     String oldValue = dictionaries.get(languageIndex).remove(key);
                     dictionaries.get(languageIndex).put(key.toLowerCase(), translation.toLowerCase());
                     if (oldValue != null) {
-                        System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + key + "\"-\"" + oldValue + "\".");
+                        if (showMessage) {
+                            JOptionPane.showMessageDialog(null, "\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + key + "\"-\"" + oldValue + "\".");
+                            showedMsg = true;
+                        } else {
+                            System.out.println("\"" + original + "\"-\"" + translation + "\" overrode previous pair \"" + key + "\"-\"" + oldValue + "\".");
+                        }
+
                     }
+                }
+                if (!showedMsg && showMessage) {
+                    JOptionPane.showMessageDialog(null, "\"" + original + "\"-\"" + translation + "\" added.");
                 }
             }
         };
@@ -218,12 +231,20 @@ public class Translator {
      * Method that removes a word or phrase from a dictionary by key
      * @param original word or phrase in an original language (key)
      */
-    public void removeFromDictionary(String original, int languageIndex) {
+    public void removeFromDictionary(String original, int languageIndex, boolean showMessage) {
         String oldValue = dictionaries.get(languageIndex).remove(original.toLowerCase());
         if (oldValue!=null) {
-            System.out.println("\""+original+"\"-\""+oldValue+"\" removed.");
+            if (showMessage) {
+                JOptionPane.showMessageDialog(null, "\""+original+"\"-\""+oldValue+"\" removed.");
+            } else {
+                System.out.println("\""+original+"\"-\""+oldValue+"\" removed.");
+            }
         } else {
-            System.out.println("\""+original+"\" was not in the dictionaries, so nothing was removed.");
+            if (showMessage) {
+                JOptionPane.showMessageDialog(null, "\"" + original + "\" was not in the dictionary, so nothing was removed.");
+            } else {
+                System.out.println("\"" + original + "\" was not in the dictionary, so nothing was removed.");
+            }
         }
     }
 
@@ -231,7 +252,7 @@ public class Translator {
      * Method that removes a word or phrase from dictionaries by value
      * @param translation translation (value)
      */
-    public void removeFromDictionaryByValue(String translation, int languageIndex) {
+    public void removeFromDictionaryByValue(String translation, int languageIndex, boolean showMessage) {
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -245,7 +266,17 @@ public class Translator {
                     dictionaries.get(languageIndex).remove(key);
                 }
                 if (keysToRemove.size() == 0) {
-                    System.out.println("\"" + translation + "\" was not in the dictionaries, so nothing was removed.");
+                    if (showMessage) {
+                        JOptionPane.showMessageDialog(null, "\"" + translation + "\" was not in the dictionary, so nothing was removed.");
+                    } else {
+                        System.out.println("\"" + translation + "\" was not in the dictionary, so nothing was removed.");
+                    }
+                } else {
+                    if (showMessage) {
+                        JOptionPane.showMessageDialog(null, "\"" + translation + "\" removed.");
+                    } else {
+                        System.out.println("\"" + translation + "\" removed.");
+                    }
                 }
             }
         };
@@ -269,24 +300,6 @@ public class Translator {
 
     public HashMap<String, String> getDictionary(int languageIndex) {
         return dictionaries.get(languageIndex);
-    }
-
-    /**
-     * Method to retrieve isAddNewWordsToDictOptionEnabled
-     *
-     * @return value of isAddNewWordsToDictOptionEnabled
-     */
-    public boolean isAddNewWordsToDictOptionEnabled() {
-        return isAddNewWordsToDictOptionEnabled;
-    }
-
-    /**
-     * Method to set isAddNewWordsToDictOptionEnabled
-     *
-     * @param addNewWordsToDictOptionEnabled value
-     */
-    public void setAddNewWordsToDictOptionEnabled(boolean addNewWordsToDictOptionEnabled) {
-        isAddNewWordsToDictOptionEnabled = addNewWordsToDictOptionEnabled;
     }
 
     /**
@@ -319,7 +332,7 @@ public class Translator {
                         String line;
                         while ((line = bufferedReader.readLine()) != null) {
                             String[] words = line.split("\t", 2);
-                            addToDictionary(words[0].toLowerCase(), words[1].toLowerCase(), languageIndex);
+                            addToDictionary(words[0].toLowerCase(), words[1].toLowerCase(), languageIndex, false);
                         }
                         bufferedReader.close();
 
@@ -339,7 +352,7 @@ public class Translator {
                             line="";
                             while ((line = bufferedReader.readLine()) != null) {
                                 String[] words = line.split("\t", 2);
-                                addToDictionary(words[0].toLowerCase(), words[1].toLowerCase(), languageIndex);
+                                addToDictionary(words[0].toLowerCase(), words[1].toLowerCase(), languageIndex, false);
                             }
                             bufferedReader.close();
                         }

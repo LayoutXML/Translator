@@ -66,9 +66,9 @@ public class RemoveFrame extends JFrame implements ActionListener{
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (isLeft) {
-					translator.removeFromDictionary(textArea.getText(), languageIndex);
+					translator.removeFromDictionary(textArea.getText(), languageIndex, true);
 				} else {
-					translator.removeFromDictionaryByValue(textArea.getText(), languageIndex);
+					translator.removeFromDictionaryByValue(textArea.getText(), languageIndex, true);
 				}
 				translator.writeFile(languageIndex);
 			}
