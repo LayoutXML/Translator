@@ -22,6 +22,7 @@ public class Translator {
     private boolean turboMode; //when false ensures 1:1 relationship between languages
     private String[] languageFileNames = {"lithuanian","swedish","albanian"};
     private String[] phrasalVerbs = {"up","down","off","out","in"};
+    private boolean[] flipped = {false,false,false};
 
     /**
      * Method that sets default values for variables and reads the file
@@ -46,7 +47,7 @@ public class Translator {
      * @return translation (value)
      */
     public String translate(String original, int languageIndex) {
-        if (!exceptions.contains(original.toLowerCase())) {
+        if (!exceptions.contains(original.toLowerCase()) || flipped[languageIndex]) {
             String translation = dictionaries.get(languageIndex).get(original.toLowerCase());
             if (translation == null) {
                 if (languageIndex==0) {
@@ -56,7 +57,7 @@ public class Translator {
                         int indexOf = original.indexOf(word);
                         String characters = original.substring(0, indexOf);
                         original = original.substring(indexOf + word.length());
-                        if (!exceptions.contains(word.toLowerCase())) {
+                        if (!exceptions.contains(word.toLowerCase()) || flipped[languageIndex]) {
                             String wordTranslated = dictionaries.get(languageIndex).get(word.toLowerCase());
                             if (wordTranslated==null) {
                                 processed.append(characters).append(word);
@@ -414,6 +415,7 @@ public class Translator {
                     dictionaryNew.put(entry.getValue(), entry.getKey());
                 }
                 dictionaries.set(languageIndex, dictionaryNew);
+                flipped[languageIndex] = !flipped[languageIndex];
                 System.out.println("Flipped successfully.");
             }
         };
