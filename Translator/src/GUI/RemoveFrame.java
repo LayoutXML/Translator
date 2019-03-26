@@ -23,8 +23,12 @@ public class RemoveFrame extends JFrame implements ActionListener{
 	private Translator translator;
 	private int languageIndex;
 	private boolean isLeft = true;
+	private boolean isEnglishOnLeft;
+	private String leftText;
+	private String rightText;
+	private JLabel lblText;
 	
-	public RemoveFrame(Translator translatorReference, int languageIndexReference) {
+	public RemoveFrame(Translator translatorReference, int languageIndexReference, boolean englishOnLeft) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 640, 640);
 		
@@ -40,13 +44,50 @@ public class RemoveFrame extends JFrame implements ActionListener{
 
 		translator = translatorReference;
 		languageIndex = languageIndexReference;
+		isEnglishOnLeft = englishOnLeft;
+
+		if (isEnglishOnLeft) {
+			leftText = "English";
+			switch (languageIndexReference) {
+				case 0:
+					rightText = "Lithuanian";
+					break;
+				case 1:
+					rightText = "Swedish";
+					break;
+				case 2:
+					rightText = "Albanian";
+					break;
+				default:
+					rightText = "Lithuanian";
+					break;
+			}
+		} else {
+			rightText = "English";
+			switch (languageIndexReference) {
+				case 0:
+					leftText = "Lithuanian";
+					break;
+				case 1:
+					leftText = "Swedish";
+					break;
+				case 2:
+					leftText = "Albanian";
+					break;
+				default:
+					leftText = "Lithuanian";
+					break;
+			}
+		}
 
 		JMenu menu = new JMenu("Language");
-		JMenuItem item = new JMenuItem("Left");
+		JMenuItem item = new JMenuItem();
+		item.setText(leftText);
 		item.addActionListener(this);
 		menu.add(item);
 		menu.addSeparator();
-		item = new JMenuItem("Right");
+		item = new JMenuItem();
+		item.setText(rightText);
 		item.addActionListener(this);
 		menu.add(item);
 		menuBar.add(menu);
@@ -76,10 +117,15 @@ public class RemoveFrame extends JFrame implements ActionListener{
 		btnNewButton.setBounds(222, 309, 148, 45);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblText = new JLabel("Text");
+		lblText = new JLabel();
 		lblText.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblText.setForeground(Color.WHITE);
 		lblText.setBounds(259, 107, 222, 37);
+		if (isLeft) {
+			lblText.setText(leftText);
+		} else {
+			lblText.setText(rightText);
+		}
 		contentPane.add(lblText);
 	}
 
@@ -87,16 +133,12 @@ public class RemoveFrame extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		JMenuItem source = (JMenuItem) (e.getSource());
 		String text = source.getText();
-		switch (text) {
-			case "Left":
-				isLeft = true;
-				break;
-			case "Right":
-				isLeft = false;
-				break;
-			default:
-				isLeft = true;
-				break;
+		if (text.equals(leftText)) {
+			isLeft = true;
+			lblText.setText(leftText);
+		} else {
+			isLeft = false;
+			lblText.setText(rightText);
 		}
 	}
 }

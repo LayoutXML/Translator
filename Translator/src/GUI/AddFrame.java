@@ -18,8 +18,9 @@ public class AddFrame extends JFrame {
 	private JPanel contentPane;
 	private Translator translator;
 	private int languageIndex;
+	private boolean englishOnLeft;
 	
-	public AddFrame(String word, Translator translatorReference, int languageIndexReference) {
+	public AddFrame(String word, Translator translatorReference, int languageIndexReference, boolean englishOnLeftReference) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 640, 640);
 		contentPane = new JPanel();
@@ -32,6 +33,7 @@ public class AddFrame extends JFrame {
 
 		translator = translatorReference;
 		languageIndex = languageIndexReference;
+		englishOnLeft = englishOnLeftReference;
 		
 		JLabel lblAddingANew = new JLabel("Add a new word to the current dictionary");
 		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 22));
@@ -59,17 +61,53 @@ public class AddFrame extends JFrame {
 		btnNewButton.setBounds(221, 324, 161, 64);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblEnglish = new JLabel("English");
-		lblEnglish.setFont(new Font("Cambria Math", Font.PLAIN, 16));
-		lblEnglish.setForeground(Color.WHITE);
-		lblEnglish.setBounds(143, 159, 72, 28);
-		contentPane.add(lblEnglish);
+		JLabel lblOriginal = new JLabel();
+		lblOriginal.setFont(new Font("Cambria Math", Font.PLAIN, 16));
+		lblOriginal.setForeground(Color.WHITE);
+		lblOriginal.setBounds(143, 159, 72, 28);
+		if (englishOnLeft) {
+			lblOriginal.setText("English");
+		} else {
+			switch (languageIndex) {
+				case 0:
+					lblOriginal.setText("Lithuanian");
+					break;
+				case 1:
+					lblOriginal.setText("Swedish");
+					break;
+				case 2:
+					lblOriginal.setText("Albanian");
+					break;
+				default:
+					lblOriginal.setText("Lithuanian");
+					break;
+			}
+		}
+		contentPane.add(lblOriginal);
 		
-		JLabel lblText = new JLabel("Text");
-		lblText.setFont(new Font("Cambria Math", Font.PLAIN, 16));
-		lblText.setForeground(Color.WHITE);
-		lblText.setBackground(new Color(240, 240, 240));
-		lblText.setBounds(395, 162, 69, 20);
-		contentPane.add(lblText);
+		JLabel lblTranslation = new JLabel();
+		lblTranslation.setFont(new Font("Cambria Math", Font.PLAIN, 16));
+		lblTranslation.setForeground(Color.WHITE);
+		lblTranslation.setBackground(new Color(240, 240, 240));
+		lblTranslation.setBounds(395, 162, 69, 20);
+		if (!englishOnLeft) {
+			lblTranslation.setText("English");
+		} else {
+			switch (languageIndex) {
+				case 0:
+					lblTranslation.setText("Lithuanian");
+					break;
+				case 1:
+					lblTranslation.setText("Swedish");
+					break;
+				case 2:
+					lblTranslation.setText("Albanian");
+					break;
+				default:
+					lblTranslation.setText("Lithuanian");
+					break;
+			}
+		}
+		contentPane.add(lblTranslation);
 	}
 }

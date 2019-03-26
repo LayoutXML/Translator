@@ -169,7 +169,10 @@ public class Translator {
                     double wordsPerSecond = words.length * (1d / (endTime - startTime) * 1000);
                     System.out.format("\n\nSpeed: %.2f words per second. (It took "
                             + (endTime - startTime) + "ms (" + (endTime - startTime) / 1000d + " seconds) to translate " + words.length + " words)\n",wordsPerSecond);
+                    JOptionPane.showMessageDialog(null, "\n\nSpeed: " + wordsPerSecond + " words per second. (It took "
+                            + (endTime - startTime) + "ms (" + (endTime - startTime) / 1000d + " seconds) to translate " + words.length + " words)\n");
                 } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Error reading file");
                     System.out.println("Error reading file");
                 }
             }
@@ -359,6 +362,7 @@ public class Translator {
 
                     } catch (IOException e) {
                         System.out.println("Error reading file");
+                        JOptionPane.showMessageDialog(null, "Error reading file");
                     } finally {
                         fileRead = true;
                         isReading = false;
@@ -383,17 +387,21 @@ public class Translator {
             Thread thread = new Thread() {
                 @Override
                 public void run() {
-
                     try {
                         Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(languageFileNames[languageIndex]+".txt"), StandardCharsets.UTF_8));
 
                         for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
-                            out.write(entry.getKey() + "\t" + entry.getValue()+"\n");
+                            if (flipped[languageIndex]) {
+                                out.write(entry.getValue() + "\t" + entry.getKey() + "\n");
+                            } else {
+                                out.write(entry.getKey() + "\t" + entry.getValue() + "\n");
+                            }
                         }
 
                         out.close();
                     } catch (IOException e) {
                         System.out.println("Error writing file");
+                        JOptionPane.showMessageDialog(null, "Error reading file");
                     } finally {
                         isWriting = false;
                         System.out.println("File written");
@@ -429,7 +437,7 @@ public class Translator {
                 }
                 dictionaries.set(languageIndex, dictionaryNew);
                 flipped[languageIndex] = !flipped[languageIndex];
-                System.out.println("Flipped successfully.");
+                JOptionPane.showMessageDialog(null, "Flipped successfully.");
             }
         };
         thread.run();

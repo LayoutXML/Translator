@@ -132,7 +132,7 @@ public class MainFrame implements ActionListener{
 		btnAdd.setBounds(75, 600, 185, 75);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent addWordToDictionary) {
-				AddFrame add = new AddFrame("", translator, languageIndex);
+				AddFrame add = new AddFrame("", translator, languageIndex, englishIsOnLeft);
 				add.setVisible(true);
 			}
 		});
@@ -143,7 +143,7 @@ public class MainFrame implements ActionListener{
 		btnRemove.setBounds(374, 600, 185, 75);
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent removeWordFromDictionary) {
-				RemoveFrame remove = new RemoveFrame(translator, languageIndex);
+				RemoveFrame remove = new RemoveFrame(translator, languageIndex, englishIsOnLeft);
 				remove.setVisible(true);
 			}
 		});
@@ -192,6 +192,12 @@ public class MainFrame implements ActionListener{
 		
 		chckbxNewCheckBox = new JCheckBox("Option to add new word");
 		chckbxNewCheckBox.setBounds(527, 538, 221, 29);
+		chckbxNewCheckBox.setSelected(isAddNewWordsToDictOptionEnabled);
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent translateFile) {
+				isAddNewWordsToDictOptionEnabled = chckbxNewCheckBox.isSelected();
+			}
+		});
 		frame.getContentPane().add(chckbxNewCheckBox);
 
 		menuBar = new JMenuBar();
@@ -273,7 +279,7 @@ public class MainFrame implements ActionListener{
 		}
 		textTranslation.setText(textTranslation.getText()+lastTranslation + input);
 		for (String notTranslatedWord : notTranslated) {
-			AddFrame add = new AddFrame(notTranslatedWord, translator, languageIndex);
+			AddFrame add = new AddFrame(notTranslatedWord, translator, languageIndex, englishIsOnLeft);
 			add.setVisible(true);
 		}
 		long endTime = Calendar.getInstance().getTimeInMillis();
