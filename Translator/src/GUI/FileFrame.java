@@ -17,6 +17,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Calendar;
+import javax.swing.JScrollPane;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Dimension;
 
 @SuppressWarnings("Duplicates")
 public class FileFrame extends JFrame {
@@ -29,11 +33,15 @@ public class FileFrame extends JFrame {
 	private String fileName;
 	private Translator translator;
 	private int languageIndex;
+	private JScrollPane scrollPane;
+	private JScrollPane scrollPane_1;
 	
 	public FileFrame(Translator translatorReference, int languageIndexReference) {
+		setMinimumSize(new Dimension(640, 640));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 490, 600);
+		setBounds(100, 100, 640, 640);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -41,17 +49,11 @@ public class FileFrame extends JFrame {
 		translator = translatorReference;
 		languageIndex = languageIndexReference;
 
-		JLabel lblAddingANew = new JLabel("Translating a text file");
-		lblAddingANew.setBounds(5, 5, 418, 20);
+		JLabel lblAddingANew = new JLabel("Translate a .txt File");
+		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		lblAddingANew.setForeground(Color.WHITE);
+		lblAddingANew.setBounds(218, 11, 191, 20);
 		contentPane.add(lblAddingANew);
-		
-		fileOutput = new JTextPane();
-		fileOutput.setBounds(252, 70, 212, 456);
-		contentPane.add(fileOutput);
-
-		fileText = new JTextPane();
-		fileText.setBounds(9, 70, 212, 456);
-		contentPane.add(fileText);
 		
 		btnNewButton = new JButton("Choose");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -60,7 +62,7 @@ public class FileFrame extends JFrame {
 				fileName = file.pick();
 			}
 		});
-		btnNewButton.setBounds(132, 23, 89, 23);
+		btnNewButton.setBounds(110, 53, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		btnTranslate = new JButton("Translate");
@@ -71,7 +73,21 @@ public class FileFrame extends JFrame {
 				}
 			}
 		});
-		btnTranslate.setBounds(286, 23, 89, 23);
+		btnTranslate.setBounds(419, 53, 89, 23);
 		contentPane.add(btnTranslate);
+		
+		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(325, 87, 271, 504);
+		contentPane.add(scrollPane_1);
+		
+		fileOutput = new JTextPane();
+		scrollPane_1.setViewportView(fileOutput);
+				
+				scrollPane = new JScrollPane();
+				scrollPane.setBounds(26, 87, 268, 504);
+				contentPane.add(scrollPane);
+		
+				fileText = new JTextPane();
+				scrollPane.setViewportView(fileText);
 	}
 }
