@@ -45,6 +45,8 @@ public class FileFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setResizable(false);
+		setTitle("Translate file");
 
 		translator = translatorReference;
 		languageIndex = languageIndexReference;
