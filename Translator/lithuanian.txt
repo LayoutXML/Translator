@@ -1,4 +1,4 @@
-﻿cancel	atšaukti
+cancel	atšaukti
 prepare	pasiruošti
 half	pusė
 fifty	penkiasdešimt
@@ -6,6 +6,8 @@ surgeon	chirurgas
 shooting	šaudymas
 discourage	atgrasyti
 hall	salė
+keep down	numalšinti
+wake up	pabusti
 oversee	prižiūrėti
 pollution	tarša
 salary	atlyginimas
@@ -17,6 +19,7 @@ pick	pasiimti
 rabbit	triušis
 ten	dešimt
 sake	labui
+sign out	atsijungti
 energy	energijos
 successfully	sėkmingai
 solid	kietas
@@ -67,12 +70,14 @@ address	adresas
 salt	druska
 artistic	meninis
 i	aš
+dry out	išdžiūti
 eating	valgymas
 blood	kraujas
 neighbor	kaimynas
 straight	tiesiai
 sale	parduoti
 police	policija
+bite off	atsikąsti
 throw	mesti
 exciting	jaudinantis
 fifth	penkta
@@ -112,6 +117,7 @@ provided	jeigu
 rope	virvė
 lens	objektyvas
 representation	atstovavimas
+burn up	supykdyti
 society	visuomenei
 nowhere	niekur
 motive	motyvas
@@ -132,6 +138,7 @@ approval	patvirtinimas
 multiple	daugkartinis
 concentrate	koncentratas
 expose	atskleisti
+work up	pagerinti
 cheer	nudžiuginti
 room	kambarys
 versus	prieš
@@ -140,6 +147,7 @@ explosion	sprogimas
 permit	leidimas
 translation	vertimas
 well	gerai
+pull out	ištraukti
 cancer	vėžys
 personnel	personalas
 suitable	tinkamas
@@ -157,6 +165,7 @@ fierce	žiauriai
 reservation	rezervacija
 block	blokuoti
 hate	nekęsti
+burst out	ištrūkti
 flow	srautas
 cooperation	bendradarbiavimas
 order	įsakymas
@@ -165,6 +174,7 @@ distant	toli
 custody	globa
 propose	pasiūlyti
 reform	reformą
+call off	atšaukti
 crazy	išprotėjęs
 coach	treneris
 southeast	į pietryčius
@@ -188,6 +198,7 @@ shorts	šortai
 toy	žaislas
 haul	traukos
 product	produktas
+start up	įkurti
 famous	garsus
 question	klausimas
 reminder	priminimas
@@ -255,6 +266,7 @@ chicken	vištiena
 university	universitete
 technique	technika
 troop	kariuomenė
+move in	persikelti
 effective	veiksmingas
 wound	žaizda
 teacher	mokytojas
@@ -274,6 +286,7 @@ industrial	pramonės
 investor	investuotojas
 stable	stabilus
 pillow	pagalvė
+go out	išeiti
 respond	atsakyti
 incident	incidentas
 maintenance	priežiūra
@@ -297,6 +310,7 @@ press	paspausti
 worker	darbuotojas
 dough	tešla
 element	elementas
+calm down	nusiraminti
 environmental	aplinkosaugos
 night	naktis
 pace	tempas
@@ -318,6 +332,7 @@ document	dokumentas
 jurisdiction	jurisdikcija
 constitutional	konstitucinis
 killing	žudymas
+dry off	nudžiūti
 availability	prieinamumą
 battery	baterija
 two	du
@@ -347,6 +362,7 @@ withdrawal	pasitraukimas
 shove	stumti
 haughty	išdykęs
 marketing	rinkodara
+work in	įterpti
 prayer	malda
 speech	kalba
 watch	žiūrėti
@@ -384,6 +400,7 @@ eastern	rytų
 glass	stiklas
 tension	įtampa
 reflection	atspindys
+trade in	išmainyti
 campus	miestelis
 juror	teisėjas
 ultimate	galutinis
@@ -395,12 +412,14 @@ verbal	žodinis
 develop	plėtoti
 surprising	stebina
 harassment	priekabiavimas
+shake up	purtyti
 involved	įtrauktas
 district	rajonas
 overall	apskritai
 fixed	fiksuotas
 page	puslapis
 assume	prisiimti
+cross off	kirsti
 full	pilnas
 pepper	pipirų
 away	toli
@@ -421,6 +440,7 @@ suspicion	įtarimas
 purchase	pirkti
 shore	krantas
 start	pradėti
+narrow down	susiaurinti
 teen	paauglys
 pair	pora
 lifestyle	gyvenimo būdas
@@ -449,6 +469,7 @@ enter	įvesti
 lonely	vienišas
 gallery	galerijoje
 pale	šviesiai
+pull off	nutempti
 hardware	techninė įranga
 plaintiff	ieškovas
 deputy	pavaduotojas
@@ -462,6 +483,7 @@ judicial	teisminės institucijos
 provide	teikti
 athletic	atletiškas
 primary	pirminė
+fill out	užpildyti
 pant	alsuoti
 log	žurnalas
 enterprise	įmonė
@@ -471,6 +493,7 @@ solar	saulės energija
 consume	vartoti
 teaching	mokymas
 formation	formavimas
+cool off	atvėsinkite
 unknown	nežinoma
 lot	daug
 computer	kompiuteris
@@ -492,6 +515,7 @@ cling	laikosi
 diabetes	diabetas
 clip	klipas
 door	durys
+rip up	išardyti
 quick	greitai
 nutrient	maistinių medžiagų
 alliance	aljansas
@@ -502,6 +526,7 @@ tell	pasakyti
 husband	vyras
 experience	patirtis
 dam	užtvanka
+make up	sudaryti
 commander	vadas
 courtroom	teismo salė
 zone	zona
@@ -524,6 +549,7 @@ pause	pauzė
 formal	formalus
 instructor	instruktorius
 perceived	suvokiama
+stay out	negrįžti namo
 ease	lengvumas
 tent	palapinę
 critical	kritiškai
@@ -561,6 +587,7 @@ path	kelias
 bind	įpareigoti
 depending	priklausomai nuo
 record	įrašas
+burn down	sudegti
 prevention	prevencija
 carefully	atidžiai
 pass	praeiti
@@ -573,6 +600,7 @@ milk	pienas
 bill	sąskaita
 easy	lengva
 whose	kurių
+back down	atsitraukti
 buyer	pirkėjas
 mill	malūnas
 bucket	kibiras
@@ -608,6 +636,7 @@ involve	įtraukti
 partly	iš dalies
 possible	įmanoma
 right	teisė
+run out	pasibaigti
 stage	etapas
 complicated	sudėtinga
 borrow	skolintis
@@ -618,9 +647,11 @@ quarter	ketvirtis
 die	mirti
 dig	kasti
 added	pridėta
+clog up	užkimšti
 emergency	skubus atvėjis
 dip	panardinti
 down	žemyn
+hold up	palauk
 faculty	fakultetas
 habit	įprotis
 later	vėliau
@@ -689,12 +720,15 @@ discount	nuolaida
 construct	statyti
 convert	paversti
 attempt	bandymas
+shut up	užsičiaupti
 thick	storas
+pay off	sumokėti
 division	padalijimas
 balance	balansas
 dna	dnr
 supplier	tiekėjas
 lock	užrakinti
+stand up	atsistoti
 latin	lotynų
 pitch	pikis
 text	tekstas
@@ -706,8 +740,10 @@ cookie	slapukas
 appreciation	dėkingingumas
 electrical	elektros
 statue	statula
+wrap up	apvynioti
 sense	jausti
 being	esamas
+tear down	nugriauti
 physically	fiziškai
 field	sritis
 wilderness	dykumoje
@@ -739,6 +775,7 @@ stand	stovėti
 map	žemėlapis
 surround	apsupti
 twenty	dvidešimt
+stress out	nervintis
 cigarette	cigaretė
 may	gegužė
 forward	persiųsti
@@ -759,6 +796,7 @@ teenage	paauglys
 terribly	baisiai
 aisle	perėjimas
 arrangement	išdėstymas
+stay off	nesikišti
 revenue	pajamų
 strip	juosta
 continuous	nuolat
@@ -787,6 +825,7 @@ constitution	konstitucija
 stair	laiptas
 cocaine	kokainas
 blend	maišyti
+plug up	įjungti
 conceive	suvokti
 breath	kvėpavimas
 ball	kamuolys
@@ -807,12 +846,14 @@ bake	kepti
 threat	grėsmį
 breast	krūtis
 invention	išradimas
+lighten up	nušviesti
 inform	informuoti
 psychological	psichologinis
 depend	priklauso
 about	apie
 commit	įsipareigoti
 cure	išgydyti
+tear off	nuplėšti
 danger	pavojus
 crash	gedimas
 patch	pleistras
@@ -820,6 +861,7 @@ observer	stebėtojas
 presidency	pirmininkavimas
 bank	bankas
 character	charakteris
+put in	įdėti
 meaning	prasme
 above	virš
 drawing	piešimas
@@ -896,6 +938,7 @@ inspire	įkvėpti
 associated	susiję
 increasing	didėja
 progress	progresas
+show off	pasirodyti
 open	atviras
 devote	skirti
 seller	pardavėjas
@@ -910,6 +953,7 @@ project	projektas
 seven	septyni
 arena	arena
 barn	tvartas
+call in	skambinkite
 loop	kilpa
 roughly	maždaug
 tobacco	tabakas
@@ -937,6 +981,7 @@ auction	aukcione
 gesture	gestas
 apple	obuolys
 admit	pripažinti
+keep off	neprileisti
 common	bendras
 interest	palūkanox
 themselves	patys
@@ -960,6 +1005,7 @@ healthy	sveikas
 formula	formulė
 step	žingsnis
 forever	amžinai
+try out	pabandyti
 mark	pažymėti
 base	bazė
 stem	stiebas
@@ -983,11 +1029,13 @@ obstacle	kliūtis
 still	vis dar
 van	furgonas
 biology	biologija
+chop up	susmulkinti
 work	dirbti
 lose	prarasti
 constitute	sudaryti
 cattle	galvijai
 playoff	atkūrimo
+call up	paprašyti
 toward	link
 among	tarp
 convince	įtikinti
@@ -1016,6 +1064,7 @@ slave	vergas
 across	visoje
 naturally	natūraliai
 flexibility	lankstumas
+plug in	prijungti
 mortgage	hipotekos
 identity	tapatybę
 ear	ausis
@@ -1026,10 +1075,12 @@ eat	valgyti
 loud	garsiai
 middle-class	vidurinė klasė
 reward	atlygis
+stick up	laikytis
 hockey	ledo ritulys
 include	įtraukti
 alongside	šalia
 swallow	nuryti
+freak out	išsigąsti
 juice	sultys
 gathering	rinkimas
 mrs	ponia
@@ -1065,6 +1116,7 @@ elder	vyresnysis
 platform	platforma
 walking	vaikščioti
 spend	išleisti
+go off	išjungti
 grave	kapas
 advantage	pranašumas
 assistant	asistentas
@@ -1090,6 +1142,7 @@ ego	ego
 branch	filialas
 urge	noras
 via	per
+knock out	išjungti
 high-tech	aukštųjų technologijų
 music	muzika
 empire	imperija
@@ -1143,6 +1196,7 @@ weird	keista
 ridiculous	juokinga
 severe	sunkus
 emerge	atsirasti
+dress up	apsirengti
 exploit	išnaudoti
 sweet	saldus
 anniversary	metinės
@@ -1179,10 +1233,12 @@ private	privatus
 technical	techninis
 companion	draugas
 ride	važiuoti
+line up	surikiuoti
 desperately	beviltiškai
 precisely	tiksliai
 stretch	ruožas
 accomplish	pasiekti
+fall down	nukristi
 engine	variklis
 responsible	atsakingas
 medal	medalis
@@ -1217,6 +1273,7 @@ toll	rinkliava
 moral	moralinis
 newly	naujai
 gradually	palaipsniui
+break down	sulaužyti
 rehabilitation	reabilitacija
 explode	sprogti
 brave	drąsus
@@ -1232,6 +1289,7 @@ practitioner	gydytojas
 olympics	olimpinės žaidynės
 specify	nurodyti
 forth	toliau
+drop in	užeiti
 driver	vairuotojas
 compose	rašyti
 seventh	septintas
@@ -1262,6 +1320,7 @@ sharp	aštrus
 slip	slydimas
 species	rūšis
 logic	logika
+ring up	paskambinti
 shake	purtyti
 honor	garbė
 screen	ekranas
@@ -1285,6 +1344,7 @@ articulate	suformuluoti
 shall	turi
 tool	įrankis
 driving	vairavimas
+cut off	nupjauti
 yell	šaukti
 secular	pasaulietinė
 tribe	gentis
@@ -1304,6 +1364,7 @@ define	apibrėžti
 talented	talentingas
 dictate	diktuoti
 render	padaryti
+wind up	sulikviduoti
 frontier	pasienis
 relieve	atleisti
 drawer	stalčius
@@ -1312,6 +1373,7 @@ requirement	reikalavimas
 transport	transportas
 pencil	pieštukas
 specific	specifinis
+slow down	sulėtinti
 engage	įsitraukti
 whisper	šnabždesys
 needle	adata
@@ -1332,12 +1394,14 @@ accusation	kaltinimas
 differently	kitaip
 shoulder	petys
 dance	šokis
+throw out	išmesti
 fully	visiškai
 dining	pietauti
 remain	lieka
 expected	tikimasi
 toss	išmesti
 eye	akis
+knock off	išjungti
 envelope	voką
 himself	pats
 mystery	paslaptis
@@ -1377,6 +1441,7 @@ describe	apibūdinti
 grab	patraukti
 suck	čiulpti
 technological	technologinės
+go in	užsiimti
 wealthy	pasiturintis
 administration	administracija
 jazz	džiazas
@@ -1390,6 +1455,7 @@ white	balta
 furniture	baldai
 counterpart	kolega
 segment	segmentas
+screw up	prisukti
 huge	didelis
 attractive	patrauklus
 imagine	įsivaizduokite
@@ -1398,6 +1464,7 @@ might	galbūt
 engineering	inžinerija
 girl	mergina
 mentally	protiškai
+cut up	sumažinti
 decrease	mažinti
 whatever	nesvarbu
 museum	muziejus
@@ -1416,6 +1483,7 @@ button	mygtukas
 conclusion	išvada
 nor	nei
 not	ne
+doze off	užsnūsti
 central	centrinis
 impose	nustatyti
 now	dabar
@@ -1435,6 +1503,7 @@ greet	pasveikint
 war	karas
 sculpture	skulptūra
 way	būdas
+cut down	nupjauti
 sensation	pojūtis
 what	ką
 urban	miesto
@@ -1443,6 +1512,7 @@ furthermore	be to
 refer	nurodykite
 african	afrikos
 risk	rizika
+light up	įžiebti
 window	langas
 flame	liepsna
 rise	kilti
@@ -1489,6 +1559,7 @@ occasionally	kartais
 tragic	tragiška
 physician	gydytojas
 grin	šypsnys
+straighten out	ištiesinti
 grip	rankena
 explore	ištirti
 wet	šlapias
@@ -1525,6 +1596,7 @@ provoke	išprovokuoti
 threaten	grasinti
 few	nedaug
 rhetoric	retorika
+check out	išsiregistruoti
 otherwise	kitaip
 strain	štamas
 rain	lietus
@@ -1593,6 +1665,7 @@ sauce	padažas
 equity	nuosavo kapitalo
 fit	tikti
 robot	robotas
+dry up	išsausinti
 fix	pataisyti
 colonial	kolonijinis
 honest	nuoširdus
@@ -1628,6 +1701,7 @@ brother	brolis
 hurt	skauda
 be	būti
 prove	įrodyti
+punch in	įmušti
 admire	žavėtis
 consequently	atitinkamai
 tomato	pomidoras
@@ -1657,6 +1731,7 @@ tropical	atogrąžų
 fly	skristi
 partner	partneris
 plunge	pasinerti
+think up	pramanyti
 voter	rinkėjas
 freely	laisvai
 interview	interviu
@@ -1667,6 +1742,7 @@ do	daryti
 observe	stebėti
 meaningful	reikšmingas
 japanese	japonų kalba
+hurry up	paskubėti
 rare	retas
 warning	įspėjimas
 exclude	neįtraukti
@@ -1686,6 +1762,8 @@ never	niekada
 celebration	šventė
 knife	peilis
 piece	gabalas
+grow up	užaugti
+take in	priimti
 burst	sprogti
 carry	nešioti
 elephant	dramblys
@@ -1699,6 +1777,7 @@ vocal	vokalas
 for	dėl
 content	turinys
 burden	našta
+follow up	sekti
 random	atsitiktinai
 perhaps	galbūt
 personality	asmenybė
@@ -1714,6 +1793,7 @@ contend	teigti
 reporting	ataskaitų teikimas
 digital	skaitmeninis
 spanish	ispanų
+back off	atsiriboti
 go	eiti
 counter	skaitiklis
 rhythm	ritmas
@@ -1749,6 +1829,7 @@ if	jei
 bathroom	vonia
 encouraging	skatinti
 likely	tikėtina
+mix up	sumaišyti
 issue	klausimas
 literally	pažodžiui
 lower	mažesnis
@@ -1767,6 +1848,7 @@ become	tapti
 eventually	galiausiai
 inflation	infliacija
 settlement	atsiskaitymas
+take out	išnešti
 literature	literatūra
 library	biblioteka
 sphere	sfera
@@ -1780,6 +1862,7 @@ draw	piešti
 off	išjungtas
 generally	apskritai
 knee	kelio
+do without	išsiversti be
 wooden	medinis
 oral	žodžiu
 complete	užbaigti
@@ -1805,9 +1888,11 @@ widespread	plačiai paplitęs
 communication	komunikacijos
 chronic	lėtinis
 tolerance	tolerancija
+wipe up	nuvalyti
 toxic	toksiškas
 contest	konkursas
 mr	ponas
+brush up	atnaujinti
 author	autorius
 meter	metras
 dirt	nešvarumai
@@ -1890,9 +1975,11 @@ freeze	užšaldyti
 province	provincijoje
 inevitably	neišvengiamai
 estimate	apskaičiuoti
+kick out	išspirti
 brand	prekės ženklas
 recent	neseniai
 they	jie
+sign in	prisijungti
 proposal	pasiūlymas
 inevitable	neišvengiamas
 consciousness	sąmonė
@@ -1965,6 +2052,7 @@ military	karinis
 reluctant	nenoriai
 up	aukštyn
 us	mus
+count up	suskaičiuoti
 ensure	užtikrinti
 organism	organizmas
 usual	įprasta
@@ -1989,9 +2077,11 @@ privacy	privatumas
 cold	šalta
 learning	mokymasis
 vertical	vertikaliai
+shut off	išjungti
 pure	grynas
 life	gyvenimas
 we	mes
+wipe off	ištrinti
 honey	medus
 similarity	panašumas
 examination	egzaminą
@@ -2037,6 +2127,7 @@ wife	žmona
 contract	sutartis
 conclude	baigti
 come	ateiti
+wipe out	nuvalyti
 leather	oda
 push	stumti
 exist	egzistuoja
@@ -2048,6 +2139,7 @@ exact	tiksli
 unemployment	nedarbas
 lift	liftas
 nationwide	visoje šalyje
+back up	palaikyti
 force	jėga
 sexual	seksualinis
 south	į pietus
@@ -2057,8 +2149,10 @@ our	mūsų
 capacity	pajėgumus
 cope	susidoroti
 confess	prisipažinti
+cut out	iškirpti
 ghost	vaiduoklis
 noon	vidurdienį
+watch out	saugokis
 get	gauti
 dark	tamsus
 course	žinoma
@@ -2082,6 +2176,7 @@ massive	masyvi
 self	savarankiškai
 asset	turtas
 owe	skolingi
+turn down	atmesti
 minimum	minimumas
 date	data
 magic	magija
@@ -2199,6 +2294,8 @@ wind	vėjas
 chapter	skyriuje
 commodity	prekė
 flight	skrydis
+hang up	pakabinti
+work out	išspręsti
 independent	nepriklausomas
 achieve	pasiekti
 ahead	priekyje
@@ -2209,6 +2306,8 @@ weekly	savaitę
 economically	ekonomiškai
 headline	antraštė
 committee	komitetui
+fall out	susipykti
+close down	uždaryti
 union	sąjunga
 wipe	nuvalyti
 freshman	naujokas
@@ -2302,6 +2401,7 @@ entire	visas
 approach	metodas
 wrist	riešas
 pen	tušinukas
+pick out	pasirinkite
 per	už
 write	rašyti
 pet	naminis gyvūnėlis
@@ -2330,6 +2430,7 @@ strongly	stipriai
 analyze	analizuoti
 integration	integracija
 restriction	apribojimas
+help out	padėti
 indication	indikacija
 bull	bulius
 champion	čempionas
@@ -2360,6 +2461,7 @@ bacteria	bakterijų
 almost	beveik
 arrow	rodyklė
 equally	vienodai
+eat up	suvalgyti
 manner	būdas
 pie	pyragas
 associate	bendradarbis
@@ -2369,6 +2471,7 @@ judgment	sprendimas
 pin	kaištis
 charity	labdara
 whether	ar
+come up	atsirasti
 pit	duobė
 mineral	mineralinis
 sneak	sėlinti
@@ -2391,6 +2494,7 @@ rarely	retai
 basic	paprastas
 lake	ežeras
 twist	pasukti
+pay up	sumokėti
 locate	suraskite
 unite	suvienyti
 bush	krūmas
@@ -2408,6 +2512,7 @@ extra	papildomai
 land	žemė
 working	darbo
 victim	auka
+turn in	įjungti
 skull	kaukolė
 department	departamentas
 lane	juosta
@@ -2418,6 +2523,7 @@ predator	plėšrūnas
 chief	viršininkas
 aircraft	orlaivis
 automatic	automatinis
+fill in	užpildykiti
 italian	italų kalba
 lamp	lempa
 despite	nepaisant
@@ -2428,6 +2534,7 @@ fantastic	fantastinis
 interested	suinteresuotas
 formerly	anksčiau
 wall	sienos
+use up	sunaudoti
 policeman	policininkas
 quietly	tyliai
 marry	tuoktis
@@ -2454,6 +2561,7 @@ molecule	molekulės
 circle	ratas
 butt	užpakalis
 resign	pasitraukti
+let down	nuvilti
 sophisticated	sudėtingas
 aluminum	aliuminis
 chase	vytis
@@ -2474,6 +2582,7 @@ emerging	atsiranda
 funny	juokinga
 receive	gauti
 intimate	intymūs
+break out	išardykite
 disclose	atskleisti
 entirely	visiškai
 religion	religija
@@ -2484,8 +2593,10 @@ chart	diagrama
 friendship	draugystė
 till	iki
 attend	dalyvauti
+hang out	pakabinti
 voting	balsavimas
 accounting	apskaita
+fix up	pataisyti
 anymore	nebėra
 secure	saugus
 disappointed	nusivylęs
@@ -2514,6 +2625,7 @@ institutional	institucinis
 coastal	pakrantės
 swim	plaukti
 basement	rūsys
+turn out	pasukti
 impossible	neįmanomas
 effort	pastangos
 jewish	žydų
@@ -2565,6 +2677,8 @@ passenger	keleivis
 terrific	nuostabus
 apparently	matyt
 tiny	mažas
+sort out	išsiaiškinti
+hand in	paduoti
 lawn	veja
 valuable	vertingas
 infection	infekcija
@@ -2576,13 +2690,16 @@ smart	protingas
 tourist	turistas
 elite	elitas
 suburban	priemiesčio
+fill up	pripildyti
 helmet	šalmas
 theme	tema
+flip out	apversti
 tire	padanga
 barrel	barelis
 editor	redaktorius
 chain	grandinė
 desire	noras
+look up	ieškoti
 efficient	efektyvus
 chair	kėdė
 unfortunately	deja
@@ -2599,6 +2716,7 @@ garden	sodas
 choice	pasirinkimas
 travel	kelionė
 facility	įrenginys
+break in	įsilaužti
 small	mažas
 beam	sijos
 civilization	civilizacija
@@ -2635,6 +2753,7 @@ stimulate	skatinti
 square	kvadratas
 twice	dukart
 soak	mirkyti
+come out	išeiti
 absolutely	visiškai
 soar	pakilti
 managing	valdyti
@@ -2652,6 +2771,7 @@ general	bendras
 hospital	ligoninė
 dimension	dimensija
 wildlife	laukinės gamtos
+hand out	išduoti
 ceiling	lubos
 deserve	nusipelno
 process	procesas
@@ -2678,6 +2798,7 @@ developmental	vystymosi
 sometime	kartais
 mostly	dažniausiai
 innocent	nekaltas
+break off	išjungti
 beef	jautiena
 advance	iš anksto
 evaluation	vertinimas
@@ -2698,6 +2819,7 @@ soft	minkštas
 prime	pagrindinis
 happen	atsitikti
 sofa	sofa
+let out	išleisti
 festival	festivalis
 loyal	ištikimas
 preference	pirmenybė
@@ -2707,6 +2829,7 @@ opportunity	galimybę
 court	teismas
 venture	rizikos
 population	populiacija
+run down	partrenkti
 enthusiasm	entuziazmas
 route	maršrutas
 flexible	lanksti
@@ -2724,10 +2847,12 @@ capability	gebėjimas
 involvement	dalyvavimas
 spark	kibirkštis
 assembly	surinkimas
+carry out	atlikti
 hearing	klausymas
 wedding	vestuvės
 parental	tėvų
 spare	atsarginės
+believe in	tikėti
 chip	lustas
 chin	smakras
 tail	uodega
@@ -2737,6 +2862,7 @@ assemble	surinkti
 march	kovas
 transition	perėjimas
 blast	sprogimas
+give up	pasiduoti
 mutter	sukrėtimas
 answer	atsakymas
 meet	susitikti
@@ -2748,6 +2874,7 @@ compete	konkuruoti
 celebrity	garsenybė
 sometimes	kartais
 listener	klausytojas
+leave out	palikti
 promise	pažadas
 hold	laikyti
 tale	pasaka
@@ -2765,12 +2892,14 @@ vanish	išnyksta
 train	traukinys
 coordinator	koordinatorius
 commonly	paprastai
+turn off	išjungti
 planet	planeta
 count	skaičiuoti
 scholar	mokslininkas
 take	imtis
 vision	vizija
 accompany	lydėti
+put down	padėti
 immediate	nedelsiant
 blame	kaltas
 relatively	santykinai
@@ -2785,6 +2914,7 @@ soften	suminkštinti
 reception	priėmimas
 tank	bakas
 just	tiesiog
+punch out	išmušti
 bloody	kruvinas
 notice	pastebėti
 owner	savininkas
@@ -2793,6 +2923,7 @@ midnight	vidurnaktis
 jury	žiuri
 holy	šventa
 monitor	stebėti
+get out	išeiti
 strictly	griežtai
 home	namai
 hole	skylė
@@ -2809,7 +2940,9 @@ president	pirmininkas
 explain	paaiškinkite
 basket	krepšelis
 hope	viltis
+go up	pakilti
 soon	netrukus
+wear off	nublankti
 executive	vykdomasis
 hook	kablys
 melt	lydyti
@@ -2820,6 +2953,7 @@ stadium	stadionas
 song	daina
 belt	diržas
 chop	pjaustyti
+mess up	sujaukti
 cream	grietinėlė
 protest	protestuoti
 sensitive	jautrus
@@ -2852,6 +2986,7 @@ radar	radaras
 machine	mašina
 refugee	pabėgėlis
 able	gali
+run up	iškelti
 evening	vakare
 workplace	darbo vietoje
 return	grįžti
@@ -2867,10 +3002,12 @@ drown	nuskęsti
 blade	ašmenys
 radio	radijo
 smile	šypsena
+lay off	išjungti
 solution	sprendimas
 fine	gerai
 find	rasti
 opponent	priešininkas
+point out	nurodyti
 host	šeimininkas
 accelerate	paspartinti
 dramatically	dramatiškai
@@ -2942,7 +3079,9 @@ suburb	priemiestis
 writer	rašytojas
 fence	tvora
 coming	ateinantis
+let off	paleisti
 scream	rėkti
+fall off	nukristi
 cover	padengti
 firm	firma
 reflect	atspindėti
@@ -2973,6 +3112,7 @@ prominent	pastebimas
 fundamental	esminis
 global	pasauliniu mastu
 fist	kumščiu
+stop off	apsistoti
 entitle	teisė
 outline	kontūras
 counselor	patarėjas
@@ -2988,6 +3128,7 @@ equality	lygybė
 ought	turėtų
 invade	įsiveržti
 reaction	reakcija
+leave off	nustoti
 people	žmonių
 democracy	demokratija
 actually	iš tikrųjų
@@ -2999,6 +3140,7 @@ fish	žuvis
 household	namų ūkis
 invite	pakviesti
 operation	operacija
+throw up	apsivemti
 ratio	santykis
 calculation	apskaičiavimas
 instinct	instinktas
@@ -3030,13 +3172,16 @@ father	tėvas
 detect	aptikti
 rule	taisyklė
 update	atnaujinti
+sell out	parduoti
 condemn	pasmerkti
+get off	atstoti
 assistance	pagalba
 poem	eilėraštis
 definition	apibrėžimas
 poet	poetas
 wonder	stebėtis
 every	kiekvienas
+sit down	atsisėsti
 mansion	dvaras
 summary	santrauka
 again	darkart
@@ -3047,6 +3192,7 @@ spine	stuburas
 theology	teologija
 indeed	iš tikrųjų
 guitar	gitara
+give in	nusileisti
 artificial	dirbtinis
 removal	pašalinimas
 comment	komentaras
@@ -3061,6 +3207,7 @@ price	kaina
 safety	saugumas
 defensive	gynybinis
 slavery	vergovė
+clean out	išvalyti
 dependent	priklausomas
 profession	profesija
 briefly	trumpai
@@ -3074,12 +3221,14 @@ itself	pats
 spectrum	spektrą
 anyone	kas nors
 pride	pasididžiavimas
+lay down	atsigulti
 breakfast	pusryčiai
 favorite	mėgstamiausias
 broadcast	transliuoti
 steel	plieno
 steep	stačias
 thumb	nykščiu
+let in	įleisti
 seize	konfiskuoti
 church	bažnyčia
 classical	klasikinis
@@ -3106,7 +3255,9 @@ fascinating	žavinga
 abstract	abstraktus
 agenda	darbotvarkė
 nice	malonu
+burn out	perdegti
 appearance	išvaizda
+wear out	susidėvėti
 liquid	skystis
 culture	kultūrą
 anonymous	anoniminis
@@ -3130,6 +3281,7 @@ theater	teatras
 from	nuo
 publicity	viešumas
 depart	išvykti
+hold off	susilaikyti
 bottom	apačioje
 ill	nesveikas
 commitment	įsipareigojimas
@@ -3148,6 +3300,7 @@ advice	patarimas
 according	pagal
 frequent	dažnai
 interact	bendrauti
+bring up	auginti
 membership	narystė
 powder	milteliai
 error	klaida
@@ -3186,6 +3339,7 @@ setting	nustatymas
 properly	tinkamai
 score	rezultatas
 quote	cituoti
+lock in	uždaryti
 graduate	absolventas
 poor	vargšas
 farm	ūkis
@@ -3203,6 +3357,7 @@ sprinkle	pabarstyti
 airport	oro uostą
 cultural	kultūros
 exam	egzaminas
+brush off	nušluoti
 municipal	savivaldybės
 endure	ištverti
 placement	vieta
@@ -3222,6 +3377,7 @@ aspect	aspektas
 aggressive	agresyvus
 close	uždaryti
 chemistry	chemija
+close off	uždaryti
 photo	nuotrauka
 swing	sūpynės
 fast	greitas
@@ -3250,6 +3406,7 @@ finish	baigti
 add	papildyti
 health-care	sveikatos apsauga
 educational	švietimo
+check in	įsiregistruoti
 its	jo
 consent	sutikimas
 article	straipsnis
@@ -3257,17 +3414,21 @@ respect	gerbti
 shelf	lentyna
 retreat	trauktis
 mutual	tarpusavio
+wash up	nusiprausti
 port	uostas
 shell	apvalkalas
 therefore	todėl
 adjustment	koregavimas
 exchange	keistis
 hesitate	dvejoti
+blow out	išpūsti
+give out	atiduoti
 rifle	šautuvas
 income	pajamos
 trust	pasitikėjimas
 production	gamyba
 united	jungtinė
+catch up	pasivyti
 choose	pasirinkti
 jeans	džinsai
 peaceful	taikūs
@@ -3333,10 +3494,12 @@ aid	pagalba
 partial	dalinis
 blessing	palaiminimas
 other	kita
+rule out	išskirti
 aim	tikslas
 city	miestas
 confident	įsitikinęs
 uncle	dėdė
+hold out	ištiesti
 retain	išlaikyti
 air	oro
 skilled	kvalifikuoti
@@ -3353,6 +3516,7 @@ yield	derlius
 electronic	elektroniniu būdu
 vacation	atostogos
 speak	kalbėti
+blow off	nupūsti
 outcome	rezultatas
 sacred	šventa
 tender	švelnus
@@ -3367,6 +3531,7 @@ future	ateityje
 cite	paminėti
 movement	judėjimas
 royal	karališkas
+get down	nusileisti
 shed	mesti
 glove	pirštinės
 rating	įvertinimas
@@ -3377,6 +3542,7 @@ cage	narve
 insect	vabzdys
 qualify	gauti
 pregnant	nėščia
+lock up	užrakinti
 all	visi
 always	visada
 border	siena
@@ -3423,6 +3589,7 @@ collapse	sužlugti
 reason	priežastis
 accurate	tiksli
 thought	maniau
+rip off	nusplėšti
 legend	legenda
 prosecution	baudžiamasis persekiojimas
 taste	skonis
@@ -3444,6 +3611,7 @@ shopping	apsipirkti
 lightning	žaibas
 jaw	žandikaulį
 margin	marža
+get up	atsikelti
 nail	vinis
 pregnancy	nėštumas
 demand	paklausa
@@ -3492,6 +3660,7 @@ ask	paklausti
 dilemma	dilema
 rub	patrinti
 through	per
+wash off	nuplauti
 engagement	dalyvavimas
 strength	jėga
 officer	pareigūnas
@@ -3529,6 +3698,7 @@ name	vardas
 bolt	varžtas
 neighborhood	kaimynystėje
 crop	pasėliai
+empty out	ištuštinti
 shop	parduotuvė
 distance	atstumas
 mood	nuotaika
@@ -3573,6 +3743,7 @@ yard	kiemas
 rebel	sukilėliai
 experimental	eksperimentinis
 tissue	audinys
+find out	išsiaiškinti
 rent	nuoma
 cart	krepšelis
 cast	mesti
@@ -3591,6 +3762,7 @@ item	elementas
 gene	genas
 downtown	miesto centre
 trunk	bagažinė
+stay up	palaikyti
 saving	taupymas
 moon	mėnulis
 phone	telefonas
@@ -3626,14 +3798,17 @@ display	rodyti
 kill	nužudyti
 nomination	nominacija
 tablespoon	šaukštas
+pick up	paimti
 disorder	sutrikimas
 shut	uždaryti
 luck	sėkmė
+hook up	pakabinti
 simple	paprasta
 influence	įtaka
 cloud	debesis
 percentage	procentais
 talent	talentas
+print out	atspausdinti
 totally	visiškai
 negotiate	derėtis
 speculation	spekuliacija
@@ -3644,6 +3819,7 @@ marketplace	rinkoje
 king	karalius
 kind	malonus
 timing	laikas
+get in	patekti
 both	abu
 important	svarbus
 most	labiausiai
@@ -3695,6 +3871,7 @@ kingdom	karalystė
 differ	skiriasi
 spread	išplisti
 afternoon	po pietų
+track down	susekti
 favor	nauda
 investigation	tyrimas
 latter	pastarasis
@@ -3702,6 +3879,7 @@ clinic	klinika
 depression	depresija
 front	priekyje
 simply	tiesiog
+wear down	nudėvėti
 customer	klientas
 plane	plokštuma
 equivalent	lygiaverčiai
@@ -3739,6 +3917,7 @@ homeland	tėvynė
 affect	paveikti
 icon	piktograma
 dead	miręs
+start off	pradėti
 civic	pilietinis
 drain	nutekėjimas
 sea	jūros
@@ -3763,13 +3942,16 @@ biography	biografija
 procedure	procedūra
 sample	mėginys
 integrate	integruoti
+put out	užgesinti
 battle	mūšis
 gifted	talentingas
+﻿ask out	paklausti
 diagnose	diagnozuoti
 fighter	kovotojas
 somewhat	šiek tiek
 river	upė
 validity	galiojimas
+look out	saugokis
 bed	lova
 bee	bitė
 beauty	grožis
@@ -3779,6 +3961,7 @@ bet	lažybos
 parish	parapija
 contact	kontaktas
 programming	programavimas
+﻿cancel	atšaukti
 metropolitan	didmiestis
 typically	paprastai
 garbage	šiukšles
@@ -3789,6 +3972,7 @@ she	ji
 adjust	reguliuoti
 western	vakarų
 debt	skolos
+drop out	iškristi
 party	vakarėlis
 little	mažai
 deer	elnias
@@ -3856,6 +4040,7 @@ fatigue	nuovargis
 striking	ryškus
 convinced	įsitikinęs
 corner	kampas
+set up	nustatyti
 beside	šalia
 majority	dauguma
 model	modelis
@@ -3894,6 +4079,8 @@ tournament	turnyras
 bankruptcy	bankrotas
 cycle	ciklas
 thinking	mąstymas
+beat up	sumušti
+come down	nusileisti
 world	pasaulis
 inquiry	tyrimas
 astronomer	astronomas
@@ -3944,15 +4131,19 @@ directly	tiesiogiai
 kneel	nuleisti
 officially	oficialiai
 level	lygis
+heat up	užkaisti
+stick out	styroti
 preserve	išsaugoti
 establish	nustatyti
 relevant	aktualus
 proclaim	skelbti
+switch off	išjungti
 bunch	krūva
 spy	šnipas
 birthday	gimtadienis
 behind	atsilikti
 candy	saldainiai
+break up	išsiskirti
 recipe	receptas
 box	dėžė
 mental	protinis
@@ -3963,6 +4154,7 @@ racial	rasinės
 switch	jungiklis
 total	iš viso
 upstairs	viršutiniame aukšte
+come off	nusilupti
 consumer	vartotojas
 highly	labai
 one-third	viena trečioji
@@ -3978,6 +4170,7 @@ control	valdyti
 medication	vaistas
 drill	grąžtas
 clerk	sekretorius
+lift up	pakelti
 acknowledge	pripažinti
 lobby	lobis
 earth	žemė
@@ -3997,6 +4190,7 @@ episode	epizodas
 respondent	respondentas
 behalf	vardu
 somewhere	kažkur
+put off	išjungti
 injure	sužeisti
 objective	tikslas
 scene	scenoje
@@ -4022,6 +4216,7 @@ morning	ryte
 horse	arklys
 secondary	antrinis
 mission	misija
+space out	išretinti
 motor	variklis
 sue	iškelti bylą
 access	prieiga
@@ -4035,6 +4230,7 @@ serving	tarnauja
 current	srovė
 democrat	demokratas
 secretary	sekretorius
+clear up	išaiškinti
 actively	aktyviai
 civilian	civilinis
 key	raktas
@@ -4050,12 +4246,14 @@ maker	gamintojas
 amid	tarp
 launch	pradėti
 store	saugoti
+start out	pradėti
 confirm	patvirtinti
 hill	kalnas
 bug	klaida
 tightly	griežtai
 appoint	paskirti
 mortality	mirtingumas
+settle down	įsikurti
 fourth	ketvirta
 vast	didžiulis
 story	istorija
@@ -4072,6 +4270,7 @@ advocate	advokatas
 quest	ieškojimas
 frequency	dažnis
 instantly	iš karto
+end up	pabaigti
 missile	raketos
 dynamic	dinamiškas
 written	parašytas
@@ -4080,6 +4279,7 @@ passion	aistra
 sector	sektorius
 unusual	neįprasta
 extreme	ekstremalus
+drop off	išmesti
 tuck	įsiminti
 coordinate	koordinuoti
 athlete	sportininkas
@@ -4124,6 +4324,7 @@ sack	maišas
 reach	pasiekti
 christianity	krikščionybė
 lightly	lengvai
+blow up	susprogdinti
 react	reaguoti
 feedback	atsiliepimas
 road	kelias
@@ -4142,6 +4343,7 @@ ethnic	etninės
 collar	apykaklė
 goal	tikslas
 natural	natūralus
+go down	nukristi
 goat	ožka
 banker	bankininkas
 ironically	ironiškai
@@ -4150,6 +4352,7 @@ following	kitas
 sensitivity	jautrumas
 substantially	iš esmės
 scared	bijo
+keep up	laikytis
 flag	vėliava
 wear	dėvėti
 range	diapazonas
@@ -4166,12 +4369,14 @@ leap	šuolis
 place	vieta
 regular	reguliariai
 objection	prieštaravimas
+come in	įeiti
 dispute	ginčas
 observation	stebėjimas
 tired	pavargęs
 aggression	agresija
 suggest	pasiūlyti
 leaf	lapai
+turn up	pasirodyti
 lead	vadovauti
 fraction	frakcija
 filter	filtras
@@ -4219,6 +4424,7 @@ distinct	atskriti
 flee	pabėgti
 tune	sureguliuoti
 aware	žinoti
+move out	išsikraustyti
 can	galėti
 drama	drama
 hair	plaukai
