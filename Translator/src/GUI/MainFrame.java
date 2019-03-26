@@ -143,7 +143,7 @@ public class MainFrame implements ActionListener{
 		btnRemove.setBounds(374, 600, 185, 75);
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent removeWordFromDictionary) {
-				RemoveFrame remove = new RemoveFrame(translator, languageIndex);
+				RemoveFrame remove = new RemoveFrame(translator, languageIndex, englishIsOnLeft);
 				remove.setVisible(true);
 			}
 		});
