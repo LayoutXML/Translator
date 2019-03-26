@@ -62,6 +62,22 @@ public class RemoveFrame extends JFrame implements ActionListener{
 					rightText = "Lithuanian";
 					break;
 			}
+		} else {
+			rightText = "English";
+			switch (languageIndexReference) {
+				case 0:
+					leftText = "Lithuanian";
+					break;
+				case 1:
+					leftText = "Swedish";
+					break;
+				case 2:
+					leftText = "Albanian";
+					break;
+				default:
+					leftText = "Lithuanian";
+					break;
+			}
 		}
 
 		JMenu menu = new JMenu("Language");
