@@ -1,3 +1,5 @@
+package main;
+
 import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,7 +10,7 @@ public class Tester {
     private Translator translator;
 
     /**public static void main(String[] args) {
-        Tester tester = new Tester();
+        Tester tester = new main.Tester();
         tester.initialise();
         tester.process();
     }*/
@@ -153,7 +155,7 @@ public class Tester {
                     try {
                         System.out.println("Enter file name without txt extension: ");
                         input5 = scanner.nextLine();
-                        translator.translateFile(input5, 0);
+                        translator.translateFile(input5, 0, null, null);
                     }
                     catch (InputMismatchException e) {
                         userChoice=-1;

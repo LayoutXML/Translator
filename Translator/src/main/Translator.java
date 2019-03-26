@@ -1,3 +1,6 @@
+package main;
+
+import javax.swing.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -72,7 +75,7 @@ public class Translator {
      * Method that reads and translates a file (to a console)
      * @param fileName file name
      */
-    public void translateFile(String fileName, int languageIndex) {
+    public void translateFile(String fileName, int languageIndex, JTextPane area1, JTextPane area2) {
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -80,7 +83,7 @@ public class Translator {
                 BufferedReader bufferedReader;
                 StringBuilder text = new StringBuilder(); //StringBuilder for better performance (appending text in loop)
                 try {
-                    fileReader = new FileReader(fileName + ".txt");
+                    fileReader = new FileReader(fileName);
                     bufferedReader = new BufferedReader(fileReader);
 
                     String line, translation, characters = "", lastTranslation="", lastOriginalWord="";
@@ -93,7 +96,12 @@ public class Translator {
 
                     bufferedReader.close();
 
+                    if (area1!=null) {
+                        area1.setText(text.toString().substring(1));
+                    }
+
                     String input = text.toString();
+                    StringBuilder translationFinal = new StringBuilder();
 
                     String[] words = text.substring(1).split("\\W+");
                     long startTime = Calendar.getInstance().getTimeInMillis();
@@ -117,7 +125,11 @@ public class Translator {
                         if (phrasalVerb && languageIndex==0) {
                             translation = translate(lastOriginalWord + " " + word, languageIndex);
                         } else {
-                            System.out.print(lastTranslation);
+                            if (area2==null) {
+                                System.out.print(lastTranslation);
+                            } else {
+                                translationFinal.append(lastTranslation);
+                            }
                             translation = translate(word, languageIndex);
                         }
                         lastTranslation="";
@@ -140,7 +152,14 @@ public class Translator {
                         }
                         lastOriginalWord = word;
                     }
-                    System.out.print(lastTranslation + input);
+                    if (area2==null) {
+                        System.out.print(lastTranslation + input);
+                    } else {
+                        translationFinal.append(lastTranslation).append(input);
+                    }
+                    if (area2 != null) {
+                        area2.setText(translationFinal.toString().substring(1));
+                    }
                     long endTime = Calendar.getInstance().getTimeInMillis();
                     double wordsPerSecond = words.length * (1d / (endTime - startTime) * 1000);
                     System.out.format("\n\nSpeed: %.2f words per second. (It took "
@@ -240,6 +259,10 @@ public class Translator {
             }
         };
         thread.run();
+    }
+
+    public HashMap<String, String> getDictionary(int languageIndex) {
+        return dictionaries.get(languageIndex);
     }
 
     /**

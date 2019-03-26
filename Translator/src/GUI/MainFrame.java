@@ -1,12 +1,15 @@
+package GUI;
+
+import main.Tester;
+import main.Translator;
+
 import java.awt.EventQueue;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.util.Calendar;
 
 @SuppressWarnings("Duplicates")
@@ -15,15 +18,11 @@ public class MainFrame implements ActionListener{
 	private JFrame frame;
 	private JTextArea textOriginal;
 	private JTextArea textTranslation;
+	private JButton btnAdd;
 	private JButton btnRemove;
 	private JButton btnPrintDict;
 	private JButton btnTranslateText;
 	private JMenuBar menuBar;
-	private JMenu mnLanguage;
-	private JMenuItem mntmLithuanian;
-	private JMenuItem mntmSwedish;
-	private JMenuItem mntmSpanish;
-	private JMenuItem mntmAlbanian;
 	private Translator translator;
 	private int languageIndex = 0;
 
@@ -77,6 +76,16 @@ public class MainFrame implements ActionListener{
 		btnTranslate.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnTranslate.setBounds(374, 210, 168, 57);
 		frame.getContentPane().add(btnTranslate);
+
+		JButton btnFlip = new JButton("<>");
+		btnFlip.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent translate) {
+				translator.flipDictionary(languageIndex);
+			}
+		});
+		btnFlip.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFlip.setBounds(426, 118, 60, 60);
+		frame.getContentPane().add(btnFlip);
 		
 		textOriginal = new JTextArea();
 		textOriginal.setLineWrap(true);
@@ -92,12 +101,11 @@ public class MainFrame implements ActionListener{
 		textTranslation.setBounds(519, 107, 228, 83);
 		frame.getContentPane().add(textTranslation);
 		
-		JButton btnAdd = new JButton("Add a word");
+		btnAdd = new JButton("Add a word");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent addWordToDictionary) {
-				AddFrame add = new AddFrame();
+				AddFrame add = new AddFrame("", translator, languageIndex);
 				add.setVisible(true);
-				//TODO Make this fully functional
 			}
 		});
 		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -107,9 +115,8 @@ public class MainFrame implements ActionListener{
 		btnRemove = new JButton("Remove a word");
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent removeWordFromDictionary) {
-				RemoveFrame remove = new RemoveFrame();
+				RemoveFrame remove = new RemoveFrame(translator, languageIndex);
 				remove.setVisible(true);
-				//TODO Make this fully functional
 			}
 		});
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -119,9 +126,8 @@ public class MainFrame implements ActionListener{
 		btnPrintDict = new JButton("Print Dictionary");
 		btnPrintDict.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent printDictionary) {
-				PrintFrame print = new PrintFrame();
+				PrintFrame print = new PrintFrame(translator,languageIndex);
 				print.setVisible(true);
-				//TODO Print entire dictionary to new frame
 			}
 		});
 		btnPrintDict.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -131,16 +137,8 @@ public class MainFrame implements ActionListener{
 		btnTranslateText = new JButton("Translate a text file");
 		btnTranslateText.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translateFile) {
-				FileFrame fframe = new FileFrame();
-				OpenFile file = new OpenFile();
-				fframe.setVisible(true);
-				try {
-					file.pick();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				fframe.fileOutput.setText(file.sb.toString());
-				//TODO Change text output to an output field on fframe & ensure each word is printed
+				FileFrame frame = new FileFrame(translator, languageIndex);
+				frame.setVisible(true);
 			}
 		});
 		btnTranslateText.setFont(new Font("Tahoma", Font.PLAIN, 18));
