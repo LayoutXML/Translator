@@ -66,10 +66,10 @@ public class Tester {
                             }
                             boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
                             if (phrasalVerb) {
-                                translation = translator.translate(lastOriginalWord + " " + word, languageIndex);
+                            	translation = translator.translate(lastOriginalWord + " " + word, 0);
                             } else {
                                 System.out.print(lastTranslation);
-                                translation = translator.translate(word, languageIndex);
+                                translation = translator.translate(word, 0);
                             }
                             lastTranslation="";
                             if (isFirst || characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
@@ -195,10 +195,4 @@ public class Tester {
         //TODO: add automated tests #2
         System.out.println("0. Exit");
     }
-
-    public void setLanguageIndex(int index)
-    {
-    	languageIndex = index;
-    }
-
 }
