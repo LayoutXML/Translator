@@ -37,6 +37,7 @@ public class MainFrame implements ActionListener{
 	private boolean englishIsOnLeft = true;
 	private boolean[] dictionaryLoaded;
 	private boolean isAddNewWordsToDictOptionEnabled = false;
+	private JCheckBox chckbxNewCheckBox;
 
 	/**
 	 * Launch the application.
@@ -188,6 +189,10 @@ public class MainFrame implements ActionListener{
 		lblLangTo.setBounds(885, 91, 249, 41);
 		lblLangTo.setForeground(Color.WHITE);
 		frame.getContentPane().add(lblLangTo);
+		
+		chckbxNewCheckBox = new JCheckBox("Option to add new word");
+		chckbxNewCheckBox.setBounds(527, 538, 221, 29);
+		frame.getContentPane().add(chckbxNewCheckBox);
 
 		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
