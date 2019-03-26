@@ -22,8 +22,9 @@ public class PrintFrame extends JFrame {
 	
 	public PrintFrame(Translator translatorReference, int languageIndexReference) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 640, 640);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -31,19 +32,22 @@ public class PrintFrame extends JFrame {
 		translator = translatorReference;
 		languageIndex = languageIndexReference;
 		
-		JLabel lblAddingANew = new JLabel("Printing entire contents to dictionary");
-		lblAddingANew.setBounds(5, 5, 424, 14);
+		JLabel lblAddingANew = new JLabel("Dictionary");
+		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		lblAddingANew.setForeground(Color.WHITE);
+		lblAddingANew.setBounds(250, 11, 107, 27);
 		contentPane.add(lblAddingANew);
 
 		DefaultListModel<String> listModel = new DefaultListModel<>();
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(37, 42, 545, 516);
+		contentPane.add(scrollPane);
 		JList<String> list = new JList<>(listModel);
-		list.setBounds(33, 30, 357, 221);
+		scrollPane.setViewportView(list);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		list.setLayoutOrientation(JList.VERTICAL);
 		list.setVisibleRowCount(-1);
-		JScrollPane listScroller = new JScrollPane(list);
-		listScroller.setPreferredSize(new Dimension(357, 221));
-		contentPane.add(list);
 
 		Thread thread = new Thread() {
 			@Override

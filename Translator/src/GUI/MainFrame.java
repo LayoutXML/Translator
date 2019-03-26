@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Calendar;
+import java.awt.Color;
+import java.awt.Dimension;
 
 @SuppressWarnings("Duplicates")
 public class MainFrame implements ActionListener{
@@ -25,6 +27,8 @@ public class MainFrame implements ActionListener{
 	private JMenuBar menuBar;
 	private Translator translator;
 	private int languageIndex = 0;
+	private JScrollPane scrollPane;
+	private JScrollPane scrollPane_1;
 
 	/**
 	 * Launch the application.
@@ -57,7 +61,9 @@ public class MainFrame implements ActionListener{
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 900, 600);
+		frame.setMinimumSize(new Dimension(1280, 800));
+		frame.getContentPane().setBackground(Color.DARK_GRAY);
+		frame.setBounds(100, 100, 1280, 797);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
@@ -74,7 +80,7 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnTranslate.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnTranslate.setBounds(374, 210, 168, 57);
+		btnTranslate.setBounds(550, 344, 168, 57);
 		frame.getContentPane().add(btnTranslate);
 
 		JButton btnFlip = new JButton("<>");
@@ -84,22 +90,28 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnFlip.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnFlip.setBounds(426, 118, 60, 60);
+		btnFlip.setBounds(598, 220, 60, 60);
 		frame.getContentPane().add(btnFlip);
 		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(105, 143, 415, 361);
+		frame.getContentPane().add(scrollPane);
+		
 		textOriginal = new JTextArea();
+		scrollPane.setViewportView(textOriginal);
 		textOriginal.setLineWrap(true);
 		textOriginal.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textOriginal.setBounds(164, 107, 228, 83);
 		textOriginal.setColumns(10);
-		frame.getContentPane().add(textOriginal);
+		
+		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(741, 143, 459, 364);
+		frame.getContentPane().add(scrollPane_1);
 		
 		textTranslation = new JTextArea();
+		scrollPane_1.setViewportView(textTranslation);
 		textTranslation.setLineWrap(true);
 		textTranslation.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textTranslation.setColumns(10);
-		textTranslation.setBounds(519, 107, 228, 83);
-		frame.getContentPane().add(textTranslation);
 		
 		btnAdd = new JButton("Add a word");
 		btnAdd.addActionListener(new ActionListener() {
@@ -109,7 +121,7 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnAdd.setBounds(130, 318, 185, 75);
+		btnAdd.setBounds(75, 600, 185, 75);
 		frame.getContentPane().add(btnAdd);
 		
 		btnRemove = new JButton("Remove a word");
@@ -120,7 +132,7 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnRemove.setBounds(130, 429, 185, 75);
+		btnRemove.setBounds(374, 600, 185, 75);
 		frame.getContentPane().add(btnRemove);
 		
 		btnPrintDict = new JButton("Print Dictionary");
@@ -131,7 +143,7 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnPrintDict.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnPrintDict.setBounds(564, 318, 200, 75);
+		btnPrintDict.setBounds(698, 600, 200, 75);
 		frame.getContentPane().add(btnPrintDict);
 		
 		btnTranslateText = new JButton("Translate a text file");
@@ -142,12 +154,13 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		btnTranslateText.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnTranslateText.setBounds(564, 429, 200, 75);
+		btnTranslateText.setBounds(988, 600, 200, 75);
 		frame.getContentPane().add(btnTranslateText);
 		
 		JLabel lblJavaTranslator = new JLabel("Java Translator");
+		lblJavaTranslator.setForeground(Color.WHITE);
 		lblJavaTranslator.setFont(new Font("Cambria Math", Font.PLAIN, 22));
-		lblJavaTranslator.setBounds(375, 23, 152, 59);
+		lblJavaTranslator.setBounds(551, 51, 152, 59);
 		frame.getContentPane().add(lblJavaTranslator);
 
 		menuBar = new JMenuBar();

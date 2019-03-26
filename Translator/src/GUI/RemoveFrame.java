@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 @SuppressWarnings("Duplicates")
 public class RemoveFrame extends JFrame implements ActionListener{
@@ -24,11 +26,12 @@ public class RemoveFrame extends JFrame implements ActionListener{
 	
 	public RemoveFrame(Translator translatorReference, int languageIndexReference) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 640, 640);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -46,15 +49,18 @@ public class RemoveFrame extends JFrame implements ActionListener{
 		menu.add(item);
 		menuBar.add(menu);
 		
-		JLabel lblAddingANew = new JLabel("Removing a word from the Dictionary");
-		lblAddingANew.setBounds(10, 30, 424, 14);
+		JLabel lblAddingANew = new JLabel("Remove a word from the dictionary");
+		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		lblAddingANew.setForeground(Color.WHITE);
+		lblAddingANew.setBounds(130, 11, 452, 45);
 		contentPane.add(lblAddingANew);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(62, 86, 147, 109);
+		textArea.setBounds(222, 160, 147, 109);
 		contentPane.add(textArea);
 		
 		JButton btnNewButton = new JButton("Remove");
+		btnNewButton.setFont(new Font("Cambria Math", Font.PLAIN, 16));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (isLeft) {
@@ -65,7 +71,7 @@ public class RemoveFrame extends JFrame implements ActionListener{
 				translator.writeFile(languageIndex);
 			}
 		});
-		btnNewButton.setBounds(264, 130, 89, 23);
+		btnNewButton.setBounds(222, 309, 148, 45);
 		contentPane.add(btnNewButton);
 	}
 
