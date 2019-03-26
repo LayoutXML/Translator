@@ -75,7 +75,7 @@ public class FileFrame extends JFrame {
 				}
 			}
 		});
-		btnTranslate.setBounds(419, 53, 89, 23);
+		btnTranslate.setBounds(396, 53, 140, 23);
 		contentPane.add(btnTranslate);
 		
 		scrollPane_1 = new JScrollPane();
@@ -83,6 +83,7 @@ public class FileFrame extends JFrame {
 		contentPane.add(scrollPane_1);
 		
 		fileOutput = new JTextPane();
+		fileOutput.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		scrollPane_1.setViewportView(fileOutput);
 				
 				scrollPane = new JScrollPane();
@@ -90,6 +91,7 @@ public class FileFrame extends JFrame {
 				contentPane.add(scrollPane);
 		
 				fileText = new JTextPane();
+				fileText.setFont(new Font("Tahoma", Font.PLAIN, 20));
 				scrollPane.setViewportView(fileText);
 	}
 }
