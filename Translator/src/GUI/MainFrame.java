@@ -29,6 +29,7 @@ public class MainFrame implements ActionListener{
 	private int languageIndex = 0;
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
+	private boolean[] dictionaryLoaded;
 
 	/**
 	 * Launch the application.
@@ -68,6 +69,11 @@ public class MainFrame implements ActionListener{
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 		frame.setTitle("Translator");
+
+		dictionaryLoaded = new boolean[3];
+		dictionaryLoaded[0] = true;
+		dictionaryLoaded[1] = false;
+		dictionaryLoaded[2] = false;
 
 		translator = new Translator();
 		translator.initialise();
@@ -260,7 +266,9 @@ public class MainFrame implements ActionListener{
 				languageIndex = 0;
 				break;
 		}
-		translator.readFile(languageIndex);
+		if (!dictionaryLoaded[languageIndex]) {
+			translator.readFile(languageIndex);
+		}
 	}
 
 }

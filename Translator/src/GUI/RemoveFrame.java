@@ -35,6 +35,8 @@ public class RemoveFrame extends JFrame implements ActionListener{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setResizable(false);
+		setTitle("Remove a word");
 
 		translator = translatorReference;
 		languageIndex = languageIndexReference;

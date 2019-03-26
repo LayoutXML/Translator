@@ -26,6 +26,8 @@ public class AddFrame extends JFrame {
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		setResizable(false);
+		setTitle("Add new words");
 		contentPane.setLayout(null);
 
 		translator = translatorReference;
