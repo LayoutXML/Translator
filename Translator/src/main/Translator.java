@@ -18,7 +18,6 @@ public class Translator {
     private boolean isWriting; //is file open and being written in
     private boolean pendingRead; //is program waiting to reading file
     private boolean pendingWrite; //is program waiting to write file
-    private boolean isAddNewWordsToDictOptionEnabled; //TODO: react to this option #3
     private boolean turboMode; //when false ensures 1:1 relationship between languages
     private String[] languageFileNames = {"lithuanian","swedish","albanian"};
     private String[] phrasalVerbs = {"up","down","off","out","in"};
@@ -269,24 +268,6 @@ public class Translator {
 
     public HashMap<String, String> getDictionary(int languageIndex) {
         return dictionaries.get(languageIndex);
-    }
-
-    /**
-     * Method to retrieve isAddNewWordsToDictOptionEnabled
-     *
-     * @return value of isAddNewWordsToDictOptionEnabled
-     */
-    public boolean isAddNewWordsToDictOptionEnabled() {
-        return isAddNewWordsToDictOptionEnabled;
-    }
-
-    /**
-     * Method to set isAddNewWordsToDictOptionEnabled
-     *
-     * @param addNewWordsToDictOptionEnabled value
-     */
-    public void setAddNewWordsToDictOptionEnabled(boolean addNewWordsToDictOptionEnabled) {
-        isAddNewWordsToDictOptionEnabled = addNewWordsToDictOptionEnabled;
     }
 
     /**
