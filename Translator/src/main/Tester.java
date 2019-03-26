@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Tester {
 
     private Translator translator;
+    private int languageIndex = 0;
 
     /**public static void main(String[] args) {
         Tester tester = new main.Tester();
@@ -65,10 +66,10 @@ public class Tester {
                             }
                             boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
                             if (phrasalVerb) {
-                                translation = translator.translate(lastOriginalWord + " " + word, 0);
+                                translation = translator.translate(lastOriginalWord + " " + word, languageIndex);
                             } else {
                                 System.out.print(lastTranslation);
-                                translation = translator.translate(word, 0);
+                                translation = translator.translate(word, languageIndex);
                             }
                             lastTranslation="";
                             if (isFirst || characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
@@ -193,6 +194,11 @@ public class Tester {
         System.out.println("7. Flip dictionary");
         //TODO: add automated tests #2
         System.out.println("0. Exit");
+    }
+
+    public void setLanguageIndex(int index)
+    {
+    	languageIndex = index;
     }
 
 }

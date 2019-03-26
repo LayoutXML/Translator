@@ -112,7 +112,7 @@ public class MainFrame implements ActionListener{
 		textOriginal = new JTextArea();
 		scrollPane.setViewportView(textOriginal);
 		textOriginal.setLineWrap(true);
-		textOriginal.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textOriginal.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		textOriginal.setColumns(10);
 		
 		scrollPane_1 = new JScrollPane();
@@ -122,7 +122,7 @@ public class MainFrame implements ActionListener{
 		textTranslation = new JTextArea();
 		scrollPane_1.setViewportView(textTranslation);
 		textTranslation.setLineWrap(true);
-		textTranslation.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textTranslation.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		textTranslation.setColumns(10);
 		
 		btnAdd = new JButton("Add a word");
@@ -170,18 +170,20 @@ public class MainFrame implements ActionListener{
 		frame.getContentPane().add(btnTranslateText);
 		
 		JLabel lblJavaTranslator = new JLabel("Java Translator");
-		lblJavaTranslator.setBounds(551, 51, 152, 59);
+		lblJavaTranslator.setBounds(478, 33, 386, 59);
 		lblJavaTranslator.setForeground(Color.WHITE);
-		lblJavaTranslator.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		lblJavaTranslator.setFont(new Font("Cambria Math", Font.PLAIN, 40));
 		frame.getContentPane().add(lblJavaTranslator);
 		
 		lblLangFrom = new JLabel(languageFrom);
-		lblLangFrom.setBounds(230, 107, 111, 20);
+		lblLangFrom.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblLangFrom.setBounds(255, 86, 265, 50);
 		lblLangFrom.setForeground(Color.WHITE);
 		frame.getContentPane().add(lblLangFrom);
 		
 		lblLangTo = new JLabel(languageTo);
-		lblLangTo.setBounds(946, 107, 90, 20);
+		lblLangTo.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblLangTo.setBounds(885, 91, 249, 41);
 		lblLangTo.setForeground(Color.WHITE);
 		frame.getContentPane().add(lblLangTo);
 		
@@ -348,18 +350,20 @@ public class MainFrame implements ActionListener{
 		}
 		else
 		{
+			languageFrom = "English";
 			if(languageIndex == 0)
 			{
-				languageFrom = "Lithuanian";
+				languageTo = "Lithuanian";
 			}
 			else if(languageIndex == 1)
 			{
-				languageFrom = "Swedish";
+				languageTo = "Swedish";
 			}
 			else if(languageIndex == 2)
 			{
-				languageFrom = "Albanian";
+				languageTo = "Albanian";
 			}
+			englishIsOnLeft = true;
 		}
 		lblLangFrom.setText(languageFrom);
 		lblLangTo.setText(languageTo);
