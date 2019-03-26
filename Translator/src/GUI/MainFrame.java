@@ -192,6 +192,12 @@ public class MainFrame implements ActionListener{
 		
 		chckbxNewCheckBox = new JCheckBox("Option to add new word");
 		chckbxNewCheckBox.setBounds(527, 538, 221, 29);
+		chckbxNewCheckBox.setSelected(isAddNewWordsToDictOptionEnabled);
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent translateFile) {
+				isAddNewWordsToDictOptionEnabled = chckbxNewCheckBox.isSelected();
+			}
+		});
 		frame.getContentPane().add(chckbxNewCheckBox);
 
 		menuBar = new JMenuBar();
