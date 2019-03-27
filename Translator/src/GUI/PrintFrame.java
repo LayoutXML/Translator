@@ -44,7 +44,7 @@ public class PrintFrame extends JFrame {
 		
 		JLabel lblAddingANew = new JLabel("Dictionary");
 		lblAddingANew.setBounds(250, 11, 107, 27);
-		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		lblAddingANew.setFont(new Font("Malgun Gothic", Font.BOLD, 22));
 		lblAddingANew.setForeground(Color.WHITE);
 		contentPane.add(lblAddingANew);
 
@@ -54,7 +54,8 @@ public class PrintFrame extends JFrame {
 		scrollPane.setBounds(37, 42, 545, 516);
 		contentPane.add(scrollPane);
 		JList<String> list = new JList<>(listModel);
-		list.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		list.setBackground(Color.LIGHT_GRAY);
+		list.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 20));
 		scrollPane.setViewportView(list);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		list.setLayoutOrientation(JList.VERTICAL);

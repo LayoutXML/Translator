@@ -60,13 +60,13 @@ public class FileFrame extends JFrame {
 		languageIndex = languageIndexReference;
 
 		JLabel lblAddingANew = new JLabel("Translate a .txt File");
-		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		lblAddingANew.setFont(new Font("Malgun Gothic", Font.BOLD, 22));
 		lblAddingANew.setForeground(Color.WHITE);
-		lblAddingANew.setBounds(218, 11, 191, 20);
+		lblAddingANew.setBounds(205, 11, 210, 26);
 		contentPane.add(lblAddingANew);
 		
 		btnNewButton = new JButton("Choose");
-		btnNewButton.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		btnNewButton.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				OpenFile file = new OpenFile();
@@ -77,7 +77,7 @@ public class FileFrame extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		btnTranslate = new JButton("Translate");
-		btnTranslate.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		btnTranslate.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 18));
 		btnTranslate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (fileName!=null) {
@@ -93,7 +93,8 @@ public class FileFrame extends JFrame {
 		contentPane.add(scrollPane_1);
 		
 		fileOutput = new JTextPane();
-		fileOutput.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		fileOutput.setBackground(Color.LIGHT_GRAY);
+		fileOutput.setFont(new Font("Cambria", Font.PLAIN, 20));
 		scrollPane_1.setViewportView(fileOutput);
 				
 				scrollPane = new JScrollPane();
@@ -101,7 +102,8 @@ public class FileFrame extends JFrame {
 				contentPane.add(scrollPane);
 		
 				fileText = new JTextPane();
-				fileText.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+				fileText.setBackground(Color.LIGHT_GRAY);
+				fileText.setFont(new Font("Cambria", Font.PLAIN, 20));
 				scrollPane.setViewportView(fileText);
 	}
 }

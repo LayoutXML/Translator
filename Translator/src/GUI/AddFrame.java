@@ -46,24 +46,26 @@ public class AddFrame extends JFrame {
 		englishOnLeft = englishOnLeftReference;
 		
 		JLabel lblAddingANew = new JLabel("Add a new word to the current dictionary");
-		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 30));
+		lblAddingANew.setFont(new Font("Malgun Gothic", Font.BOLD, 26));
 		lblAddingANew.setForeground(Color.WHITE);
 		lblAddingANew.setBounds(54, 35, 554, 49);
 		contentPane.add(lblAddingANew);
 		
 		JTextArea originalWordInput = new JTextArea();
-		originalWordInput.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		originalWordInput.setBackground(Color.LIGHT_GRAY);
+		originalWordInput.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 20));
 		originalWordInput.setBounds(54, 198, 244, 176);
 		contentPane.add(originalWordInput);
 		originalWordInput.setText(word);
 		
 		JTextArea translationInput = new JTextArea();
-		translationInput.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		translationInput.setBackground(Color.LIGHT_GRAY);
+		translationInput.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 20));
 		translationInput.setBounds(333, 198, 244, 176);
 		contentPane.add(translationInput);
 		
 		JButton btnNewButton = new JButton("Add");
-		btnNewButton.setFont(new Font("Cambria Math", Font.PLAIN, 24));
+		btnNewButton.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 30));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				translator.addToDictionary(originalWordInput.getText(),translationInput.getText(),languageIndex, true);
@@ -74,7 +76,7 @@ public class AddFrame extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblOriginal = new JLabel();
-		lblOriginal.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		lblOriginal.setFont(new Font("Malgun Gothic", Font.PLAIN, 20));
 		lblOriginal.setForeground(Color.WHITE);
 		lblOriginal.setBounds(102, 138, 128, 49);
 		if (englishOnLeft) {
@@ -98,7 +100,7 @@ public class AddFrame extends JFrame {
 		contentPane.add(lblOriginal);
 		
 		JLabel lblTranslation = new JLabel();
-		lblTranslation.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		lblTranslation.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 20));
 		lblTranslation.setForeground(Color.WHITE);
 		lblTranslation.setBackground(new Color(240, 240, 240));
 		lblTranslation.setBounds(386, 138, 128, 44);
