@@ -23,6 +23,9 @@ import java.awt.Font;
 import java.awt.Dimension;
 
 @SuppressWarnings("Duplicates")
+/**
+ * Class that handles GUI for translating a file
+ */
 public class FileFrame extends JFrame {
 
 	private JPanel contentPane;
@@ -35,7 +38,12 @@ public class FileFrame extends JFrame {
 	private int languageIndex;
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
-	
+
+	/**
+	 * GUI and initialisation
+	 * @param translatorReference translator
+	 * @param languageIndexReference language index
+	 */
 	public FileFrame(Translator translatorReference, int languageIndexReference) {
 		setMinimumSize(new Dimension(640, 640));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

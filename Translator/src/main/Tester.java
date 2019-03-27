@@ -6,10 +6,16 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @SuppressWarnings("Duplicates")
+/**
+ * Tester class with automated tests
+ */
 public class Tester {
 
     private Translator translator;
 
+    /**
+     * Initialise method for testing that creates a translator
+     */
     public void initialise() {
         translator = new Translator();
         translator.initialise();
@@ -72,7 +78,12 @@ public class Tester {
         System.out.println("\nPlease select one of the options below:");
         System.out.println("1. Run automated tests");
     }
-    
+
+    /**
+     * Method that splits input and then translates it
+     * @param input input (original text)
+     * @param languageIndex language index
+     */
     private void translateInput(String input, int languageIndex) {
                     System.out.println(input);
                     String translation, characters = "", lastTranslation="", lastOriginalWord="";

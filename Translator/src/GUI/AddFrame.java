@@ -13,13 +13,23 @@ import main.Translator;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * Class that handles GUI for adding words to the dictionary
+ */
 public class AddFrame extends JFrame {
 
 	private JPanel contentPane;
 	private Translator translator;
 	private int languageIndex;
 	private boolean englishOnLeft;
-	
+
+	/**
+	 * GUI creation and initialisation
+	 * @param word word to add
+	 * @param translatorReference translator
+	 * @param languageIndexReference language index
+	 * @param englishOnLeftReference is not flipped
+	 */
 	public AddFrame(String word, Translator translatorReference, int languageIndexReference, boolean englishOnLeftReference) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 640, 640);

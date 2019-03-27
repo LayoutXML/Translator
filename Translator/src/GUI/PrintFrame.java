@@ -14,12 +14,20 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Class that handles GUI for printing a dictionary (list)
+ */
 public class PrintFrame extends JFrame {
 
 	private JPanel contentPane;
 	private Translator translator;
 	private int languageIndex;
-	
+
+	/**
+	 * GUI and initialisation
+	 * @param translatorReference translator
+	 * @param languageIndexReference language index
+	 */
 	public PrintFrame(Translator translatorReference, int languageIndexReference) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 640, 640);
