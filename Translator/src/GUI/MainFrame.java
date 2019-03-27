@@ -107,7 +107,7 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		frame.getContentPane().setLayout(null);
-		btnTranslate.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
+		btnTranslate.setFont(new Font("Cambria Math", Font.PLAIN, 24));
 		frame.getContentPane().add(btnTranslate);
 
 		JButton btnFlip = new JButton("");
@@ -131,7 +131,7 @@ public class MainFrame implements ActionListener{
 		textOriginal.setBackground(Color.LIGHT_GRAY);
 		scrollPane.setViewportView(textOriginal);
 		textOriginal.setLineWrap(true);
-		textOriginal.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 24));
+		textOriginal.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 24));
 		textOriginal.setColumns(10);
 		
 		scrollPane_1 = new JScrollPane();
@@ -142,7 +142,7 @@ public class MainFrame implements ActionListener{
 		textTranslation.setBackground(Color.LIGHT_GRAY);
 		scrollPane_1.setViewportView(textTranslation);
 		textTranslation.setLineWrap(true);
-		textTranslation.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 24));
+		textTranslation.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 24));
 		textTranslation.setColumns(10);
 		
 		btnAdd = new JButton("Add a word");
@@ -153,7 +153,7 @@ public class MainFrame implements ActionListener{
 				add.setVisible(true);
 			}
 		});
-		btnAdd.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 24));
+		btnAdd.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 24));
 		frame.getContentPane().add(btnAdd);
 		
 		btnRemove = new JButton("Remove a word");
@@ -164,7 +164,7 @@ public class MainFrame implements ActionListener{
 				remove.setVisible(true);
 			}
 		});
-		btnRemove.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 24));
+		btnRemove.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 24));
 		frame.getContentPane().add(btnRemove);
 		
 		btnPrintDict = new JButton("Print Dictionary");
@@ -175,7 +175,7 @@ public class MainFrame implements ActionListener{
 				print.setVisible(true);
 			}
 		});
-		btnPrintDict.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 24));
+		btnPrintDict.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 24));
 		frame.getContentPane().add(btnPrintDict);
 		
 		btnTranslateText = new JButton("Translate a text file");
@@ -186,29 +186,29 @@ public class MainFrame implements ActionListener{
 				frame.setVisible(true);
 			}
 		});
-		btnTranslateText.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 18));
+		btnTranslateText.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 18));
 		frame.getContentPane().add(btnTranslateText);
 		
 		JLabel lblJavaTranslator = new JLabel("Java Translator");
 		lblJavaTranslator.setBounds(472, 31, 325, 59);
 		lblJavaTranslator.setForeground(Color.WHITE);
-		lblJavaTranslator.setFont(new Font("Malgun Gothic", Font.BOLD, 40));
+		lblJavaTranslator.setFont(new Font("Cambria Math", Font.BOLD, 40));
 		frame.getContentPane().add(lblJavaTranslator);
 		
 		lblLangFrom = new JLabel(languageFrom);
-		lblLangFrom.setFont(new Font("Malgun Gothic", Font.BOLD, 30));
+		lblLangFrom.setFont(new Font("Cambria Math", Font.BOLD, 30));
 		lblLangFrom.setBounds(255, 86, 265, 50);
 		lblLangFrom.setForeground(Color.WHITE);
 		frame.getContentPane().add(lblLangFrom);
 		
 		lblLangTo = new JLabel(languageTo);
-		lblLangTo.setFont(new Font("Malgun Gothic", Font.BOLD, 30));
+		lblLangTo.setFont(new Font("Cambria Math", Font.BOLD, 30));
 		lblLangTo.setBounds(899, 90, 303, 41);
 		lblLangTo.setForeground(Color.WHITE);
 		frame.getContentPane().add(lblLangTo);
 		
 		chckbxNewCheckBox = new JCheckBox("Option to add new word");
-		chckbxNewCheckBox.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 22));
+		chckbxNewCheckBox.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 22));
 		chckbxNewCheckBox.setForeground(Color.WHITE);
 		chckbxNewCheckBox.setBackground(Color.DARK_GRAY);
 		chckbxNewCheckBox.setBounds(496, 532, 459, 35);
@@ -228,21 +228,21 @@ public class MainFrame implements ActionListener{
 		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		JMenu menu = new JMenu("Language");
-		menu.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 18));
+		menu.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 18));
 		JMenuItem item = new JMenuItem("Lithuanian");
-		item.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 18));
+		item.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 18));
 		item.setIcon(new ImageIcon("lithuania.png"));
 		item.addActionListener(this);
 		menu.add(item);
 		menu.addSeparator();
 		item_1 = new JMenuItem("Swedish");
-		item_1.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 18));
+		item_1.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 18));
 		item_1.setIcon(new ImageIcon("sweden.png"));
 		item_1.addActionListener(this);
 		menu.add(item_1);
 		menu.addSeparator();
 		item_2 = new JMenuItem("Albanian");
-		item_2.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 18));
+		item_2.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 18));
 		item_2.setIcon(new ImageIcon("albania.png"));
 		item_2.addActionListener(this);
 		menu.add(item_2);

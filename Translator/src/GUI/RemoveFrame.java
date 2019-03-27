@@ -102,20 +102,20 @@ public class RemoveFrame extends JFrame implements ActionListener{
 		menuBar.add(menu);
 		
 		JLabel lblAddingANew = new JLabel("Remove a word from the dictionary");
-		lblAddingANew.setFont(new Font("Malgun Gothic", Font.BOLD, 30));
+		lblAddingANew.setFont(new Font("Cambria Math", Font.BOLD, 30));
 		lblAddingANew.setForeground(Color.WHITE);
 		lblAddingANew.setBounds(56, 16, 578, 45);
 		contentPane.add(lblAddingANew);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(Color.LIGHT_GRAY);
-		textArea.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
+		textArea.setFont(new Font("Cambria Math", Font.PLAIN, 24));
 		textArea.setBounds(146, 147, 335, 275);
 		contentPane.add(textArea);
 		
 		JButton btnNewButton = new JButton("Remove");
 		btnNewButton.setBackground(new Color(240, 240, 240));
-		btnNewButton.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 24));
+		btnNewButton.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 24));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (isLeft) {
@@ -130,7 +130,7 @@ public class RemoveFrame extends JFrame implements ActionListener{
 		contentPane.add(btnNewButton);
 		
 		lblText = new JLabel();
-		lblText.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 22));
+		lblText.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 22));
 		lblText.setForeground(Color.WHITE);
 		lblText.setBounds(184, 77, 272, 67);
 		if (isLeft) {
