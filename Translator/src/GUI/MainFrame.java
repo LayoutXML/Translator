@@ -191,7 +191,10 @@ public class MainFrame implements ActionListener{
 		frame.getContentPane().add(lblLangTo);
 		
 		chckbxNewCheckBox = new JCheckBox("Option to add new word");
-		chckbxNewCheckBox.setBounds(527, 538, 221, 29);
+		chckbxNewCheckBox.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		chckbxNewCheckBox.setForeground(Color.WHITE);
+		chckbxNewCheckBox.setBackground(Color.DARK_GRAY);
+		chckbxNewCheckBox.setBounds(506, 526, 459, 50);
 		chckbxNewCheckBox.setSelected(isAddNewWordsToDictOptionEnabled);
 		chckbxNewCheckBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translateFile) {
