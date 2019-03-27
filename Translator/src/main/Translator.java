@@ -41,8 +41,9 @@ public class Translator {
     }
 
     /**
-     * Method that returns translation for a given word
-     * @param original word in an original language (key)
+     * Method that returns translation for a given word or phrase
+     * @param original words in an original language (key)
+     * @param languageIndex language index
      * @return translation (value)
      */
     public String translate(String original, int languageIndex) {
@@ -77,8 +78,11 @@ public class Translator {
     }
 
     /**
-     * Method that reads and translates a file (to a console)
+     * Method that reads and translates a file (to a console or jtextpane)
      * @param fileName file name
+     * @param languageIndex language index
+     * @param area1 left area
+     * @param area2 right area
      */
     public void translateFile(String fileName, int languageIndex, JTextPane area1, JTextPane area2) {
         Thread thread = new Thread() {
@@ -184,6 +188,8 @@ public class Translator {
      * Method that adds word or phrase pair to a dictionary
      * @param original original word or phrase (key)
      * @param translation translation (value)
+     * @param languageIndex language index
+     * @param showMessage show message in a popup window
      */
     public void addToDictionary(String original, String translation, int languageIndex, boolean showMessage) {
         Thread thread = new Thread() {
@@ -233,6 +239,8 @@ public class Translator {
     /**
      * Method that removes a word or phrase from a dictionary by key
      * @param original word or phrase in an original language (key)
+     * @param languageIndex language index
+     * @param showMessage show message in a popup window
      */
     public void removeFromDictionary(String original, int languageIndex, boolean showMessage) {
         String oldValue = dictionaries.get(languageIndex).remove(original.toLowerCase());
@@ -254,6 +262,8 @@ public class Translator {
     /**
      * Method that removes a word or phrase from dictionaries by value
      * @param translation translation (value)
+     * @param languageIndex language index
+     * @param showMessage show message in a popup window
      */
     public void removeFromDictionaryByValue(String translation, int languageIndex, boolean showMessage) {
         Thread thread = new Thread() {
@@ -288,6 +298,7 @@ public class Translator {
 
     /**
      * Method that prints the dictionaries to a console
+     * @param languageIndex language index
      */
     public void printDictionaty(int languageIndex) {
         Thread thread = new Thread() {
@@ -301,6 +312,11 @@ public class Translator {
         thread.run();
     }
 
+    /**
+     * Method that returns a dictionary for a given language
+     * @param languageIndex language index
+     * @return hasmap - dictionary
+     */
     public HashMap<String, String> getDictionary(int languageIndex) {
         return dictionaries.get(languageIndex);
     }
@@ -315,7 +331,8 @@ public class Translator {
     }
 
     /**
-     * Method that reads dictionaries file to a dictionaries
+     * Method that reads dictionary file to a dictionary hasmap
+     * @param languageIndex language index
      */
     public void readFile(int languageIndex) {
         if (!isWriting) {
@@ -378,7 +395,8 @@ public class Translator {
     }
 
     /**
-     * Method that writes a dictionaries to a file
+     * Method that writes a dictionary to a file
+     * @param languageIndex language index
      */
     public void writeFile(int languageIndex) {
         if (!isReading) {
@@ -417,6 +435,7 @@ public class Translator {
 
     /**
      * Method that performs pending tasks, for example reading/writing files
+     * @param languageIndex language index
      */
     private void performPending(int languageIndex, int languageIndex2) {
         if (pendingWrite && languageIndex!=-1) {
@@ -427,6 +446,10 @@ public class Translator {
         }
     }
 
+    /**
+     * Method that flips dictionary's keys and values for translation in the opposite direction
+     * @param languageIndex language index
+     */
     public void flipDictionary(int languageIndex) {
         Thread thread = new Thread() {
             @Override
