@@ -16,6 +16,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 @SuppressWarnings("Duplicates")
+/**
+ * Class that handles main GUI screen
+ */
 public class MainFrame implements ActionListener{
 
 	private JFrame frame;
@@ -238,6 +241,9 @@ public class MainFrame implements ActionListener{
 		menuBar.add(menu);
 	}
 
+	/**
+	 * Handles translation - splits words, saves characters etc
+	 */
 	private void translate() {
 		textTranslation.setText("");
 		String input, translation, characters = "", lastTranslation="", lastOriginalWord="";
@@ -307,6 +313,10 @@ public class MainFrame implements ActionListener{
 
 	}
 
+	/**
+	 * Handles language switching menu
+	 * @param e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JMenuItem source = (JMenuItem) (e.getSource());
@@ -330,7 +340,10 @@ public class MainFrame implements ActionListener{
 		}
 		changeLabels();
 	}
-	
+
+	/**
+	 * Changes language labels appropriately
+	 */
 	public void changeLabels()
 	{
 		if(!englishIsOnLeft[languageIndex])

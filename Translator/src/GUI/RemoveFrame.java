@@ -17,6 +17,9 @@ import java.awt.Color;
 import java.awt.Font;
 
 @SuppressWarnings("Duplicates")
+/**
+ * Class that handles GUI for removing words from dictionary
+ */
 public class RemoveFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
@@ -27,7 +30,13 @@ public class RemoveFrame extends JFrame implements ActionListener{
 	private String leftText;
 	private String rightText;
 	private JLabel lblText;
-	
+
+	/**
+	 * Handles GUI and initialisation
+	 * @param translatorReference translator
+	 * @param languageIndexReference language index
+	 * @param englishOnLeft is not flipped
+	 */
 	public RemoveFrame(Translator translatorReference, int languageIndexReference, boolean englishOnLeft) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 640, 640);
@@ -130,6 +139,10 @@ public class RemoveFrame extends JFrame implements ActionListener{
 		contentPane.add(lblText);
 	}
 
+	/**
+	 * Handles language switching menu
+	 * @param e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JMenuItem source = (JMenuItem) (e.getSource());
