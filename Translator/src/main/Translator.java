@@ -108,7 +108,7 @@ public class Translator {
                     String input = text.toString();
                     StringBuilder translationFinal = new StringBuilder();
 
-                    String[] words = text.substring(1).split("\\W+");
+                    String[] words = text.substring(1).split("\\P{L}+");
                     long startTime = Calendar.getInstance().getTimeInMillis();
                     for (String word : words) {
                         if (!error) {
@@ -437,7 +437,6 @@ public class Translator {
                 }
                 dictionaries.set(languageIndex, dictionaryNew);
                 flipped[languageIndex] = !flipped[languageIndex];
-                JOptionPane.showMessageDialog(null, "Flipped successfully.");
             }
         };
         thread.run();
