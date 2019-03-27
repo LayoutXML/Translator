@@ -348,6 +348,7 @@ public class MainFrame implements ActionListener{
 		}
 		if (!dictionaryLoaded[languageIndex]) {
 			translator.readFile(languageIndex);
+			dictionaryLoaded[languageIndex]=true;
 		}
 		changeLabels();
 	}
