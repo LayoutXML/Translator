@@ -34,7 +34,7 @@ public class MainFrame implements ActionListener{
 	private JScrollPane scrollPane_1;
 	private String languageFrom = "English";
 	private String languageTo = "Lithuanian";
-	private boolean englishIsOnLeft = true;
+	private boolean[] englishIsOnLeft = {true,true,true};
 	private boolean[] dictionaryLoaded;
 	private boolean isAddNewWordsToDictOptionEnabled = false;
 	private JCheckBox chckbxNewCheckBox;
@@ -103,6 +103,7 @@ public class MainFrame implements ActionListener{
 		btnFlip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translate) {
 				translator.flipDictionary(languageIndex);
+				englishIsOnLeft[languageIndex] = !englishIsOnLeft[languageIndex];
 				changeLabels();
 			}
 		});
@@ -133,7 +134,7 @@ public class MainFrame implements ActionListener{
 		btnAdd.setBounds(75, 600, 185, 75);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent addWordToDictionary) {
-				AddFrame add = new AddFrame("", translator, languageIndex, englishIsOnLeft);
+				AddFrame add = new AddFrame("", translator, languageIndex, englishIsOnLeft[languageIndex]);
 				add.setVisible(true);
 			}
 		});
@@ -144,7 +145,7 @@ public class MainFrame implements ActionListener{
 		btnRemove.setBounds(374, 600, 185, 75);
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent removeWordFromDictionary) {
-				RemoveFrame remove = new RemoveFrame(translator, languageIndex, englishIsOnLeft);
+				RemoveFrame remove = new RemoveFrame(translator, languageIndex, englishIsOnLeft[languageIndex]);
 				remove.setVisible(true);
 			}
 		});
@@ -296,7 +297,7 @@ public class MainFrame implements ActionListener{
 		}
 		textTranslation.setText(textTranslation.getText()+lastTranslation + input);
 		for (String notTranslatedWord : notTranslated) {
-			AddFrame add = new AddFrame(notTranslatedWord, translator, languageIndex, englishIsOnLeft);
+			AddFrame add = new AddFrame(notTranslatedWord, translator, languageIndex, englishIsOnLeft[languageIndex]);
 			add.setVisible(true);
 		}
 		long endTime = Calendar.getInstance().getTimeInMillis();
@@ -324,15 +325,15 @@ public class MainFrame implements ActionListener{
 				languageIndex = 0;
 				break;
 		}
-    if (!dictionaryLoaded[languageIndex]) {
+		if (!dictionaryLoaded[languageIndex]) {
 			translator.readFile(languageIndex);
 		}
-		changeLang();
+		changeLabels();
 	}
 	
 	public void changeLabels()
 	{
-		if(englishIsOnLeft)
+		if(!englishIsOnLeft[languageIndex])
 		{
 			languageTo = "English";
 			if(languageIndex == 0)
@@ -347,7 +348,6 @@ public class MainFrame implements ActionListener{
 			{
 				languageFrom = "Albanian";
 			}
-			englishIsOnLeft = false;
 		}
 		else
 		{
@@ -364,46 +364,6 @@ public class MainFrame implements ActionListener{
 			{
 				languageTo = "Albanian";
 			}
-			englishIsOnLeft = true;
-		}
-		lblLangFrom.setText(languageFrom);
-		lblLangTo.setText(languageTo);
-	}
-	
-	public void changeLang()
-	{
-		if(englishIsOnLeft)
-		{
-			if(languageIndex == 0)
-			{
-				languageTo = "Lithuanian";
-			}
-			else if(languageIndex == 1)
-			{
-				languageTo = "Swedish";
-			}
-			else if(languageIndex == 2)
-			{
-				languageTo = "Albanian";
-			}
-		}
-		else
-		{
-			languageFrom = "English";
-			if(languageIndex == 0)
-			{
-				languageTo = "Lithuanian";
-			}
-			else if(languageIndex == 1)
-			{
-				languageTo = "Swedish";
-			}
-			else if(languageIndex == 2)
-			{
-				languageTo = "Albanian";
-				lblFlagIndicator.setIcon(new ImageIcon("albania.png"));
-			}
-			englishIsOnLeft = true;
 		}
 		lblLangFrom.setText(languageFrom);
 		lblLangTo.setText(languageTo);
