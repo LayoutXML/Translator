@@ -2,8 +2,6 @@ package GUI;
 
 import main.Translator;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import javax.swing.JPanel;
@@ -13,16 +11,11 @@ import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Calendar;
 import javax.swing.JScrollPane;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
 
-@SuppressWarnings("Duplicates")
 /**
  * Class that handles GUI for translating a file
  */
@@ -60,13 +53,13 @@ public class FileFrame extends JFrame {
 		languageIndex = languageIndexReference;
 
 		JLabel lblAddingANew = new JLabel("Translate a .txt File");
-		lblAddingANew.setFont(new Font("Malgun Gothic", Font.BOLD, 22));
+		lblAddingANew.setFont(new Font("Cambria Math", Font.BOLD, 22));
 		lblAddingANew.setForeground(Color.WHITE);
 		lblAddingANew.setBounds(205, 11, 210, 26);
 		contentPane.add(lblAddingANew);
 		
 		btnNewButton = new JButton("Choose");
-		btnNewButton.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 18));
+		btnNewButton.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				OpenFile file = new OpenFile();
@@ -77,7 +70,7 @@ public class FileFrame extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		btnTranslate = new JButton("Translate");
-		btnTranslate.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 18));
+		btnTranslate.setFont(new Font("Cambria Math Semilight", Font.PLAIN, 18));
 		btnTranslate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (fileName!=null) {

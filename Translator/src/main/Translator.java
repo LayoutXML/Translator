@@ -5,7 +5,6 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-@SuppressWarnings("Duplicates")
 /**
  * Translator class that contains methods to work with dictionaries and dictionaries itself
  */
@@ -18,7 +17,7 @@ public class Translator {
     private boolean isWriting; //is file open and being written in
     private boolean pendingRead; //is program waiting to reading file
     private boolean pendingWrite; //is program waiting to write file
-    private boolean turboMode; //when false ensures 1:1 relationship between languages
+    private boolean turboMode; //when false ensures 1:1 relationship between languages but is slower, affect is the same as flipping dictionary twice
     private String[] languageFileNames = {"lithuanian","swedish","albanian"};
     private String[] phrasalVerbs = {"up","down","off","out","in"};
     private boolean[] flipped = {false,false,false};
@@ -47,18 +46,18 @@ public class Translator {
      * @return translation (value)
      */
     public String translate(String original, int languageIndex) {
-        if (!exceptions.contains(original.toLowerCase()) || flipped[languageIndex]) {
-            String translation = dictionaries.get(languageIndex).get(original.toLowerCase());
-            if (translation == null) {
-                if (languageIndex==0) {
-                    String[] words = original.split("\\P{L}+");;
+        if (!exceptions.contains(original.toLowerCase()) || flipped[languageIndex]) { //checks if a word is not in an exceptions list (if original is english)
+            String translation = dictionaries.get(languageIndex).get(original.toLowerCase()); //find a translation
+            if (translation == null) { //if translation does not exist
+                if (languageIndex==0) { //if lithuanian (the only language with phrasal verbs)
+                    String[] words = original.split("\\P{L}+"); //splits input into words
                     StringBuilder processed = new StringBuilder();
                     for (String word : words) {
                         int indexOf = original.indexOf(word);
                         String characters = original.substring(0, indexOf);
                         original = original.substring(indexOf + word.length());
                         if (!exceptions.contains(word.toLowerCase()) || flipped[languageIndex]) {
-                            String wordTranslated = dictionaries.get(languageIndex).get(word.toLowerCase());
+                            String wordTranslated = dictionaries.get(languageIndex).get(word.toLowerCase()); //translates each word
                             if (wordTranslated==null) {
                                 processed.append(characters).append(word);
                             } else {
@@ -100,7 +99,7 @@ public class Translator {
                     boolean error = false, isFirst = true, lastEmpty=false;
 
                     while ((line = bufferedReader.readLine()) != null) {
-                        text.append("\n").append(line);
+                        text.append("\n").append(line); //reads text line by line
                     }
 
                     bufferedReader.close();
@@ -115,6 +114,7 @@ public class Translator {
                     String[] words = text.substring(1).split("\\P{L}+");
                     long startTime = Calendar.getInstance().getTimeInMillis();
                     for (String word : words) {
+                        //this is for saving characters between the words
                         if (!error) {
                             indexOf = input.indexOf(word);
                             if (indexOf == -1) {
@@ -124,6 +124,7 @@ public class Translator {
                                 input = input.substring(indexOf + word.length());
                             }
                         }
+                        //this is for checking if it's a phrasal verb
                         boolean phrasalVerb = false;
                         for (String phrase : phrasalVerbs) {
                             if (word.toLowerCase().equals(phrase)) {
@@ -132,7 +133,7 @@ public class Translator {
                         }
                         boolean capitalize = lastEmpty && (lastTranslation.contains(".") || lastTranslation.contains("?") || lastTranslation.contains("!"));
                         if (phrasalVerb && languageIndex==0) {
-                            translation = translate(lastOriginalWord + " " + word, languageIndex);
+                            translation = translate(lastOriginalWord + " " + word, languageIndex); //if phrasal word (out of two words), takes the previous word to form a phrase
                         } else {
                             if (area2==null) {
                                 System.out.print(lastTranslation);
@@ -144,7 +145,7 @@ public class Translator {
                         lastTranslation="";
                         if (isFirst || characters.contains(".") || characters.contains("?") || characters.contains("!") || capitalize) {
                             if (translation.length() > 0) {
-                                translation = translation.substring(0, 1).toUpperCase() + translation.substring(1);
+                                translation = translation.substring(0, 1).toUpperCase() + translation.substring(1); //capitalizes words when needed
                                 if (isFirst) {
                                     isFirst = false;
                                 }
@@ -197,6 +198,8 @@ public class Translator {
             public void run() {
                 boolean found = false, showedMsg = false;
                 String key = "";
+                //if turbo mode is off, ensures 1:1 relationship by checking each word (hasmap entry value) if it already exists
+                //when turbo mode is off, adding words to dictionary is slower and undermines the whole purpose of hashmap (fast data access)
                 if (!turboMode) {
                     for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
                         if (entry.getValue().equals(translation)) {
@@ -269,7 +272,7 @@ public class Translator {
         Thread thread = new Thread() {
             @Override
             public void run() {
-                ArrayList<String> keysToRemove = new ArrayList<>();
+                ArrayList<String> keysToRemove = new ArrayList<>(); //arraylist because if not 1:1 relationship, there might be multiple keys with the same value
                 for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
                     if (entry.getValue().equals(translation.toLowerCase())) {
                         keysToRemove.add(entry.getKey());
@@ -346,7 +349,7 @@ public class Translator {
                     BufferedReader bufferedReader;
 
                     try {
-                        //Main dic
+                        //Main dictionary
                         fileReader = new FileReader(languageFileNames[languageIndex] + ".txt");
                         bufferedReader = new BufferedReader(fileReader);
                         String line;
@@ -434,7 +437,7 @@ public class Translator {
     }
 
     /**
-     * Method that performs pending tasks, for example reading/writing files
+     * Method that performs pending tasks, for example reading/writing files. Ensures that file writing and reading doesn't occur at the same time
      * @param languageIndex language index
      */
     private void performPending(int languageIndex, int languageIndex2) {
@@ -456,7 +459,7 @@ public class Translator {
             public void run() {
                 HashMap<String, String> dictionaryNew = new HashMap<>();
                 for (Map.Entry<String, String> entry : dictionaries.get(languageIndex).entrySet()) {
-                    dictionaryNew.put(entry.getValue(), entry.getKey());
+                    dictionaryNew.put(entry.getValue(), entry.getKey()); //traverses through the hashmap and for each entry's value adds an entry with the value as a key
                 }
                 dictionaries.set(languageIndex, dictionaryNew);
                 flipped[languageIndex] = !flipped[languageIndex];
