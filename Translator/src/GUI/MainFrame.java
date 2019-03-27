@@ -243,7 +243,7 @@ public class MainFrame implements ActionListener{
 		int indexOf;
 		boolean error = false, isFirst = true, lastEmpty=false;
 		input = textOriginal.getText();
-		String[] words = input.split("\\W+");
+		String[] words = input.split("\\P{L}+");
 		long startTime = Calendar.getInstance().getTimeInMillis();
 		ArrayList<String> notTranslated = new ArrayList<>();
 		for (String word : words) {

@@ -50,7 +50,7 @@ public class Translator {
             String translation = dictionaries.get(languageIndex).get(original.toLowerCase());
             if (translation == null) {
                 if (languageIndex==0) {
-                    String[] words = original.split("\\W+");
+                    String[] words = original.split("\\P{L}+");;
                     StringBuilder processed = new StringBuilder();
                     for (String word : words) {
                         int indexOf = original.indexOf(word);
@@ -108,7 +108,7 @@ public class Translator {
                     String input = text.toString();
                     StringBuilder translationFinal = new StringBuilder();
 
-                    String[] words = text.substring(1).split("\\W+");
+                    String[] words = text.substring(1).split("\\P{L}+");
                     long startTime = Calendar.getInstance().getTimeInMillis();
                     for (String word : words) {
                         if (!error) {
@@ -437,7 +437,6 @@ public class Translator {
                 }
                 dictionaries.set(languageIndex, dictionaryNew);
                 flipped[languageIndex] = !flipped[languageIndex];
-                JOptionPane.showMessageDialog(null, "Flipped successfully.");
             }
         };
         thread.run();
