@@ -206,7 +206,7 @@ public class MainFrame implements ActionListener{
 		frame.getContentPane().add(chckbxNewCheckBox);
 		
 		lblFlagIndicator = new JLabel("");
-		lblFlagIndicator.setBounds(1224, 16, 35, 35);
+		lblFlagIndicator.setBounds(1239, 0, 35, 35);
 		lblFlagIndicator.setIcon(new ImageIcon("lithuania.png"));
 		frame.getContentPane().add(lblFlagIndicator);
 
@@ -306,12 +306,15 @@ public class MainFrame implements ActionListener{
 		switch (text) {
 			case "Lithuanian":
 				languageIndex = 0;
+				lblFlagIndicator.setIcon(new ImageIcon("lithuania.png"));
 				break;
 			case "Swedish":
 				languageIndex = 1;
+				lblFlagIndicator.setIcon(new ImageIcon("sweden.png"));
 				break;
 			case "Albanian":
 				languageIndex = 2;
+				lblFlagIndicator.setIcon(new ImageIcon("albania.png"));
 				break;
 			default:
 				languageIndex = 0;
