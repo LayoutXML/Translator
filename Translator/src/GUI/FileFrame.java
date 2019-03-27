@@ -58,16 +58,18 @@ public class FileFrame extends JFrame {
 		contentPane.add(lblAddingANew);
 		
 		btnNewButton = new JButton("Choose");
+		btnNewButton.setFont(new Font("Cambria Math", Font.PLAIN, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				OpenFile file = new OpenFile();
 				fileName = file.pick();
 			}
 		});
-		btnNewButton.setBounds(110, 53, 89, 23);
+		btnNewButton.setBounds(95, 53, 118, 23);
 		contentPane.add(btnNewButton);
 		
 		btnTranslate = new JButton("Translate");
+		btnTranslate.setFont(new Font("Cambria Math", Font.PLAIN, 20));
 		btnTranslate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (fileName!=null) {
@@ -83,7 +85,7 @@ public class FileFrame extends JFrame {
 		contentPane.add(scrollPane_1);
 		
 		fileOutput = new JTextPane();
-		fileOutput.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		fileOutput.setFont(new Font("Cambria Math", Font.PLAIN, 20));
 		scrollPane_1.setViewportView(fileOutput);
 				
 				scrollPane = new JScrollPane();
@@ -91,7 +93,7 @@ public class FileFrame extends JFrame {
 				contentPane.add(scrollPane);
 		
 				fileText = new JTextPane();
-				fileText.setFont(new Font("Tahoma", Font.PLAIN, 20));
+				fileText.setFont(new Font("Cambria Math", Font.PLAIN, 20));
 				scrollPane.setViewportView(fileText);
 	}
 }

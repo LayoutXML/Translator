@@ -27,17 +27,17 @@ public class PrintFrame extends JFrame {
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		setResizable(false);
 		setTitle("Print dictionary");
 
 		translator = translatorReference;
 		languageIndex = languageIndexReference;
+		contentPane.setLayout(null);
 		
 		JLabel lblAddingANew = new JLabel("Dictionary");
+		lblAddingANew.setBounds(250, 11, 107, 27);
 		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 22));
 		lblAddingANew.setForeground(Color.WHITE);
-		lblAddingANew.setBounds(250, 11, 107, 27);
 		contentPane.add(lblAddingANew);
 
 		DefaultListModel<String> listModel = new DefaultListModel<>();
@@ -46,6 +46,7 @@ public class PrintFrame extends JFrame {
 		scrollPane.setBounds(37, 42, 545, 516);
 		contentPane.add(scrollPane);
 		JList<String> list = new JList<>(listModel);
+		list.setFont(new Font("Cambria Math", Font.PLAIN, 20));
 		scrollPane.setViewportView(list);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		list.setLayoutOrientation(JList.VERTICAL);

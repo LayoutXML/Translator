@@ -38,6 +38,7 @@ public class MainFrame implements ActionListener{
 	private boolean[] dictionaryLoaded;
 	private boolean isAddNewWordsToDictOptionEnabled = false;
 	private JCheckBox chckbxNewCheckBox;
+	private JLabel lblFlagIndicator;
 
 	/**
 	 * Launch the application.
@@ -191,7 +192,10 @@ public class MainFrame implements ActionListener{
 		frame.getContentPane().add(lblLangTo);
 		
 		chckbxNewCheckBox = new JCheckBox("Option to add new word");
-		chckbxNewCheckBox.setBounds(527, 538, 221, 29);
+		chckbxNewCheckBox.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		chckbxNewCheckBox.setForeground(Color.WHITE);
+		chckbxNewCheckBox.setBackground(Color.DARK_GRAY);
+		chckbxNewCheckBox.setBounds(499, 516, 459, 35);
 		chckbxNewCheckBox.setSelected(isAddNewWordsToDictOptionEnabled);
 		chckbxNewCheckBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent translateFile) {
@@ -199,6 +203,19 @@ public class MainFrame implements ActionListener{
 			}
 		});
 		frame.getContentPane().add(chckbxNewCheckBox);
+		
+		lblFlagIndicator = new JLabel("");
+		lblFlagIndicator.setBounds(1224, 16, 35, 35);
+		lblFlagIndicator.setIcon(new ImageIcon("lithuania.png"));
+		frame.getContentPane().add(lblFlagIndicator);
+		
+		JCheckBox chckbxEnableTurboMode = new JCheckBox("Enable turbo mode");
+		chckbxEnableTurboMode.setSelected(false);
+		chckbxEnableTurboMode.setForeground(Color.WHITE);
+		chckbxEnableTurboMode.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		chckbxEnableTurboMode.setBackground(Color.DARK_GRAY);
+		chckbxEnableTurboMode.setBounds(499, 553, 459, 35);
+		frame.getContentPane().add(chckbxEnableTurboMode);
 
 		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -384,6 +401,7 @@ public class MainFrame implements ActionListener{
 			else if(languageIndex == 2)
 			{
 				languageTo = "Albanian";
+				lblFlagIndicator.setIcon(new ImageIcon("albania.png"));
 			}
 			englishIsOnLeft = true;
 		}
