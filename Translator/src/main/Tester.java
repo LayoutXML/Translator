@@ -38,7 +38,17 @@ public class Tester {
                 System.out.println("Invalid input. Please try again");
             }
             switch (userChoice) {
-                case 1:
+            	case 1:
+            		translator.translate("meal", 0);
+            		translator.translate("keleivis", 0);
+            		translator.translate("drove", 0);
+            		translator.translate("break up", 0);
+            		translator.translate("aim at", 0);
+            		translator.translate("He has 20 friends", 0);
+            		translator.translate("My name is Bob and I live in Dundee.", 0);
+            		translator.translate("Mano draugas man visada padëti, kai yra sunku", 0);
+            		break;
+                /*case 1:
                     scanner = new Scanner(System.in); //recreating scanner for nextLine
                     String input, translation, characters = "", lastTranslation="", lastOriginalWord="";
                     int indexOf;
@@ -169,7 +179,7 @@ public class Tester {
                     break;
                 case 7:
                 	translator.flipDictionary(0);
-                	break;
+                	break;*/
                 case 0:
                     System.out.println("\nGoodbye...");
                     break;
@@ -185,14 +195,15 @@ public class Tester {
      */
     private void displayMenu() {
         System.out.println("\nPlease select one of the options below:");
-        System.out.println("1. Translate user input");
+        /*System.out.println("1. Translate user input");
         System.out.println("2. Add a word or phrase to the dictionary");
         System.out.println("3. Remove a word or phrase (English input)");
         System.out.println("4. Remove a word or phrase (other language input)");
         System.out.println("5. Translate a file");
         System.out.println("6. Print dictionary");
-        System.out.println("7. Flip dictionary");
+        System.out.println("7. Flip dictionary");*/
         //TODO: add automated tests #2
+        System.out.println("1. Run automated tests");
         System.out.println("0. Exit");
     }
 }
