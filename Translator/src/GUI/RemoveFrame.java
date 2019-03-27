@@ -93,17 +93,18 @@ public class RemoveFrame extends JFrame implements ActionListener{
 		menuBar.add(menu);
 		
 		JLabel lblAddingANew = new JLabel("Remove a word from the dictionary");
-		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 30));
 		lblAddingANew.setForeground(Color.WHITE);
-		lblAddingANew.setBounds(130, 11, 452, 45);
+		lblAddingANew.setBounds(83, 16, 510, 45);
 		contentPane.add(lblAddingANew);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(222, 160, 147, 109);
+		textArea.setFont(new Font("Cambria Math", Font.PLAIN, 24));
+		textArea.setBounds(146, 147, 335, 275);
 		contentPane.add(textArea);
 		
 		JButton btnNewButton = new JButton("Remove");
-		btnNewButton.setFont(new Font("Cambria Math", Font.PLAIN, 16));
+		btnNewButton.setFont(new Font("Cambria Math", Font.PLAIN, 24));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (isLeft) {
@@ -114,13 +115,13 @@ public class RemoveFrame extends JFrame implements ActionListener{
 				translator.writeFile(languageIndex);
 			}
 		});
-		btnNewButton.setBounds(222, 309, 148, 45);
+		btnNewButton.setBounds(164, 454, 304, 67);
 		contentPane.add(btnNewButton);
 		
 		lblText = new JLabel();
 		lblText.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblText.setForeground(Color.WHITE);
-		lblText.setBounds(259, 107, 222, 37);
+		lblText.setBounds(136, 77, 345, 67);
 		if (isLeft) {
 			lblText.setText(leftText);
 		} else {

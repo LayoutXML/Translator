@@ -36,35 +36,37 @@ public class AddFrame extends JFrame {
 		englishOnLeft = englishOnLeftReference;
 		
 		JLabel lblAddingANew = new JLabel("Add a new word to the current dictionary");
-		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 22));
+		lblAddingANew.setFont(new Font("Cambria Math", Font.PLAIN, 30));
 		lblAddingANew.setForeground(Color.WHITE);
-		lblAddingANew.setBounds(109, 11, 424, 49);
+		lblAddingANew.setBounds(54, 35, 554, 49);
 		contentPane.add(lblAddingANew);
 		
 		JTextArea originalWordInput = new JTextArea();
-		originalWordInput.setBounds(109, 198, 121, 93);
+		originalWordInput.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		originalWordInput.setBounds(54, 198, 244, 176);
 		contentPane.add(originalWordInput);
 		originalWordInput.setText(word);
 		
 		JTextArea translationInput = new JTextArea();
-		translationInput.setBounds(375, 198, 128, 93);
+		translationInput.setFont(new Font("Cambria Math", Font.PLAIN, 20));
+		translationInput.setBounds(333, 198, 244, 176);
 		contentPane.add(translationInput);
 		
 		JButton btnNewButton = new JButton("Add");
-		btnNewButton.setFont(new Font("Cambria Math", Font.PLAIN, 16));
+		btnNewButton.setFont(new Font("Cambria Math", Font.PLAIN, 24));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				translator.addToDictionary(originalWordInput.getText(),translationInput.getText(),languageIndex, true);
 				translator.writeFile(languageIndex);
 			}
 		});
-		btnNewButton.setBounds(221, 324, 161, 64);
+		btnNewButton.setBounds(188, 440, 256, 93);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblOriginal = new JLabel();
-		lblOriginal.setFont(new Font("Cambria Math", Font.PLAIN, 16));
+		lblOriginal.setFont(new Font("Cambria Math", Font.PLAIN, 20));
 		lblOriginal.setForeground(Color.WHITE);
-		lblOriginal.setBounds(143, 159, 72, 28);
+		lblOriginal.setBounds(102, 138, 128, 49);
 		if (englishOnLeft) {
 			lblOriginal.setText("English");
 		} else {
@@ -86,10 +88,10 @@ public class AddFrame extends JFrame {
 		contentPane.add(lblOriginal);
 		
 		JLabel lblTranslation = new JLabel();
-		lblTranslation.setFont(new Font("Cambria Math", Font.PLAIN, 16));
+		lblTranslation.setFont(new Font("Cambria Math", Font.PLAIN, 20));
 		lblTranslation.setForeground(Color.WHITE);
 		lblTranslation.setBackground(new Color(240, 240, 240));
-		lblTranslation.setBounds(395, 162, 69, 20);
+		lblTranslation.setBounds(386, 138, 128, 44);
 		if (!englishOnLeft) {
 			lblTranslation.setText("English");
 		} else {
