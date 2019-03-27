@@ -50,7 +50,7 @@ public class Translator {
             String translation = dictionaries.get(languageIndex).get(original.toLowerCase());
             if (translation == null) {
                 if (languageIndex==0) {
-                    String[] words = original.split("\\W+");
+                    String[] words = original.split("\\P{L}+");;
                     StringBuilder processed = new StringBuilder();
                     for (String word : words) {
                         int indexOf = original.indexOf(word);
