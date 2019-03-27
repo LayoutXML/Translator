@@ -5,8 +5,6 @@ import main.Translator;
 import java.awt.*;
 
 import javax.swing.*;
-
-import java.awt.EventQueue;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;

@@ -5,7 +5,6 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-@SuppressWarnings("Duplicates")
 /**
  * Translator class that contains methods to work with dictionaries and dictionaries itself
  */

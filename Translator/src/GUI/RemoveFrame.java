@@ -2,13 +2,7 @@ package GUI;
 
 import main.Translator;
 
-import java.awt.EventQueue;
-
 import javax.swing.*;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
@@ -16,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 
-@SuppressWarnings("Duplicates")
 /**
  * Class that handles GUI for removing words from dictionary
  */

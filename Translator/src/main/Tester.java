@@ -1,11 +1,8 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-@SuppressWarnings("Duplicates")
 /**
  * Tester class with automated tests
  */

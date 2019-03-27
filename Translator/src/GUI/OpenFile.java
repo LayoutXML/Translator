@@ -1,9 +1,5 @@
 package GUI;
 
-import main.Translator;
-
-import java.util.*;
-
 import javax.swing.JFileChooser;
 
 /**

@@ -2,8 +2,6 @@ package GUI;
 
 import main.Translator;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import javax.swing.JPanel;
@@ -13,16 +11,11 @@ import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Calendar;
 import javax.swing.JScrollPane;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
 
-@SuppressWarnings("Duplicates")
 /**
  * Class that handles GUI for translating a file
  */

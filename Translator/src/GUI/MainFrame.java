@@ -18,7 +18,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 
-@SuppressWarnings("Duplicates")
 /**
  * Class that handles main GUI screen
  */
