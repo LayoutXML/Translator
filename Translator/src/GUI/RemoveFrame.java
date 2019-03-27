@@ -141,7 +141,7 @@ public class RemoveFrame extends JFrame implements ActionListener{
 
 	/**
 	 * Handles language switching menu
-	 * @param e
+	 * @param e event
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

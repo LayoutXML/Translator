@@ -47,7 +47,8 @@ public class MainFrame implements ActionListener{
 	private JLabel lblFlagIndicator;
 
 	/**
-	 * Launch the application.
+	 * Launch program
+	 * @param args args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -313,7 +314,7 @@ public class MainFrame implements ActionListener{
 
 	/**
 	 * Handles language switching menu
-	 * @param e
+	 * @param e event
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
