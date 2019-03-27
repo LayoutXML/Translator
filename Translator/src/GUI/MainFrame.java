@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 
 @SuppressWarnings("Duplicates")
 public class MainFrame implements ActionListener{
@@ -77,6 +80,9 @@ public class MainFrame implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setTitle("Translator");
+
+		Image icon = Toolkit.getDefaultToolkit().getImage("translate.png");
+	    frame.setIconImage(icon);
 
 		dictionaryLoaded = new boolean[3];
 		dictionaryLoaded[0] = true;
@@ -206,7 +212,7 @@ public class MainFrame implements ActionListener{
 		frame.getContentPane().add(chckbxNewCheckBox);
 		
 		lblFlagIndicator = new JLabel("");
-		lblFlagIndicator.setBounds(1239, 0, 35, 35);
+		lblFlagIndicator.setBounds(1214, 0, 60, 57);
 		lblFlagIndicator.setIcon(new ImageIcon("lithuania.png"));
 		frame.getContentPane().add(lblFlagIndicator);
 
